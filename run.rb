@@ -4,19 +4,24 @@ require 'unirest'
 require 'nokogiri'
 
 URLs = ['https://www.google.com.br/search?']
-QUERY = ['premiere']
+QUERY = ['gloob']
+EXCLUDE = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
+           'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
+           'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
+           'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com'].join(' -site:')
 
 query_results = []
 
 URLs.each do |url|
   QUERY.each do |query|
+    final_query = "#{query} -site:#{EXCLUDE}"
     params = {sclient: 'psy-ab',
               safe: 'off',
               hl: 'pt',
-              biw: '1440',
-              bih: '450',
+              biw: '1080',
+              bih: '1920',
               site: 'webhp',
-              q: 'premiere',
+              q: final_query,
               pbx: '1',
               bav: 'on.2,or.r_cp.',
               bvm: 'bv.147448319,d.Y2I',
@@ -25,7 +30,7 @@ URLs.each do |url|
               gs_rn: '64',
               gs_ri: 'psy-ab',
               tok: 'GwqlFYN3FRY7BvbTjY60SQ',
-              pq: query,
+              pq: final_query,
               cp: '9',
               gs_id: '2v',
               xhr: 't',
@@ -33,6 +38,7 @@ URLs.each do |url|
               ech: '2',
               psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
 
+    puts "Requesting: #{final_query}\n#{url}\n"
     response = Unirest.get(url, headers: {}, parameters: params)
 
     better_body = response.body.gsub('/*""*/', ',').gsub('\\\\', '')
@@ -50,4 +56,5 @@ URLs.each do |url|
   end
 end
 
+puts "\n##{query_results.size} resultados encontrados:"
 puts query_results
