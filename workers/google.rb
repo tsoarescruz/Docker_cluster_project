@@ -6,11 +6,19 @@ class GoogleWorker
   EXCLUDE_DOMAINS = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
                      'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
                      'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
-                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com'].join(' -site:')
+                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com'
+                     'tecnoblog.net'].join(' -site:')
 
-  def self.run query
-    query_results = []
+  def self.search query
+    response = request_search query
+    json_data = parse_response_to_json response.body
+    query_results = process_data json_data
+    final_result = evaluate_results query_results
 
+    return final_result
+  end
+
+  def self.request_search query
     final_query = "#{query} -site:#{EXCLUDE_DOMAINS}"
     params = {sclient: 'psy-ab',
               safe: 'off',
@@ -36,23 +44,51 @@ class GoogleWorker
               ech: '2',
               psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
 
-    puts "Requesting: #{final_query}\nhttps://www.google.com.br/search?\n"
     response = Unirest.get('https://www.google.com.br/search?', headers: {}, parameters: params)
 
-    better_body = response.body.gsub('/*""*/', ',').gsub('\\\\', '')
+    return response
+  end
+
+  def self.parse_response_to_json body
+    better_body = body.gsub('/*""*/', ',').gsub('\\\\', '')
     parsed_response = "[#{better_body}]".gsub(',]', ']')
 
     json_data = JSON.parse(parsed_response.force_encoding("ISO-8859-1").encode("UTF-8"))
+
+    return json_data
+  end
+
+  def self.process_data json_data
+    query_results = []
 
     json_data.each do |data|
       html_page = Nokogiri::HTML(data['d'])
       results = html_page.css('.r')
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        query_results << {title: result.css('a').text, link: url_link}
+        query_results << {title: result.css('a').text, link: url_link, status: 500}
       end
     end
 
     return query_results
+  end
+
+  def self.evaluate_results query_results
+    threads = []
+
+    query_results.each do |result|
+      threads << Thread.new {
+        begin
+          response = Unirest.get(result[:link])
+          result[:status] = response.code
+        rescue Exception => e
+          puts result[:link]
+        end
+      }
+    end 
+
+    threads.each {|t| t.join}
+
+    return query_results.delete_if{|hsh| hsh[:status].between?(200, 204)}
   end
 end
