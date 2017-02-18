@@ -48,7 +48,8 @@ class GoogleWorker
       html_page = Nokogiri::HTML(data['d'])
       results = html_page.css('.r')
       results.each do |result|
-        query_results << {title: result.css('a').text, link: result.css('a').attr('href').value.gsub('/url?q=', '')}
+        url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
+        query_results << {title: result.css('a').text, link: url_link}
       end
     end
 
