@@ -1,22 +1,20 @@
-#!/usr/bin/env ruby
 require 'json'
 require 'unirest'
 require 'nokogiri'
 
-URLs = ['https://www.google.com.br/search?']
-QUERY = ['gloob']
-EXCLUDE = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
-           'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
-           'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
-           'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com'].join(' -site:')
+class GoogleWorker
+  EXCLUDE_DOMAINS = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
+                     'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
+                     'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
+                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com'].join(' -site:')
 
-query_results = []
+  def self.run query
+    query_results = []
 
-URLs.each do |url|
-  QUERY.each do |query|
-    final_query = "#{query} -site:#{EXCLUDE}"
+    final_query = "#{query} -site:#{EXCLUDE_DOMAINS}"
     params = {sclient: 'psy-ab',
               safe: 'off',
+              num: 100,
               hl: 'pt',
               biw: '1080',
               bih: '1920',
@@ -38,13 +36,13 @@ URLs.each do |url|
               ech: '2',
               psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
 
-    puts "Requesting: #{final_query}\n#{url}\n"
-    response = Unirest.get(url, headers: {}, parameters: params)
+    puts "Requesting: #{final_query}\nhttps://www.google.com.br/search?\n"
+    response = Unirest.get('https://www.google.com.br/search?', headers: {}, parameters: params)
 
     better_body = response.body.gsub('/*""*/', ',').gsub('\\\\', '')
     parsed_response = "[#{better_body}]".gsub(',]', ']')
 
-    json_data = JSON.parse(parsed_response)
+    json_data = JSON.parse(parsed_response.force_encoding("ISO-8859-1").encode("UTF-8"))
 
     json_data.each do |data|
       html_page = Nokogiri::HTML(data['d'])
@@ -53,8 +51,7 @@ URLs.each do |url|
         query_results << {title: result.css('a').text, link: result.css('a').attr('href').value.gsub('/url?q=', '')}
       end
     end
+
+    return query_results
   end
 end
-
-puts "\n##{query_results.size} resultados encontrados:"
-puts query_results
