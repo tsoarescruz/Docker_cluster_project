@@ -6,8 +6,8 @@ class GoogleWorker
   EXCLUDE_DOMAINS = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
                      'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
                      'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
-                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com'
-                     'tecnoblog.net'].join(' -site:')
+                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com',
+                     'tecnoblog.net', 'vivo.com.br', 'bol.uol.com.br', 'saraiva.com.br'].join(' -site:')
 
   def self.search query
     response = request_search query
@@ -66,7 +66,7 @@ class GoogleWorker
       results = html_page.css('.r')
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        query_results << {title: result.css('a').text, link: url_link, status: 500}
+        query_results << {title: result.css('a').text, link: url_link, status: nil}
       end
     end
 
@@ -80,15 +80,18 @@ class GoogleWorker
       threads << Thread.new {
         begin
           response = Unirest.get(result[:link])
-          result[:status] = response.code
+          if response.code.between?(200, 204)
+            result[:status] = response.code
+          else
+            query_results.delete(result)
+          end
         rescue Exception => e
-          puts result[:link]
         end
       }
     end 
 
     threads.each {|t| t.join}
 
-    return query_results.delete_if{|hsh| hsh[:status].between?(200, 204)}
+    return query_results
   end
 end
