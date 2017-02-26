@@ -81,6 +81,10 @@ class GoogleWorker
         begin
           response = RestClient.get(result[:link])
           if response.code.between?(200, 204)
+            screenshot_slug = result[:title].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+            screenshot = IMGKit.new(response.body, quality: 50)
+            screenshot.to_file("#{Dir.pwd}/public/#{screenshot_slug}.jpg")
+
             result[:status] = response.code
           end
         rescue Exception => e

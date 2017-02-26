@@ -63,3 +63,7 @@ gem 'rest-client'
 # Background proccess
 # https://github.com/mperham/sidekiq
 gem 'sidekiq'
+
+# HTML to screenshot
+gem 'imgkit'
+gem 'wkhtmltoimage-binary'
