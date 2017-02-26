@@ -53,7 +53,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # HTML parser
+# http://www.nokogiri.org/
 gem 'nokogiri'
 
-# External request
-gem 'unirest'
+# External request client
+# https://github.com/rest-client/rest-client
+gem 'rest-client'
+
+# Background proccess
+# https://github.com/mperham/sidekiq
+gem 'sidekiq'

@@ -1,13 +1,13 @@
 require 'json'
-require 'unirest'
 require 'nokogiri'
+require 'rest-client'
 
 class GoogleWorker
   EXCLUDE_DOMAINS = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
                      'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
                      'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
                      'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com',
-                     'tecnoblog.net', 'vivo.com.br', 'bol.uol.com.br', 'saraiva.com.br'].join(' -site:')
+                     'tecnoblog.net', 'vivo.com.br', 'bol.uol.com.br', 'saraiva.com.br', 'enjoei.com.br'].join(' -site:')
 
   def self.search query
     response = request_search query
@@ -44,7 +44,7 @@ class GoogleWorker
               ech: '2',
               psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
 
-    response = Unirest.get('https://www.google.com.br/search?', headers: {}, parameters: params)
+    response = RestClient.get('https://www.google.com.br/search?', {params: params})
 
     return response
   end
@@ -79,11 +79,9 @@ class GoogleWorker
     query_results.each do |result|
       threads << Thread.new {
         begin
-          response = Unirest.get(result[:link])
+          response = RestClient.get(result[:link])
           if response.code.between?(200, 204)
             result[:status] = response.code
-          else
-            query_results.delete(result)
           end
         rescue Exception => e
         end
@@ -92,6 +90,6 @@ class GoogleWorker
 
     threads.each {|t| t.join}
 
-    return query_results
+    return query_results.delete_if{|query| query[:status].nil?}
   end
 end
