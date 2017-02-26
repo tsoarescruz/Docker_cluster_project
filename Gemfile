@@ -67,3 +67,6 @@ gem 'sidekiq'
 # HTML to screenshot
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
+
+# Admin interface Gem
+gem 'typus', git: 'https://github.com/HorizonteNovasMidias/typus.git', branch: '5-0-unstable'

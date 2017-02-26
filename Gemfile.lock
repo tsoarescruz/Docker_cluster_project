@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/HorizonteNovasMidias/typus.git
+  revision: 4f765874949c9d0b8a85bba3e2e0af70486c583a
+  branch: 5-0-unstable
+  specs:
+    typus (5.0.0)
+      bcrypt (~> 3.1.11)
+      rails (~> 5.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +48,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    bcrypt (3.1.11)
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -193,6 +203,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   turbolinks (~> 5)
+  typus!
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
