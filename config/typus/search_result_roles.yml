@@ -1,0 +1,2 @@
+admin:
+  SearchResult: create, read, update, delete

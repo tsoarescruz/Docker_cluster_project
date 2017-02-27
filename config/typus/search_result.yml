@@ -1,0 +1,10 @@
+SearchResult:
+  fields:
+    list: title, link, from
+    form: title, link, status, from
+    options:
+      selectors: from
+      read_only: title, link, status, from, created_at, updated_at
+  search: title, link, status, from
+  relationships: 
+  application: Search

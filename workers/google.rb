@@ -66,7 +66,7 @@ class GoogleWorker
       results = html_page.css('.r')
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        query_results << {title: result.css('a').text, link: url_link, status: nil}
+        query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google'}
       end
     end
 
@@ -81,11 +81,8 @@ class GoogleWorker
         begin
           response = RestClient.get(result[:link])
           if response.code.between?(200, 204)
-            screenshot_slug = result[:title].downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-            screenshot = IMGKit.new(response.body, quality: 50)
-            screenshot.to_file("#{Dir.pwd}/public/#{screenshot_slug}.jpg")
-
             result[:status] = response.code
+            # result[:screenshot] = IMGKit.new(response.body, quality: 50)
           end
         rescue Exception => e
         end

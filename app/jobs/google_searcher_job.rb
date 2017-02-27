@@ -5,6 +5,8 @@ class GoogleSearcherJob < ApplicationJob
 
   def perform(*args)
     results = GoogleWorker.search args.first
-    puts results
+    results.each do |result|
+      SearchResult.find_or_create result
+    end
   end
 end
