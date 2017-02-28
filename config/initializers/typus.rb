@@ -17,8 +17,8 @@ Typus.setup do |config|
   # config.mailer_sender = "admin@example.com"
 
   # Define paperclip attachment styles.
-  # config.file_preview = :medium
-  # config.file_thumbnail = :thumb
+  config.file_preview = :medium
+  config.file_thumbnail = :thumb
 
   # Define authentication: +:none+, +:http_basic+, +:session+
   # Run `rails g typus:migration` if want +:session+

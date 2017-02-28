@@ -1,5 +1,6 @@
 class SearchResult < ApplicationRecord
-  TITLE_SIMILARITY_THRESHOLD = 0.9
+  has_attached_file :screenshot, styles: {thumb: "100x100#", medium: "570>"}
+  validates_attachment_content_type :screenshot, content_type: ["image/jpg", "image/jpeg"]
 
   def to_label
     self.link.rpartition('/').first

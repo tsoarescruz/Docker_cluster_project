@@ -66,7 +66,7 @@ class GoogleWorker
       results = html_page.css('.r')
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google'}
+        query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil}
       end
     end
 
@@ -82,7 +82,7 @@ class GoogleWorker
           response = RestClient.get(result[:link])
           if response.code.between?(200, 204)
             result[:status] = response.code
-            # result[:screenshot] = IMGKit.new(response.body, quality: 50)
+            result[:screenshot] = self.create_image(response.body)
           end
         rescue Exception => e
         end
@@ -92,5 +92,17 @@ class GoogleWorker
     threads.each {|t| t.join}
 
     return query_results.delete_if{|query| query[:status].nil?}
+  end
+
+  def self.create_image html
+    # create screenshot image
+    image_kit = IMGKit.new(html, quality: 50)
+    image = image_kit.to_img(:jpg)
+    temp_file_name = (0...8).map { (65 + rand(26)).chr }.join.downcase
+    image_file = Tempfile.new(["screenshot_#{temp_file_name}", 'jpg'], 'tmp', encoding: 'ascii-8bit')
+    image_file.write(image)
+    image_file.flush
+
+    return image_file
   end
 end
