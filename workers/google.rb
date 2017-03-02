@@ -8,7 +8,7 @@ class GoogleWorker
                      'premierefitness.com.br', 'busindia.com', 'softonic.com', 'google.com.br', 'google.com', 'cnet.com', 'tecnoblog.net',
                      'vivo.com.br', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br', 'nowonline.com.br', 'techtudo.com.br', 'reclameaqui.com.br',
                      'vivoplay.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br', 'spotify.com', 'archive.org',
-                     'vagalume.com.br', 'ebay.com'].join(' -site:')
+                     'vagalume.com.br', 'ebay.com', 'telecineon.com.br'].join(' -site:')
 
   def self.search query
     response = request_search query
@@ -23,7 +23,7 @@ class GoogleWorker
     final_query = "#{query} -site:#{EXCLUDE_DOMAINS}"
     params = {sclient: 'psy-ab',
               safe: 'off',
-              num: 100,
+              num: 60,
               hl: 'pt',
               biw: '1080',
               bih: '1920',
