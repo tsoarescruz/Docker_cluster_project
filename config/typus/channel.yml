@@ -1,0 +1,9 @@
+Channel:
+  fields:
+    list: name
+    form: name
+    csv: name
+  search: name
+  export: csv
+  relationships: 
+  application: Channels

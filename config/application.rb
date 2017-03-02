@@ -15,6 +15,6 @@ module Phalanxs
     # Loads active_job to sidekiq
     # Affects all environments
     config.active_job.queue_adapter     = :sidekiq
-    config.active_job.queue_name_prefix = "phalanx_#{Rails.env}"
+    config.active_job.queue_name_prefix = "phalanx"
   end
 end

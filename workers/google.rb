@@ -3,19 +3,20 @@ require 'nokogiri'
 require 'rest-client'
 
 class GoogleWorker
-  EXCLUDE_DOMAINS = ['globosatplay.globo.com', 'premierefc.globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br',
-                     'adobe-premiere-pro-.softonic.com.br', 'netcombo.com.br', 'clarotv.claro.com.br', 'assine.vivo.com.br', 'pt.wikipedia.org',
-                     'sportv.globo.com', 'itunes.apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com', 'premierefitness.com.br',
-                     'adobe-premiere.en.softonic.com', 'play.google.com', 'mundogloob.globo.com', 'globoplay.globo.com', 'globo.com',
-                     'tecnoblog.net', 'vivo.com.br', 'bol.uol.com.br', 'saraiva.com.br', 'enjoei.com.br'].join(' -site:')
+  EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br', 'softonic.com.br', 'netcombo.com.br',
+                     'claro.com.br', 'wikipedia.org', 'apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com',
+                     'premierefitness.com.br', 'busindia.com', 'softonic.com', 'google.com.br', 'google.com', 'cnet.com', 'tecnoblog.net',
+                     'vivo.com.br', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br', 'nowonline.com.br', 'techtudo.com.br', 'reclameaqui.com.br',
+                     'vivoplay.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br', 'spotify.com', 'archive.org',
+                     'vagalume.com.br', 'ebay.com'].join(' -site:')
 
   def self.search query
     response = request_search query
-    json_data = parse_response_to_json response.body
-    query_results = process_data json_data
-    final_result = evaluate_results query_results
-
-    return final_result
+    unless response.nil?
+      json_data = parse_response_to_json response.body
+      query_results = process_data json_data
+      final_result = save_results query_results
+    end
   end
 
   def self.request_search query
@@ -44,7 +45,11 @@ class GoogleWorker
               ech: '2',
               psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
 
-    response = RestClient.get('https://www.google.com.br/search?', {params: params})
+    begin
+      response = RestClient.get('https://www.google.com.br/search?', {params: params})
+    rescue Exception => e
+      response = nil
+    end
 
     return response
   end
@@ -73,35 +78,37 @@ class GoogleWorker
     return query_results
   end
 
-  def self.evaluate_results query_results
-    threads = []
-
+  def self.save_results query_results
     query_results.each do |result|
-      threads << Thread.new {
-        begin
-          response = RestClient.get(result[:link])
-          if response.code.between?(200, 204)
-            result[:status] = response.code
-            result[:screenshot] = self.create_image(response.body)
-          end
-        rescue Exception => e
-        end
-      }
-    end 
+      begin
+        response = RestClient.get(result[:link])
+        result[:status] = response.code
+        result[:screenshot] = self.create_image(response.body)
 
-    threads.each {|t| t.join}
+        SearchResult.find_or_create result
+      rescue RestClient::NotFound => e
+        result[:status] = e.response.code
+        result[:screenshot] = self.create_image(e.response.body)
 
-    return query_results.delete_if{|query| query[:status].nil?}
+        SearchResult.find_or_create result
+      rescue Exception => e
+        puts "#{result[:link]} -> #{e}"
+      end
+    end
   end
 
   def self.create_image html
-    # create screenshot image
-    image_kit = IMGKit.new(html, quality: 50)
-    image = image_kit.to_img(:jpg)
-    temp_file_name = (0...8).map { (65 + rand(26)).chr }.join.downcase
-    image_file = Tempfile.new(["screenshot_#{temp_file_name}", 'jpg'], 'tmp', encoding: 'ascii-8bit')
-    image_file.write(image)
-    image_file.flush
+    begin
+      # create screenshot image
+      image_kit = IMGKit.new(html, quality: 50)
+      image = image_kit.to_img(:jpg)
+      temp_file_name = (0...8).map { (65 + rand(26)).chr }.join.downcase
+      image_file = Tempfile.new(["screenshot_#{temp_file_name}", 'jpg'], 'tmp', encoding: 'ascii-8bit')
+      image_file.write(image)
+      image_file.flush
+    rescue Exception => e
+      image_file = nil
+    end
 
     return image_file
   end

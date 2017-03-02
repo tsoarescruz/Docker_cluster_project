@@ -8,12 +8,26 @@ class SearchResult < ApplicationRecord
 
   def self.find_or_create hash
     link_domain = hash[:link].rpartition('/').first
+    puts link_domain
     found = self.where(['link LIKE ?', "#{link_domain}%"]).first
 
     if found
       found.update(hash)
     else
       self.create(hash)
+    end
+  end
+
+  def self.generate_search_queries
+    channels = Channel.all.pluck(:name)
+    tags = Tag.all.pluck(:name)
+    tags_combination = (0..tags.size).flat_map{|size| tags.combination(size).to_a}.drop(1)
+    queries = []
+
+    channels.each do |channel|
+      tags_combination.each do |tag|
+        GoogleSearcherJob.perform_later "#{channel} #{tag.join(' ')}"
+      end
     end
   end
 

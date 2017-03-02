@@ -1,0 +1,10 @@
+---
+:pidfile: tmp/pids/sidekiq.pid
+development:
+  :concurrency: 4
+qa:
+  :concurrency: 4
+production:
+  :concurrency: 8
+:queues:
+  - phalanx_default
