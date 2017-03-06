@@ -69,7 +69,9 @@ gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
 # Admin interface Gem
-gem 'typus', git: 'https://github.com/HorizonteNovasMidias/typus.git', branch: '5-0-unstable'
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'devise'
 
 # Screenshot
 gem 'paperclip'

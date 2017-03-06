@@ -1,11 +1,31 @@
 GIT
-  remote: https://github.com/HorizonteNovasMidias/typus.git
-  revision: 4f765874949c9d0b8a85bba3e2e0af70486c583a
-  branch: 5-0-unstable
+  remote: https://github.com/activeadmin/activeadmin
+  revision: 795b73f30cd99fca88f1ca942a3739d4c078c1f4
   specs:
-    typus (5.0.0)
-      bcrypt (~> 3.1.11)
-      rails (~> 5.0.0)
+    activeadmin (1.0.0.pre4)
+      arbre (~> 1.0, >= 1.0.2)
+      bourbon
+      coffee-rails
+      formtastic (~> 3.1)
+      formtastic_i18n
+      inherited_resources (~> 1.6)
+      jquery-rails
+      jquery-ui-rails
+      kaminari (>= 0.15, < 2.0)
+      railties (>= 3.2, < 5.1)
+      ransack (~> 1.3)
+      sass-rails
+      sprockets (< 4.1)
+
+GIT
+  remote: https://github.com/activeadmin/inherited_resources
+  revision: 615b0d5c37a4bfc86ad18ec22b90d161fd996130
+  specs:
+    inherited_resources (1.7.0)
+      actionpack (>= 3.2, < 5.1)
+      has_scope (~> 0.6)
+      railties (>= 3.2, < 5.1)
+      responders
 
 GEM
   remote: https://rubygems.org/
@@ -47,8 +67,13 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    arbre (1.1.1)
+      activesupport (>= 3.0.0)
     arel (7.1.4)
     bcrypt (3.1.11)
+    bourbon (4.3.3)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.6)
     climate_control (0.0.3)
@@ -65,13 +90,25 @@ GEM
     concurrent-ruby (1.0.4)
     connection_pool (2.2.1)
     debug_inspector (0.0.2)
+    devise (4.2.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     domain_name (0.5.20161021)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.17)
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
+    formtastic_i18n (0.6.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    has_scope (0.7.0)
+      actionpack (>= 4.1, < 5.1)
+      activesupport (>= 4.1, < 5.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.1)
@@ -83,6 +120,20 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
+    kaminari (1.0.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.0.1)
+      kaminari-activerecord (= 1.0.1)
+      kaminari-core (= 1.0.1)
+    kaminari-actionview (1.0.1)
+      actionview
+      kaminari-core (= 1.0.1)
+    kaminari-activerecord (1.0.1)
+      activerecord
+      kaminari-core (= 1.0.1)
+    kaminari-core (1.0.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -102,11 +153,14 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    orm_adapter (0.5.0)
     paperclip (4.2.4)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
     puma (3.7.1)
     rack (2.0.1)
     rack-protection (1.5.3)
@@ -137,10 +191,18 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.0.0)
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     redis (3.3.3)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     rest-client (2.0.1)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -182,6 +244,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -196,9 +260,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin!
   byebug
   coffee-rails (~> 4.2)
+  devise
   imgkit
+  inherited_resources!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -213,7 +280,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
-  typus!
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
