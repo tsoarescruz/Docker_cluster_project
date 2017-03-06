@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Channel.create!(name: 'GNT')
+Channel.create!(name: 'Multishow')
+Channel.create!(name: 'Telecine')
+
+Tag.create!(name: 'online')
+Tag.create!(name: 'grátis')
+Tag.create!(name: 'completo')

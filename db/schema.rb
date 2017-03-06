@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 20170228173741) do
     t.text     "link",                    limit: 65535
     t.integer  "status"
     t.string   "from"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.string   "screenshot_file_name"
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"
     t.datetime "screenshot_updated_at"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

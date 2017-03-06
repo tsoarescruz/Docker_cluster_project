@@ -2,8 +2,8 @@ Channel:
   fields:
     list: name
     form: name
-    csv: name
+  options:
+    export: csv
   search: name
-  export: csv
   relationships: 
   application: Channels

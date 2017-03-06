@@ -2,10 +2,10 @@ SearchResult:
   fields:
     list: title, link, from, screenshot
     form: title, link, status, from, screenshot
-    csv: title, link, status, from, screenshot, created_at, updated_at
     options:
       selectors: from
+  options:
+    export: csv
   search: title, link, status, from
-  export: csv
   relationships: 
   application: Search

@@ -3,12 +3,16 @@ require 'nokogiri'
 require 'rest-client'
 
 class GoogleWorker
-  EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'sky.com.br', 'skyonline.com.br', 'baixaki.com.br', 'softonic.com.br', 'netcombo.com.br',
-                     'claro.com.br', 'wikipedia.org', 'apple.com', 'premiereempregos.com.br', 'oi.com.br', 'mxcursos.com',
-                     'premierefitness.com.br', 'busindia.com', 'softonic.com', 'google.com.br', 'google.com', 'cnet.com', 'tecnoblog.net',
-                     'vivo.com.br', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br', 'nowonline.com.br', 'techtudo.com.br', 'reclameaqui.com.br',
-                     'vivoplay.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br', 'spotify.com', 'archive.org',
-                     'vagalume.com.br', 'ebay.com', 'telecineon.com.br'].join(' -site:')
+  EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'google.com.br', 'google.com', 'sky.com.br', 'skyonline.com.br', 'nowonline.com.br',
+                     'netcombo.com.br', 'claro.com.br', 'assineskyagora.com.br', 'apple.com', 'premiereempregos.com.br', 'oi.com.br',
+                     'mxcursos.com', 'premierefitness.com.br', 'microsoft.com', 'baixaki.com.br', 'vivo.com.br', 'vivoplay.com.br',
+                     'telecineon.com.br',
+
+                     'softonic.com.br', 'softonic.com', 'cnet.com', 'tecnoblog.net', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br',
+                     'techtudo.com.br', 'reclameaqui.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br',
+                     'spotify.com', 'archive.org', 'vagalume.com.br', 'ebay.com', 'proteste.org.br', 'adorocinema.com', 'wikipedia.org',
+                     'busindia.com', 'aptoide.com']
+  GOOGLE_EXCLUDE_DOMAINS = EXCLUDE_DOMAINS.first(20)
 
   def self.search query
     response = request_search query
@@ -20,10 +24,10 @@ class GoogleWorker
   end
 
   def self.request_search query
-    final_query = "#{query} -site:#{EXCLUDE_DOMAINS}"
+    final_query = "#{query} -site:#{GOOGLE_EXCLUDE_DOMAINS.join(' -site:')}"
     params = {sclient: 'psy-ab',
               safe: 'off',
-              num: 60,
+              num: 80,
               hl: 'pt',
               biw: '1080',
               bih: '1920',
@@ -71,7 +75,9 @@ class GoogleWorker
       results = html_page.css('.r')
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil}
+        unless invalid_domain = EXCLUDE_DOMAINS.map{|domain| url_link.include? domain}.any?
+          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil}
+        end
       end
     end
 
@@ -81,18 +87,24 @@ class GoogleWorker
   def self.save_results query_results
     query_results.each do |result|
       begin
-        response = RestClient.get(result[:link])
+        response = RestClient::Request.execute(method: :get, url: result[:link], timeout: 15)
         result[:status] = response.code
         result[:screenshot] = self.create_image(response.body)
 
-        SearchResult.find_or_create result
       rescue RestClient::NotFound => e
         result[:status] = e.response.code
         result[:screenshot] = self.create_image(e.response.body)
 
-        SearchResult.find_or_create result
       rescue Exception => e
+        result[:status] = 500
+
         puts "#{result[:link]} -> #{e}"
+      end
+
+      SearchResult.find_or_create result
+      
+      if result[:screenshot]
+        result[:screenshot].unlink
       end
     end
   end

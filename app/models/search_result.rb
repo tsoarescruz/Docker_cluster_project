@@ -1,11 +1,9 @@
-require 'uri'
-
 class SearchResult < ApplicationRecord
   has_attached_file :screenshot, styles: {thumb: "100x100#", medium: "570>"}
   validates_attachment_content_type :screenshot, content_type: ["image/jpg", "image/jpeg"]
 
   def to_label
-    URI.parse(self.link)
+    URI.parse(self.link).host
   end
 
   def self.find_or_create hash
