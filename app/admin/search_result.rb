@@ -13,5 +13,41 @@ ActiveAdmin.register SearchResult do
 #   permitted
 # end
 
+  filter :title
+  filter :link
+  filter :status
+  filter :from
+  filter :created_at
+  filter :updated_at
 
+  index do
+    column :title do |search_result|
+      link_to(search_result.title, search_result.link, target: :blank)
+    end
+    column :screenshot do |search_result|
+      link_to(image_tag(search_result.screenshot.url(:thumb)), search_result.link, target: :blank)
+    end
+    column :link do |search_result|
+      search_result.link[0..30]
+    end
+    column :status
+    column :from
+    actions
+   end
+
+  # Disable admin new action
+  actions :all, except: [:new]
+
+  # Custom action search link
+  action_item :search, only: :index do
+    link_to('Search', search_admin_search_results_path)
+  end
+
+  controller do
+    def search
+      SearchResult.generate_search_queries
+
+      redirect_to admin_search_results_path, notice: 'Search started! Wait a few minutes to see results.'
+    end
+  end
 end
