@@ -11,7 +11,8 @@ class GoogleWorker
                      'softonic.com.br', 'softonic.com', 'cnet.com', 'tecnoblog.net', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br',
                      'techtudo.com.br', 'reclameaqui.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br',
                      'spotify.com', 'archive.org', 'vagalume.com.br', 'ebay.com', 'proteste.org.br', 'adorocinema.com', 'wikipedia.org',
-                     'busindia.com', 'aptoide.com']
+                     'busindia.com', 'aptoide.com', 'oiplay.tv', 'meiobit.com', 'huffpostbrasil.com', 'vejario.abril.com.br',
+                     'correio24horas.com.br']
   GOOGLE_EXCLUDE_DOMAINS = EXCLUDE_DOMAINS.first(20)
 
   def self.search query
@@ -27,7 +28,7 @@ class GoogleWorker
     final_query = "#{query} -site:#{GOOGLE_EXCLUDE_DOMAINS.join(' -site:')}"
     params = {sclient: 'psy-ab',
               safe: 'off',
-              num: 80,
+              num: 100,
               hl: 'pt',
               biw: '1080',
               bih: '1920',
