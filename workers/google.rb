@@ -12,7 +12,7 @@ class GoogleWorker
                      'techtudo.com.br', 'reclameaqui.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br',
                      'spotify.com', 'archive.org', 'vagalume.com.br', 'ebay.com', 'proteste.org.br', 'adorocinema.com', 'wikipedia.org',
                      'busindia.com', 'aptoide.com', 'oiplay.tv', 'meiobit.com', 'huffpostbrasil.com', 'vejario.abril.com.br',
-                     'correio24horas.com.br']
+                     'correio24horas.com.br', 'tecmundo.com.br']
   GOOGLE_EXCLUDE_DOMAINS = EXCLUDE_DOMAINS.first(20)
 
   def self.search query
