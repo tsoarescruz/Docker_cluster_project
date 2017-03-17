@@ -21,11 +21,16 @@ ActiveAdmin.register SearchResult do
   filter :updated_at
 
   index do
+    selectable_column
     column :title do |search_result|
       link_to(search_result.title, search_result.link, target: :blank)
     end
     column :screenshot do |search_result|
-      link_to(image_tag(search_result.screenshot.url(:thumb)), search_result.link, target: :blank)
+      if not search_result.screenshot.url(:thumb).include? 'missing.png'
+        link_to(image_tag(search_result.screenshot.url(:thumb)), search_result.link, target: :blank)
+      else
+        'No image'
+      end
     end
     column :link do |search_result|
       search_result.link[0..30]
@@ -33,7 +38,27 @@ ActiveAdmin.register SearchResult do
     column :status
     column :from
     actions
-   end
+  end
+
+  show do
+    attributes_table do
+      row :title
+      row :link do |link|
+        link_to(search_result.title, search_result.link, target: :blank)
+      end
+      row :status
+      row :from
+      row :screenshot do |search_result|
+        if not search_result.screenshot.url(:medium).include? 'missing.png'
+          link_to(image_tag(search_result.screenshot.url(:medium)), search_result.link, target: :blank)
+        else
+          "No image"
+        end
+      end
+      row :created_at
+      row :updated_at
+    end
+  end
 
   # Disable admin new action
   actions :all, except: [:new]
