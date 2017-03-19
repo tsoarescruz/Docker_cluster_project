@@ -16,6 +16,7 @@ class SearchResult < ApplicationRecord
     found = self.where(['link LIKE ?', "%#{uri_link.host}%"]).first
 
     if found
+      hash[:occurrence] = found.occurrence + 1
       found.update(hash)
     else
       self.create(hash)

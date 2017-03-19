@@ -17,6 +17,8 @@ ActiveAdmin.register SearchResult do
   filter :link
   filter :status
   filter :from
+  filter :relevance
+  filter :occurrence
   filter :created_at
   filter :updated_at
 
@@ -35,7 +37,8 @@ ActiveAdmin.register SearchResult do
     column :link do |search_result|
       search_result.link[0..30]
     end
-    column :status
+    column :relevance
+    column :occurrence
     column :from
     actions
   end
@@ -46,6 +49,8 @@ ActiveAdmin.register SearchResult do
       row :link do |link|
         link_to(search_result.title, search_result.link, target: :blank)
       end
+      row :relevance
+      row :occurrence
       row :status
       row :from
       row :screenshot do |search_result|

@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170317221151) do
     t.text     "link",                    limit: 65535
     t.integer  "status"
     t.string   "from"
+    t.integer  "relevance",                             default: 0
+    t.integer  "occurrence",                            default: 1
     t.string   "screenshot_file_name"
     t.string   "screenshot_content_type"
     t.integer  "screenshot_file_size"

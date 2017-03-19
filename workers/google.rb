@@ -14,6 +14,7 @@ class GoogleWorker
                      'busindia.com', 'aptoide.com', 'oiplay.tv', 'meiobit.com', 'huffpostbrasil.com', 'vejario.abril.com.br',
                      'correio24horas.com.br', 'tecmundo.com.br']
   GOOGLE_EXCLUDE_DOMAINS = EXCLUDE_DOMAINS.first(20)
+  SEARCH_SIZE = 80
 
   def self.search query
     response = request_search query
@@ -28,7 +29,7 @@ class GoogleWorker
     final_query = "#{query} -site:#{GOOGLE_EXCLUDE_DOMAINS.join(' -site:')}"
     params = {sclient: 'psy-ab',
               safe: 'off',
-              num: 100,
+              num: SEARCH_SIZE,
               hl: 'pt',
               biw: '1080',
               bih: '1920',
@@ -70,6 +71,7 @@ class GoogleWorker
 
   def self.process_data json_data
     query_results = []
+    relevance = 1
 
     json_data.each do |data|
       html_page = Nokogiri::HTML(data['d'])
@@ -77,7 +79,8 @@ class GoogleWorker
       results.each do |result|
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
         unless invalid_domain = EXCLUDE_DOMAINS.map{|domain| url_link.include? domain}.any?
-          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil}
+          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil, relevance: relevance}
+          relevance += 1
         end
       end
     end
