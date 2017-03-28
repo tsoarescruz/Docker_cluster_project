@@ -1,1 +1,1 @@
-web: bundle exec rails server -p 8888
+web: bundle exec rails server -p $PORT -e production
