@@ -11,8 +11,8 @@ gratis = Tag.create!(name: 'grátis')
 completo = Tag.create!(name: 'completo')
 dublado = Tag.create!(name: 'dublado')
 
-Channel.create!(name: 'PFC', tags: [online, gratis])
-Channel.create!(name: 'Premiere', tags: [online, gratis])
-Channel.create!(name: 'Telecine', tags: [gratis, dublado])
+Product.create!(name: 'PFC', tags: [online, gratis])
+Product.create!(name: 'Premiere', tags: [online, gratis])
+Product.create!(name: 'Telecine', tags: [gratis, dublado])
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

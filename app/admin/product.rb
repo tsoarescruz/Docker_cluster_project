@@ -1,4 +1,4 @@
-ActiveAdmin.register Channel do
+ActiveAdmin.register Product do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -25,8 +25,8 @@ ActiveAdmin.register Channel do
     selectable_column
     column :id
     column :name
-    column :tags do |channel|
-      channel.tags.all.map{|tag| tag.name}.join(', ')
+    column :tags do |product|
+      product.tags.all.map{|tag| tag.name}.join(', ')
     end
     column :created_at
     column :updated_at
@@ -37,8 +37,8 @@ ActiveAdmin.register Channel do
     attributes_table do
       row :id
       row :name
-      row :tags do |channel|
-        channel.tags.all.map{|tag| tag.name}.join(', ')
+      row :tags do |product|
+        product.tags.all.map{|tag| tag.name}.join(', ')
       end
       row :created_at
       row :updated_at

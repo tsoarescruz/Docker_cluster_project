@@ -24,14 +24,14 @@ class SearchResult < ApplicationRecord
   end
 
   def self.generate_search_queries
-    channels = Channel.all
+    products = Product.all
 
-    channels.each do |channel|
-      tags = channel.tags.pluck(:name).to_a
+    products.each do |product|
+      tags = product.tags.pluck(:name).to_a
       tags_combination = (0..tags.size).flat_map{|size| tags.combination(size).to_a}.drop(1)
 
       tags_combination.each do |tag|
-        GoogleSearcherJob.perform_later "#{channel.name} #{tag.join(' ')}"
+        GoogleSearcherJob.perform_later "#{product.name} #{tag.join(' ')}"
       end
     end
   end
