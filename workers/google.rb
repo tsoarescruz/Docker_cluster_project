@@ -3,17 +3,10 @@ require 'nokogiri'
 require 'rest-client'
 
 class GoogleWorker
-  EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'google.com.br', 'google.com', 'sky.com.br', 'skyonline.com.br', 'nowonline.com.br',
-                     'netcombo.com.br', 'claro.com.br', 'assineskyagora.com.br', 'apple.com', 'premiereempregos.com.br', 'oi.com.br',
-                     'mxcursos.com', 'premierefitness.com.br', 'microsoft.com', 'baixaki.com.br', 'vivo.com.br', 'vivoplay.com.br',
-                     'telecineon.com.br',
-
-                     'softonic.com.br', 'softonic.com', 'cnet.com', 'tecnoblog.net', 'uol.com.br', 'saraiva.com.br', 'enjoei.com.br',
-                     'techtudo.com.br', 'reclameaqui.com.br', 'eonline.com', 'biblegateway.com', 'bible.com', 'estadao.com.br',
-                     'spotify.com', 'archive.org', 'vagalume.com.br', 'ebay.com', 'proteste.org.br', 'adorocinema.com', 'wikipedia.org',
-                     'busindia.com', 'aptoide.com', 'oiplay.tv', 'meiobit.com', 'huffpostbrasil.com', 'vejario.abril.com.br',
-                     'correio24horas.com.br', 'tecmundo.com.br']
-  GOOGLE_EXCLUDE_DOMAINS = EXCLUDE_DOMAINS.first(20)
+  GOOGLE_EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'google.com.br', 'google.com', 'sky.com.br', 'skyonline.com.br', 'nowonline.com.br',
+                             'netcombo.com.br', 'claro.com.br', 'assineskyagora.com.br', 'apple.com', 'premiereempregos.com.br', 'oi.com.br',
+                             'mxcursos.com', 'premierefitness.com.br', 'microsoft.com', 'baixaki.com.br', 'vivo.com.br', 'vivoplay.com.br',
+                             'telecineon.com.br']
   SEARCH_SIZE = 80
 
   def self.search query
@@ -70,15 +63,21 @@ class GoogleWorker
   end
 
   def self.process_data json_data
+    white_list_domains = WhiteList.all.pluck(:domain)
     query_results = []
+    # first item is more relavant
     relevance = 1
 
     json_data.each do |data|
+      # get each result link
       html_page = Nokogiri::HTML(data['d'])
       results = html_page.css('.r')
+
       results.each do |result|
+        # get the base URL link
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
-        unless invalid_domain = EXCLUDE_DOMAINS.map{|domain| url_link.include? domain}.any?
+        # filter invalid domains
+        unless invalid_domain = white_list_domains.map{|domain| url_link.include? domain}.any?
           query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil, relevance: relevance}
           relevance += 1
         end

@@ -70,7 +70,7 @@ ActiveAdmin.register SearchResult do
 
   # Custom action search link
   action_item :search, only: :index do
-    link_to('Search', search_admin_search_results_path)
+    link_to('Start Search', search_admin_search_results_path)
   end
 
   controller do
