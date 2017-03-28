@@ -69,8 +69,8 @@ gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
 # Admin interface Gem
-gem 'activeadmin', git: 'http://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', git: 'http://github.com/activeadmin/inherited_resources'
+gem 'activeadmin', '~> 1.0.0.pre5'
+gem 'inherited_resources', '~> 1.7'
 gem 'devise'
 
 # Screenshot
