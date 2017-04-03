@@ -12,6 +12,7 @@ ActiveAdmin.register SearchResult do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+  config.sort_order = 'relevance_asc'
 
   filter :title
   filter :link
