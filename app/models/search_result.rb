@@ -1,4 +1,6 @@
 class SearchResult < ApplicationRecord
+  has_paper_trail
+
   has_attached_file :screenshot, styles: {thumb: "100x100#", medium: "570>"}
   validates_attachment_content_type :screenshot, content_type: ["image/jpg", "image/jpeg"]
 
@@ -33,6 +35,32 @@ class SearchResult < ApplicationRecord
       tags_combination.each do |tag|
         GoogleSearcherJob.perform_later "#{product.name} #{tag.join(' ')}"
       end
+    end
+  end
+
+
+  rails_admin do
+    list do
+      sort_by :relevance
+
+      field :title
+
+      field :screenshot do
+        formatted_value do
+          if not bindings[:object].screenshot.url(:thumb).include? 'missing.png'
+            link_to(image_tag(bindings[:object].screenshot.url(:thumb)), bindings[:object].link, target: :blank)
+          else
+            'No image'
+          end
+        end
+      end
+
+      field :link
+      field :relevance
+      field :occurrence
+      field :from
+      field :created_at
+      field :updated_at
     end
   end
 end

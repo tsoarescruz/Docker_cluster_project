@@ -1,0 +1,8 @@
+<p>Olá <%= @resource.name %>!</p>
+
+<p>Você foi convidado para o sistema administrativo da Subprefeitura, você pode aceitar o convite através do link abaixo.</p>
+
+<p><%= link_to 'Aceitar o convite', accept_invitation_url(@resource, invitation_token: @token) %></p>
+
+<p>Se você não quiser aceitar o convite, por favor ignore este email.<br />
+Sua conta não será criada até acessar o link acima e configurar sua senha.</p>

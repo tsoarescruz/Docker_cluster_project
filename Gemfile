@@ -69,9 +69,14 @@ gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 
 # Admin interface Gem
-gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
-gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+gem 'remotipart', '~> 1.2'
+gem 'rails_admin', '~> 1.1.1'
+gem 'rails_admin_rollincode', '~> 1.0'
 gem 'devise'
+gem 'bootstrap-sass-rails'
+
+# Gem to track history
+gem 'paper_trail'
 
 # Screenshot
 gem 'paperclip'
