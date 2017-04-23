@@ -24,4 +24,9 @@ Things you may want to cover:
 * ...
 
 
-End Phalanx
+
+* Configuration
+
+Data Base - 
+
+bundle exec rails db:reset -> drop + create + migrate + seed
