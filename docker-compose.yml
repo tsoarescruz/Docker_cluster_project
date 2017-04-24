@@ -1,13 +1,70 @@
 version: '2'
 services:
-  db:
-    image: mysql2
-  web:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/phalanx
-    ports:
-      - "3000:3000"
-#    depends_on:
-#      - db
+
+  # Container MYSQL
+    phalanx_db:
+      image: mysql
+      container_name: phalanx_db
+      hostname: mysql
+      environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=True
+        - MYSQL_USER= root
+#        - MYSQL_PASSWORD=
+        - MYSQL_DATABASE=phalanx-development
+      ports:
+        - "3306:3306"
+
+  # Container Redis
+    redisData:
+      hostname: redis_data
+      container_name: redis_data
+      image: redis
+      volumes:
+        - /data
+      command: echo
+
+    redis:
+      hostname: phalanks_redis
+      container_name: phalanks_redis
+      image: redis
+      ports:
+        - "6379:6379"
+      volumes_from:
+        - redisData
+
+
+#  # Container Intermediário para executar o comando do MYSQL
+#    db_migrations:
+#        hostname: db_migrations
+#        container_name: db_migrations
+#        build: .
+##              context: .
+##              dockerfile: ./Dockerfile
+#        links:
+#          - phalanx_db:phalanx_db
+##        command:
+##         - bash -c "bundle exec rails db:reset"
+#        depends_on:
+#          - phalanx_db
+#
+     App Phalanx
+    web:
+      build: .
+      command: bundle exec rails s -p 3000 -b '0.0.0.0'
+      volumes:
+        - .:/app
+#      env_file: .env
+      ports:
+        - "3000:3000"
+      links:
+        - redis
+
+    # Container sidekiq
+    sidekiq:
+      build: .
+      command: bundle exec sidekiq -c 25 -q default #zilean -q nunu -q chogath
+      volumes:
+        - .:/app
+#      env_file: .env
+      links:
+        - redis
