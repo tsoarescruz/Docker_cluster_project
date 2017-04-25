@@ -10,11 +10,11 @@ services:
       environment:
 #          MYSQL_ALLOW_EMPTY_PASSWORD: True
           MYSQL_USER: root
-          MYSQL_ROOT_PASSWORD:
-          MYSQL_PASSWORD:
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_PASSWORD: password
           MYSQL_DATABASE: phalanx-development
       ports:
-        - "3307:3306"
+            - "3307:3306"
 
   # Container Redis
     phalanx_redisData:
@@ -22,7 +22,7 @@ services:
       container_name: phalanx_redis_data
       image: redis
       volumes:
-        - /data
+            - /data
       command: echo
 
     phalanx_redis:
@@ -30,9 +30,9 @@ services:
       container_name: phalanx_redis
       image: redis
       ports:
-        - "6379:6379"
+            - "6379:6379"
       volumes_from:
-        - phalanx_redisData
+            - phalanx_redisData
 
     # Container sidekiq
     sidekiq:
@@ -41,10 +41,12 @@ services:
       build: .
       command: bundle exec sidekiq -c 25 -q default #zilean -q nunu -q chogath
       volumes:
-        - .:/app
+            - .:/app
+      depends_on:
+            - phalanx_db
 #      env_file: .env
       links:
-        - phalanx_redis
+            - phalanx_redis
 
     # App Phalanx
     web:
@@ -58,10 +60,10 @@ services:
       ports:
         - "3001:3000"
       depends_on:
-        - phalanx_db
+              - phalanx_db
       links:
-        - phalanx_redis
-        - phalanx_db
+              - phalanx_redis
+              - phalanx_db
       environment:
               DB_USER: root
               DB_PASSWORD: password
