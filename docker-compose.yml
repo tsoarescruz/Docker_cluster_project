@@ -39,14 +39,17 @@ services:
       hostname: phalanx_sidekiq
       container_name: phalanx_sidekiq
       build: .
-      command: bundle exec sidekiq -c 25 -q default #zilean -q nunu -q chogath
       volumes:
             - .:/app
-      depends_on:
-            - phalanx_db
+#      depends_on:
+#            - phalanx_redis
 #      env_file: .env
-      links:
-            - phalanx_redis
+#      links:
+#            - phalanx_redis
+#      environment:
+#            REDIS_HOST: 0.0.0.0
+#            REDIS_PORT: 6379:6379
+      command: bundle exec sidekiq -c 25 -q default #zilean -q nunu -q chogath
 
     # App Phalanx
     web:
@@ -69,6 +72,8 @@ services:
               DB_PASSWORD: password
               DB_NAME: phalanx-development
               DB_HOST: phalanx_db
+#              REDIS_HOST: 0.0.0.0
+#              REDIS_PORT: 6379
 
 
 

@@ -8,3 +8,6 @@ production:
   :concurrency: 8
 :queues:
   - phalanx_default
+REDIS_HOST: 0.0.0.0
+REDIS_PORT: 6379
+
