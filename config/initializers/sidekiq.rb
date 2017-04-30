@@ -1,27 +1,64 @@
-REDIS_CONN = proc do
-  host =     ENV['REDIS_HOST']
-  port =     ENV['REDIS_PORT']
+# REDIS_CONN = proc do
+#   host =     ENV['REDIS_URL']
+#   port =     ENV['REDIS_PORT']
+#
+#   redis_ready = host.present? and port.present?
+#
+#   redis_url = if redis_ready
+#                 "redis://#{host}:#{port}/"
+#               else
+#                 "redis://localhost:6379/"
+#               end
+#
+#   r = Redis.new(url: redis_url)
+#   Redis::Namespace.new("sidekiq", redis: r)
+# end
+#
+# Sidekiq.configure_client do |config|
+#   config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 10, timeout: 1, &REDIS_CONN)
+# end
+#
+# Sidekiq.configure_server do |config|
+#   config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 10, timeout: 1, &REDIS_CONN)
+#
+#   config.server_middleware do |chain|
+#     chain.remove Sidekiq::Middleware::Server::RetryJobs
+#   end
+# end
 
-  # redis_ready = host.present? and port.present?
-  #
-  # redis_url = if redis_ready
-  #               "redis://#{host}:#{port}/"
-  #             else
-  #               "redis://localhost:6379/"
-  #             end
 
-  # r = Redis.new(url: redis_url)
-  # Redis::Namespace.new("sidekiq", redis: r)
-end
+# require 'sidekiq/api'
+#
+# redis_config = { url: ENV['REDIS_URL'] }
+#
+# Sidekiq.configure_server do |config|
+#   config.redis = redis_config
+# end
+#
+# Sidekiq.configure_client do |config|
+#   config.redis = redis_config
+# end
 
-Sidekiq.configure_client do |config|
-  config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 2, timeout: 1, &REDIS_CONN)
-end
 
-Sidekiq.configure_server do |config|
-  config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 4, timeout: 1, &REDIS_CONN)
+if defined? Sidekiq
+  redis_url = ENV['REDIS_URL']
 
-  config.server_middleware do |chain|
-    chain.remove Sidekiq::Middleware::Server::RetryJobs
+  Sidekiq.configure_server do |config|
+    config.redis = {
+        :url => redis_url,
+        :namespace => 'phalanx_default',
+        :size => 2
+    }
+  end
+  Sidekiq.configure_client do |config|
+    config.redis = {
+        :url => redis_url,
+        :namespace => 'phalanx_default',
+        :size => 1
+    }
+  end
+
+  class Sidekiq::Extensions::DelayedMailer
+    sidekiq_options queue: :mailer, retry: 3
   end
 end
