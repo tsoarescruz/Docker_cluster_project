@@ -1,3 +1,16 @@
+require 'sidekiq/api'
+
+redis_config = { url: ENV['REDIS_SIDEKIQ_URL'] }
+
+Sidekiq.configure_server do |config|
+  config.redis = redis_config
+end
+
+Sidekiq.configure_client do |config|
+  config.redis = redis_config
+end
+
+
 # REDIS_CONN = proc do
 #   host =     ENV['REDIS_URL']
 #   port =     ENV['REDIS_PORT']
@@ -15,7 +28,7 @@
 # end
 #
 # Sidekiq.configure_client do |config|
-#   config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 10, timeout: 1, &REDIS_CONN)
+#   config.redis = ConnectionPool.new(size: Sidekiq.options[:concurrency] + 5, timeout: 1, &REDIS_CONN)
 # end
 #
 # Sidekiq.configure_server do |config|
@@ -28,7 +41,7 @@
 
 
 # require 'sidekiq/api'
-#
+
 # redis_config = { url: ENV['REDIS_URL'] }
 #
 # Sidekiq.configure_server do |config|
@@ -40,25 +53,24 @@
 # end
 
 
-if defined? Sidekiq
-  redis_url = ENV['REDIS_URL']
-
-  Sidekiq.configure_server do |config|
-    config.redis = {
-        :url => redis_url,
-        :namespace => 'phalanx_default',
-        :size => 2
-    }
-  end
-  Sidekiq.configure_client do |config|
-    config.redis = {
-        :url => redis_url,
-        :namespace => 'phalanx_default',
-        :size => 1
-    }
-  end
-
-  class Sidekiq::Extensions::DelayedMailer
-    sidekiq_options queue: :mailer, retry: 3
-  end
-end
+# if defined? Sidekiq
+#   redis_url = ENV['REDIS_URL']
+#
+#   Sidekiq.configure_client do |config|
+#     config.redis = { url: ENV['REDIS_URL']  }
+#   end
+#
+#   Sidekiq.configure_server do |config|
+#     config.redis = { url: ENV['REDIS_URL']}
+#
+#     # config.redis = {
+#     #     :url => redis_url,
+#     #     :namespace => 'phalanx_default',
+#     #     :size => 28
+#     # }
+#   end
+#
+#   class Sidekiq::Extensions::DelayedMailer
+#     sidekiq_options queue: :mailer, retry: 3
+#   end
+# end

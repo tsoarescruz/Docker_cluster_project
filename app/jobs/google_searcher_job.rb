@@ -1,4 +1,4 @@
-require './phalanx_default/google'
+require './workers/google'
 
 class GoogleSearcherJob < ApplicationJob
   queue_as :default

@@ -216,7 +216,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.4)
+    uglifier (3.1.12)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -250,7 +250,7 @@ DEPENDENCIES
   paper_trail
   paperclip
   puma (~> 3.0)
-  rails (~> 5.0.1)
+  rails (~> 5.0.2)
   rails_admin (~> 1.1.1)
   rails_admin_rollincode (~> 1.0)
   remotipart (~> 1.2)
@@ -263,7 +263,17 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  wkhtmltoimage-binary
+  bootstrap-sass
+  bootstrap-sass
+  dalli
+  font-awesome-sass
+  foreman
+  puma
+  rack!
+  rails-controller-testing
+  rspec-rails
+  searchkick
+  web-console
 
 BUNDLED WITH
-   1.13.7
+   1.14.6
