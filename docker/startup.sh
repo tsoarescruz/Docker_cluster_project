@@ -1,3 +1,6 @@
 #! /bin/bash
 
-./docker/prepare-db.sh
+#sh bundle.sh
+sh scaffold.sh
+sh prepare-db.sh
+docker-compose up
