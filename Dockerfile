@@ -2,10 +2,10 @@ FROM ruby:2.3.3
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install MySQL client
-RUN apt-get update && \
-    apt-get install -y mysql-client && \
-    apt-get autoremove -y && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && \
+#    apt-get install -y mysql-client && \
+#    apt-get autoremove -y && \
+#    rm -rf /var/lib/apt/lists/*
 
 # Install Build essentials
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client
