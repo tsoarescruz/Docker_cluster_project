@@ -1,4 +1,6 @@
 FROM ruby:2.3.3
+FROM ubuntu
+
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install MySQL client
