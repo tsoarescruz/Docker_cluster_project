@@ -8,7 +8,11 @@ MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 #    rm -rf /var/lib/apt/lists/*
 
 # Install Build essentials
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client
+RUN apt-get update -qq
+RUN apt-get install -y build-essential
+RUN apt-get install -y libpq-dev
+RUN apt-get install -y nodejs-legacy
+RUN apt-get install -y mysql-client
 
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
