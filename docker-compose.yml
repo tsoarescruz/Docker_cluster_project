@@ -46,3 +46,5 @@ volumes:
 #docker-compose up
 #docker-compose run --rm web rails g scaffold note title body:text
 #docker-compose run --rm web rake db:reset
+
+#bash -c 'while [ 0 ]; do docker ps -a;done';
