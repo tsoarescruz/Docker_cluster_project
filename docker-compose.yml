@@ -1,17 +1,24 @@
 version: '2'
 services:
   db:
-    image: mysql:5.7
+    #Retirando a imagem da web e pegando a imagem do repositorio
+#    image: mysql:5.7
+    image: tsoarescruz/phalanx:phalanx_db
     ports:
           - "3307:3306"
     volumes:
       - "db-data:/var/lib/mysql"
 
   redis:
-    image: redis:3.2-alpine
+
+    #Retirando a imagem da web e pegando a imagem do repositorio
+#    image: redis:3.2-alpine
+    image: tsoarescruz/phalanx:phalanx_redis
 
   app: &app_base
     build: .
+    #Pegando a imagem do repositorio
+    image: tsoarescruz/phalanx:phalanx_app
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/app
@@ -33,6 +40,8 @@ services:
 
   worker:
     <<: *app_base
+    #Pegando a imagem do repositorio
+    image: tsoarescruz/phalanx:phalanx_worker
     command: bundle exec sidekiq
     ports: []
     depends_on:
