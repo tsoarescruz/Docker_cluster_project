@@ -1,4 +1,9 @@
 FROM ruby:2.3.3
+#FROM tsoarescruz/phalanx:phalanx_db
+#FROM tsoarescruz/phalanx:phalanx_worker
+#FROM tsoarescruz/phalanx:phalanx_redis
+#FROM tsoarescruz/phalanx:phalanx_app
+
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install MySQL client
@@ -31,7 +36,8 @@ RUN groupadd --gid 9999 app && \
     chown -R app:app /home/app
 
 # Expose app port
-EXPOSE 3000 443
+#EXPOSE 3000 443
+EXPOSE 3000
 
 # Save timestamp of image building
 RUN date -u > BUILD_TIME
