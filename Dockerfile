@@ -34,9 +34,16 @@ ENV RAILS_LOG_TO_STDOUT true
 RUN mkdir -p /home/app
 WORKDIR /home/app
 
-# Install gems
+# Add gems
 ADD Gemfile* /home/app/
+
+#Add Docker path
 ADD docker /home/app/docker/
+
+#Add sidekiq pid
+ADD sidekiq.pid /home/app/tmp/pids/
+
+#Run bundle
 RUN bundle install
 
 #RUN bash docker/bundle.sh
