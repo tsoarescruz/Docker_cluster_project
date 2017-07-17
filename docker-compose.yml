@@ -1,26 +1,14 @@
 version: '2'
 services:
   db:
-    #Retirando a imagem da web e pegando a imagem do Dockerhub
     image: mysql:5.7
-    #image: tsoarescruz/phalanx:phalanx_db
     ports:
-          - "3307:3306"
+      - "3307:3306"
     volumes:
-          - "db-data:/var/lib/mysql"
-    #networks:
-    #        - default
-            #default:
-            #  ipv4_address: "127.0.0.1"
+      - "db-data:/var/lib/mysql"
 
   redis:
-    #Retirando a imagem da web e pegando a imagem do Dockerhub
     image: redis:3.2-alpine
-    #image: tsoarescruz/phalanx:phalanx_redis
-    #networks:
-     #     - default
-          #default:
-              #ipv4_address: 127.0.0.2
 
 
   app: &app_base
@@ -30,7 +18,7 @@ services:
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     hostname: phalanx.com.br
     volumes:
-          - .:/www/phalanx/app
+      - .:/www/phalanx/app
     environment:
       REDIS_SIDEKIQ_URL: redis://redis:6379/0
       REDIS_CABLE_URL: redis://redis:6379/1
@@ -38,28 +26,18 @@ services:
       DB_USER:  root
       DB_NAME: phalanx-development
       DB_PASSWORD: password
-    #networks:
-    #    - default
-        #default:
-        #      ipv4_address: 127.0.0.3
-
     ports:
       - "3001:3000"
     depends_on:
-            - redis
             - db
+            - redis
     links:
             - redis
             - db
 
   worker:
     <<: *app_base
-    #Pegando a imagem do Dockerhub
-#    image: tsoarescruz/phalanx:phalanx_worker
-    #networks:
-     #     - default
-          #default:
-            #ipv4_address: 127.0.0.4
+    #image: tsoarescruz/phalanx:phalanx_worker
     command: bundle exec sidekiq
     ports: []
     depends_on:
@@ -67,50 +45,3 @@ services:
 
 volumes:
   db-data:
-
-#networks:
-#  default:
-#    driver: bridge
-#    driver_opts:
-#      com.docker.network.enable_ipv6: "true"
-#      com.docker.network.bridge.enable_ip_masquerade: "false"
-#    ipam:
-#      driver: default
-#      config:
-#      - subnet: 127.0.0.51/24
-#      - gateway: 127.0.0.1
-
-
-#docker-compose build
-#docker-compose run --rm app rake db:reset
-#docker-compose up
-#docker-compose run --rm app rails g scaffold note title body:text
-
-#bash -c 'while [ 0 ]; do docker ps -a;done';
-
-
-#Ele olha o arquivo db/seed.rb
-#Ele é o cara que popula o seu banco...
-
-#bundle exec rails db:create -> cria o banco
-#bundle exec rails db:drop -> dropa o banco
-#bundle exec rails db:migrate -> migra o banco
-#bundle exec rails db:rollaback -> desfaz última migration
-#bundle exec rails db:seed -> executa o arquivo db/seed.rb que possui inserts iniciais
-#bundle exec rails db:reset -> drop + create + migrate + seed
-#* db:rollback
-
-
-#networks:
-#  test:
-#    driver: bridge
-#    driver_opts:
-#      com.docker.network.enable_ipv6: "true"
-#      com.docker.network.bridge.enable_ip_masquerade: "false"
-#    ipam:
-#      driver: default
-#      config:
-#      - subnet: 172.16.238.0/24
-#        gateway: 172.16.238.1
-#      - subnet: 2001:3984:3989::/64
-#        gateway: 2001:3984:3989::1
