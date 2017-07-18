@@ -19,7 +19,7 @@ function run() {
     fi
 
     if [ "$phalanx_ip" == "" ]; then
-        echo "Precisa levantar o os containers do banco e do redi primeiro."
+        echo "Precisa levantar o os containers do banco e do redis primeiro."
         exit 1
     fi
 
