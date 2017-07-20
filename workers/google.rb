@@ -3,10 +3,7 @@ require 'nokogiri'
 require 'rest-client'
 
 class GoogleWorker
-  GOOGLE_EXCLUDE_DOMAINS = ['globo.com', 'adobe.com', 'google.com.br', 'google.com', 'sky.com.br', 'skyonline.com.br', 'nowonline.com.br',
-                             'netcombo.com.br', 'claro.com.br', 'assineskyagora.com.br', 'apple.com', 'premiereempregos.com.br', 'oi.com.br',
-                             'mxcursos.com', 'premierefitness.com.br', 'microsoft.com', 'baixaki.com.br', 'vivo.com.br', 'vivoplay.com.br',
-                             'telecineon.com.br']
+  GOOGLE_EXCLUDE_DOMAINS = ['']
   SEARCH_SIZE = 80
 
   def self.search query
