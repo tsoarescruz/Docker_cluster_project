@@ -1,31 +1,16 @@
-#FROM ledermann/base
 FROM ruby:2.3.3
-#FROM tsoarescruz/phalanx:phalanx_db
-#FROM tsoarescruz/phalanx:phalanx_worker
-#FROM tsoarescruz/phalanx:phalanx_redis
-#FROM tsoarescruz/phalanx:phalanx_app
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
+
+## Install Build essentials
+RUN apt-get update -qq && apt-get install -y build-essential wkhtmltopdf libpq-dev nodejs-legacy mysql-client
+#openssl xorg libssl-dev
 
 # Install MySQL client
 RUN apt-get update && \
     apt-get install -y mysql-client && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
-
-## Install Build essentials
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client
-
-# Install wkhtmltopdf
-#RUN apt-get update && apt-get install -y libxrender1 libxext6 fonts-lato --no-install-recommends && \
-#    rm -rf /var/lib/apt/lists/* && \
-#    curl -L#o wk.tar.xz http://download.gna.org/wkhtmltopdf/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz \
-#    && tar xf wk.tar.xz \
-#    && cp wkhtmltox/bin/wkhtmltopdf /usr/bin \
-#    && cp wkhtmltox/bin/wkhtmltoimage /usr/bin \
-#    && rm wk.tar.xz \
-#    && rm -r wkhtmltox
-#ADD docker/wkhtmltopdf/fontconfig.xml /etc/fonts/conf.d/10-wkhtmltopdf.conf
 
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
@@ -69,4 +54,3 @@ RUN date -u > BUILD_TIME
 
 # Start up
 #CMD "docker/startup.sh"
-
