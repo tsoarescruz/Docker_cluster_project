@@ -103,9 +103,9 @@ class GoogleWorker
 
       SearchResult.find_or_create result
       
-      if result[:screenshot]
-        result[:screenshot].unlink
-      end
+      #if result[:screenshot]
+      #  result[:screenshot].unlink
+      #end
     end
   end
 
@@ -118,6 +118,11 @@ class GoogleWorker
       image_file = Tempfile.new(["screenshot_#{temp_file_name}", 'jpg'], 'tmp', encoding: 'ascii-8bit')
       image_file.write(image)
       image_file.flush
+
+      if result[:screenshot]
+        result[:screenshot] = image_file
+        result[:screenshot].unlink
+      end
     rescue Exception => e
       image_file = nil
     end
