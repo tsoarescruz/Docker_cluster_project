@@ -4,6 +4,11 @@ FROM ruby:2.3.3
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
+## Install Build essentials
+RUN apt-get update -qq && apt-get install -y build-essential wkhtmltopdf libpq-dev nodejs-legacy mysql-client
+#openssl xorg libssl-dev
+
+# Install MySQL client
 RUN apt-get update && \
       apt-get -y install sudo
 
@@ -77,4 +82,3 @@ RUN date -u > BUILD_TIME
 
 # Start up
 #CMD "docker/startup.sh"
-
