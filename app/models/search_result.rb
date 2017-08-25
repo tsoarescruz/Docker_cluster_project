@@ -45,15 +45,15 @@ class SearchResult < ApplicationRecord
 
       field :title
 
-      field :screenshot do
-        formatted_value do
-          if not bindings[:object].screenshot.url(:thumb).include? 'missing.png'
-            link_to(image_tag(bindings[:object].screenshot.url(:thumb)), bindings[:object].link, target: :blank)
-          else
-            'No image'
-          end
-        end
-      end
+      #field :screenshot do
+      # formatted_value do
+      #   if not bindings[:object].screenshot.url(:thumb).include? 'missing.png'
+      #      link_to(image_tag(bindings[:object].screenshot.url(:thumb)), bindings[:object].link, target: :blank)
+      #    else
+      #      'No image'
+      #    end
+      #  end
+      #end
 
       field :link
       field :relevance

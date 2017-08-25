@@ -1,4 +1,4 @@
-require Rails.root.join('lib', 'rails_admin_search.rb')
+#require Rails.root.join('lib', 'rails_admin_search.rb')
 
 RailsAdmin.config do |config|
 
@@ -38,9 +38,9 @@ RailsAdmin.config do |config|
     # delete
     show_in_app
 
-    search do
-      only ['SearchResult']
-    end
+   # search do
+   #   only ['SearchResult']
+   # end
 
     ## With an audit adapter, you can add:
     history_index
