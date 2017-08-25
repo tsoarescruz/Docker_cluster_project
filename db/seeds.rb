@@ -17,4 +17,5 @@ Product.create!(name: 'UVA', tags: [empresa, ensino])
 
 WhiteList.create!(domain: 'ibm.com.br')
 WhiteList.create!(domain: 'microsoft.com')
+WhiteList.create!(domain: 'uva.br')
 
