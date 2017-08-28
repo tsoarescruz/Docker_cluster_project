@@ -11,8 +11,6 @@ services:
     image: redis:3.2-alpine
 
   app: &app_base
-    #Pegando a imagem do Dockerhub
-#    image: tsoarescruz/phalanx:4.0
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     #hostname: phalanx.com.br
@@ -36,7 +34,6 @@ services:
 
   worker:
     <<: *app_base
-#    image: tsoarescruz/phalanx:3.0
     command: bundle exec sidekiq
     ports: []
     depends_on:
