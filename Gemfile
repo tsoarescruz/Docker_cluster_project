@@ -64,10 +64,6 @@ gem 'rest-client'
 # https://github.com/mperham/sidekiq
 gem 'sidekiq'
 
-# HTML to screenshot
-gem 'imgkit'
-gem 'wkhtmltoimage-binary'
-
 # Admin interface Gem
 gem 'remotipart', '~> 1.2'
 gem 'rails_admin', '~> 1.1.1'
@@ -77,6 +73,3 @@ gem 'bootstrap-sass-rails'
 
 # Gem to track history
 gem 'paper_trail'
-
-# Screenshot
-gem 'paperclip'
