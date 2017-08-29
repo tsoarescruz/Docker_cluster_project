@@ -1,7 +1,7 @@
 require 'sidekiq/api'
 
 redis_config = { url: ENV['REDIS_SIDEKIQ_URL'],
-                 size: 28,
+                 size: 40,
                 }
 
 Sidekiq.configure_server do |config|
