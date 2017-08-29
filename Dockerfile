@@ -5,8 +5,8 @@ FROM ruby:2.3.3
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 ## Install Build essentials
-RUN apt-get update -qq && apt-get install -y build-essential wkhtmltopdf libpq-dev nodejs-legacy mysql-client
-#openssl xorg libssl-dev
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client \
+libssl-dev apt-utils
 
 # Install MySQL client
 RUN apt-get update && \
@@ -22,26 +22,6 @@ RUN sudo apt-get install -y mysql-client && \
     sudo apt-get autoremove -y && \
     sudo rm -rf /var/lib/apt/lists/*
 
-# Workdir
-RUN mkdir -p /home/app/docker/wkhtmltopdf
-
-## Install Build essentials
-RUN sudo apt-get update -qq && sudo apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client apt-utils
-
-# Install wkhtmltopdf
-RUN sudo apt-get install openssl build-essential libssl-dev -y
-
-RUN sudo apt-get update && apt-get install -y libxrender1 libxext6 fonts-lato --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
-
-RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN tar xf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
-RUN mv wkhtmltox /home/app/docker/wkhtmltopdf
-RUN chmod +x /home/app/docker/wkhtmltopdf
-
-#ADD /docker/wkhtmltopdf/fontconfig.xml /etc/fonts/conf.d/10-wkhtmltopdf.conf
-
-#RUN export TO=`which imgkit | sed 's:/imgkit:/wkhtmltoimage:'` && apt-get install imgkit --install-wkhtmltoimage
 
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
