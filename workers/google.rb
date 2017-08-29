@@ -75,7 +75,7 @@ class GoogleWorker
         url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
         # filter invalid domains
         unless invalid_domain = white_list_domains.map{|domain| url_link.include? domain}.any?
-          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', screenshot: nil, relevance: relevance}
+          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', relevance: relevance}
           relevance += 1
         end
       end
@@ -89,11 +89,9 @@ class GoogleWorker
       begin
         response = RestClient::Request.execute(method: :get, url: result[:link], timeout: 15)
         result[:status] = response.code
-        result[:screenshot] = self.create_image(response.body)
 
       rescue RestClient::NotFound => e
         result[:status] = e.response.code
-        result[:screenshot] = self.create_image(e.response.body)
 
       rescue Exception => e
         result[:status] = 500
@@ -102,31 +100,7 @@ class GoogleWorker
       end
 
       SearchResult.find_or_create result
-      
-      #if result[:screenshot]
-      #  result[:screenshot].unlink
-      #end
+
     end
-  end
-
-  def self.create_image html
-    begin
-      # create screenshot image
-      image_kit = IMGKit.new(html, quality: 50)
-      image = image_kit.to_img(:jpg)
-      temp_file_name = (0...8).map { (65 + rand(26)).chr }.join.downcase
-      image_file = Tempfile.new(["screenshot_#{temp_file_name}", 'jpg'], 'tmp', encoding: 'ascii-8bit')
-      image_file.write(image)
-      image_file.flush
-
-      if result[:screenshot]
-        result[:screenshot] = image_file
-        result[:screenshot].unlink
-      end
-    rescue Exception => e
-      image_file = nil
-    end
-
-    return image_file
   end
 end
