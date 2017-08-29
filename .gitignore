@@ -22,3 +22,9 @@
 
 # Paperclip image file updated
 /public/system/*
+
+#IDEA
+.idea/*
+
+#DS_Store
+.DS_Store
