@@ -5,12 +5,11 @@ MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install MySQL client
 RUN apt-get update -qq
-#RUN apt-get install -y mysql-client libmysqlclient-dev
 
 # Install Build essentials
 RUN apt-get update -yq 
 
-RUN apt-get install -y build-essential ca-certificates curl build-essential \
+RUN apt-get install -y mysql-client build-essential ca-certificates curl build-essential \
     libpq-dev nodejs nodejs-legacy mysql-server libmysqlclient-dev && \
     sudo apt-get autoremove -y && \
     sudo rm -rf /var/lib/apt/lists/*
