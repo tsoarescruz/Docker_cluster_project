@@ -45,5 +45,15 @@ services:
     depends_on:
       - app
 
+  ui:
+      image: portainer/portainer
+      restart: always
+      volumes:
+        - '/var/run/docker.sock:/var/run/docker.sock'
+      expose:
+        - 9000
+      ports:
+        - 3002:9000
+
 volumes:
   db-data:
