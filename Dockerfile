@@ -26,23 +26,26 @@ RUN sudo apt-get install -y mysql-client && \
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
 
-# Workdir
-#RUN mkdir -p /home/app
-WORKDIR /home/app
+# Mkdir
+RUN mkdir -p /home/app
 
-# Add gems
-ADD Gemfile* /home/app/
+# Workdir
+WORKDIR /home/app/
 
 #Add Docker path
-ADD docker /home/app/docker/
+ADD docker /home/app/
+
+WORKDIR /home/app
+
+# ADD gems
+ADD Gemfile /home/app/Gemfile
+ADD Gemfile.lock /home/app/Gemfile.lock
 
 #Add sidekiq pid
 ADD sidekiq.pid /home/app/tmp/pids/
 
 #Run bundle
 RUN bundle install
-
-#RUN bash docker/bundle.sh
 
 # Add the Rails app
 ADD . /home/app
@@ -53,12 +56,12 @@ RUN groupadd --gid 9999 app && \
     chown -R app:app /home/app
 
 #Expose app port
-EXPOSE 80 300
-
-ADD /docker/host /etc/hosts
+EXPOSE 80 300 9000
 
 # Save timestamp of image building
 RUN date -u > BUILD_TIME
+
+ADD /docker/host /etc/hosts
 
 # Start up
 #CMD "docker/startup.sh"
