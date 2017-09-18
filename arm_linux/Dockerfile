@@ -9,9 +9,11 @@ RUN apt-get update -qq
 
 # Install Build essentials
 RUN apt-get update -yq 
-RUN apt-get install -y build-essential ca-certificates curl build-essential libpq-dev nodejs nodejs-legacy mysql-server libmysqlclient-dev
 
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get install -y build-essential ca-certificates curl build-essential \
+    libpq-dev nodejs nodejs-legacy mysql-server libmysqlclient-dev && \
+    sudo apt-get autoremove -y && \
+    sudo rm -rf /var/lib/apt/lists/*
 
 # Mkdir
 RUN mkdir -p /home/app
