@@ -13,13 +13,17 @@ RUN apt-get install -y build-essential ca-certificates curl build-essential libp
 
 RUN rm -rf /var/lib/apt/lists/*
 
-# Workdir
+# Mkdir
 RUN mkdir -p /home/app
+
+# Workdir
+WORKDIR /home/app/
 
 #Add Docker path
 ADD docker /home/app/
 
-WORKDIR /home/app/
+#Add sidekiq pid
+ADD sidekiq.pid /home/app/tmp/pids/
 
 # ADD gems
 ADD Gemfile /home/app/Gemfile
@@ -36,12 +40,11 @@ RUN /bin/bash -l -c "gem install bundle --no-ri --no-rdoc"
 #RUN /bin/bash -l -c "apt-get install -y rubygems"
 #RUN /bin/bash -l -c "gem install rails"
 
-WORKDIR /home/app/
+# Workdir
+#WORKDIR /home/app/
 
 #Run bundle
-#RUN bundle install
 RUN /bin/bash -l -c "bundle install"
-#RUN bundle install --gemfile=/home/app/Gemfile
 
 # Add the Rails app
 ADD . /home/app
@@ -50,10 +53,10 @@ ADD . /home/app
 RUN groupadd --gid 9999 app
 RUN useradd --uid 9999 --gid app app
 RUN chown -R app:app /home/app
-WORKDIR /home/app/
+
+# Save timestamp of image building
+RUN date -u > BUILD_TIME
 
 # Expose app port
 EXPOSE 80 3000
- 
-# Save timestamp of image building
-RUN date -u > BUILD_TIME
+
