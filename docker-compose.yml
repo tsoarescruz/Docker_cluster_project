@@ -2,12 +2,12 @@ version: '2'
 services:
   db:
     image: mysql:5.7
-#   environment:
-#      MYSQL_ROOT_PASSWORD: password
-#      MYSQL_DATABASE: phalanx-development
-#      MYSQL_USER:  root
-#      MYSQL_PASSWORD: password
-
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: phalanx-development
+      MYSQL_USER:  root
+      MYSQL_PASSWORD: password
     ports:
       - "3307:3306"
     volumes:
@@ -15,11 +15,12 @@ services:
 
   redis:
     image: redis:3.2-alpine
+    restart: always
 
   app: &app_base
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    #hostname: phalanx.com.br
+    restart: always
     volumes:
       - .:/www/phalanx/app
     environment:
@@ -42,6 +43,7 @@ services:
     <<: *app_base
     command: bundle exec sidekiq
     ports: []
+    restart: always
     depends_on:
       - app
 
