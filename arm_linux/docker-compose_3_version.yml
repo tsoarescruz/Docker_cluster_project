@@ -1,0 +1,133 @@
+version: "3"
+
+services:
+  db:
+    image: hypriot/rpi-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: phalanx-development
+      MYSQL_USER:  root
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - "db-data:/var/lib/mysql"
+    networks:
+      - phalanx_app
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  redis:
+    image: hypriot/rpi-redis
+    networks:
+      - phalanx_app
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+ 
+
+  app: &app_base
+
+    image: phalanx_app
+    #command: bash -lc 'rails g scaffold note title body:text'
+    #command: bash -lc 'rake db:reset' 
+    command: bash -lc 'bundler exec rails s -b 0.0.0.0'
+    volumes:
+      - .:/www/phalanx/app
+    environment:
+      REDIS_SIDEKIQ_URL: redis://redis:6379/0
+      REDIS_CABLE_URL: redis://redis:6379/1
+      DB_HOST: db
+      DB_USER:  root
+      DB_NAME: phalanx-development
+      DB_PASSWORD: password
+    ports:
+      - 3001:3000
+    depends_on:
+          - db
+          - redis
+
+
+
+
+    networks:
+      - phalanx_app
+
+    # service deployment
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels: [APP=PHALANX]
+      # service resource management
+      resources:
+        # Hard limit - Docker does not allow to allocate more
+        limits:
+          cpus: '0.25'
+          memory: 512M
+        # Soft limit - Docker makes best effort to return to it
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+      # service restart policy
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+        window: 120s
+      # service update configuration
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: continue
+        monitor: 60s
+        max_failure_ratio: 0.3
+      # placement constraint - in this case on 'worker' nodes only
+      placement:
+        constraints: [node.role == manager]
+    
+  dockerui:
+    image: portainer/portainer
+    #restart: always
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    ports:
+      - 8080:9000
+    networks:
+      - phalanx_app
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+
+  worker:
+    <<: *app_base
+    image: phalanx_worker
+    command: bash -lc 'bundler exec sidekiq'
+    ports:
+       - 3003  
+    networks:
+      phalanx_app:
+        aliases:
+          - workers
+    depends_on:
+      - app
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+
+  #viz:
+     #image: alexellis2/visualizer-arm
+     #ports: 
+     #  - 8080:8081
+     #deploy:
+     #  placement:
+     #    constraints: [node.role == worker]
+
+     #volumes:
+   #	- '/var/run/docker.sock:/var/run/docker.sock'
+
+networks:
+    phalanx_app:
+
+volumes:
+  db-data:
