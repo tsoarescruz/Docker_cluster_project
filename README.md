@@ -1,9 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
+This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 * Ruby version
 
@@ -13,20 +12,29 @@ Things you may want to cover:
 
 * Database creation
 
+ * Comando with read database config inside the project:
+bundle exec rails db:reset -> drop + create + migrate + seed
+
+
 * Database initialization
 
-* How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-* ...
-
-
-
 * Configuration
 
-Data Base - 
+* Main Docker commands
+ * Exec command inside container directly
+docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 
-bundle exec rails db:reset -> drop + create + migrate + seed
+ * Clean Volume
+docker volume rm $(docker volume ls -qf dangling=true)
+
+ * Inspect Container
+ docker inspect phalanx_db_1
+
+ * Service visualizer bound host network with container netowrk
+docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm
+s
