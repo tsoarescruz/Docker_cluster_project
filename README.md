@@ -35,6 +35,8 @@ docker volume rm $(docker volume ls -qf dangling=true)
  * Inspect Container
  docker inspect phalanx_db_1
 
- * Service visualizer bound host network with container netowrk
+ * Service visualizer bound host network with container network
 docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm
-s
+
+ * create a docker swarm service
+docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --rollback-delay 3s --workdir /myapp/ -p 8080:80 nginx:alpine
