@@ -122,3 +122,16 @@ docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --r
   http://blog.terranillius.com/post/composev3_swarm/
   https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
 </pre>
+
+<pre>
+
+*Git Config
+   
+  * Add git config fot a terminal
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
+
+  * Add ssh key to git 
+"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"
+
+</pre>
