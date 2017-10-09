@@ -1,5 +1,5 @@
 version: '2'
- -services:
+services:
    db:
      image: hypriot/rpi-mysql
      environment:
@@ -46,5 +46,5 @@ version: '2'
      depends_on:
        - app
  
- volumes:
+volumes:
    db-data:
