@@ -21,6 +21,22 @@ https://github.com/ManoMarks/docker-swarm-visualizer
 
 * Configuration
 
+  * Network configuration
+HypriotOS/armv7: root@black-pearl in /etc/network
+
+allow-hotplug wlan0
+iface wlan0 inet static
+        address 192.168.1.20
+        netmask 255.255.255.0
+        network 192.168.0.0
+        gateway 192.168.0.1
+        wpa-ssid kaiphe
+        wpa-psk  ffffffffff
+
+   * Command to restart network
+
+/etc/init.d/networking restart
+
 * Database creation
 
  * Comando with read database config inside the project:
