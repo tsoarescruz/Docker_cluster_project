@@ -6,13 +6,18 @@ This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 * Ruby version
 
+<pre>
 * System dependencies
 
-For this project was necessary this software do manangement docker containers:
+ For this project was necessary this software do manangement docker containers:
 
-* Portainer
+ * Portainer
 https://portainer.readthedocs.io/en/latest/deployment.html
 
+ * Swarm Visualizer
+https://github.com/ManoMarks/docker-swarm-visualizer
+
+</pre>
 
 * Configuration
 
@@ -31,6 +36,7 @@ bundle exec rails db:reset -> drop + create + migrate + seed
 
 * Configuration
 
+<pre>
 * Main Docker commands
 
  * Exec command inside container directly
@@ -50,3 +56,5 @@ docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --r
 
  * Docker stack deploy
  docker stack deploy --compose-file=docker-compose.yml Hydra
+
+</pre>
