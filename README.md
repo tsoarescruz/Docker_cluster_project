@@ -19,6 +19,7 @@ https://github.com/ManoMarks/docker-swarm-visualizer
 
 </pre>
 
+<pre>
 * Configuration
 
   * Network configuration
@@ -36,6 +37,8 @@ iface wlan0 inet static
    * Command to restart network
 
 /etc/init.d/networking restart
+
+</pre>
 
 * Database creation
 
