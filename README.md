@@ -7,23 +7,21 @@ This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 
 <h3>* System dependencies</h3>
-<pre>
 
 For this project was necessary this software do manangement docker containers:
 
- * Portainer
-https://portainer.readthedocs.io/en/latest/deployment.html
+<h4>Portainer</h4>
+<pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
 
- * Swarm Visualizer
-https://github.com/ManoMarks/docker-swarm-visualizer
+<h4>Swarm Visualizer</h4>
 
-</pre>
-
+<pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
 
 <h3>* Configuration</h3>
+<h4>* Network configuration</h4>
+
 <pre>
-  * Network configuration
---> /etc/network/
+Dir: /etc/network/
 
 HypriotOS/armv7: root@black-pearl in /etc/network
 
@@ -35,17 +33,16 @@ iface wlan0 inet static
         gateway 192.168.0.1
         wpa-ssid kaiphe
         wpa-psk  ffffffffff
-
-   * Command to restart network
-
-/etc/init.d/networking restart
-
 </pre>
 
-<pre>
-   * Network configuration to rc.local level to wlan0 up when reboot Raspberrypi
---> /etc/rc.local
+<h4>* Command to restart network</h4>
 
+<pre>/etc/init.d/networking restart</pre>
+
+<h4>* Network configuration to rc.local level to wlan0 up when reboot Raspberrypi </h4>
+Dir: /etc/rc.local
+
+<pre>
 #!/bin/sh -e
 #
 # rc.local
@@ -63,9 +60,10 @@ iface wlan0 up
 
 exit 0
 </pre>
+
+<h4>* Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi</h4>
+Dir: /etc/network/interfaces.d/eth0
 <pre>
-   * Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi
---> /etc/network/interfaces.d/eth0
 
 allow-hotplug eth0
 iface eth0 inet dhcp
@@ -76,15 +74,11 @@ iface wlan0 inet dhcp
 
 <h3>* Database creation</h3>
 
-<pre>
- * Command with read database config inside the project:
- 
-bundle exec rails db:reset -> drop + create + migrate + seed
+<h4>* Command with read database config inside the project:</h4>
+<pre>bundle exec rails db:reset -> drop + create + migrate + seed</pre>
 
-</pre>
 
 * Database initialization
-
 
 * Services (job queues, cache servers, search engines, etc.)
 
@@ -94,30 +88,27 @@ bundle exec rails db:reset -> drop + create + migrate + seed
 
 
 <h3>* Main Docker commands </h3>
-<pre>
+<h4>* Exec command inside container directly</h4>
 
-* Exec command inside container directly
-docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
+<pre>docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql</pre>
 
- * Clean Volume
-docker volume rm $(docker volume ls -qf dangling=true)
+<h4>* Clean Volume</h4>
+<pre>docker volume rm $(docker volume ls -qf dangling=true)</pre>
 
- * Inspect Container
- docker inspect phalanx_db_1
+<h4>* Inspect Container</h4>
+<pre>docker inspect phalanx_db_1</pre>
 
- * Service visualizer bound host network with container network
-docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm
+<h4>* Service visualizer bound host network with container network</h4>
+<pre>docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm</pre>
 
- * create a docker swarm service
-docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --rollback-delay 3s --workdir /myapp/ -p 8080:80 nginx:alpine
+<h4>* create a docker swarm service</h4>
+<pre>docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --rollback-delay 3s --workdir /myapp/ -p 8080:80 nginx:alpine</pre>
 
- * Docker stack deploy
- docker stack deploy --compose-file=docker-compose.yml Hydra
+<h4>* Docker stack deploy</h4>
+<pre>docker stack deploy --compose-file=docker-compose.yml Hydra</pre>
 
-  * Docker exec command inside container
- docker exec phalanx_app_1 bundle update newrelic_rpm
-
-</pre>
+<h4>* Docker exec command inside container</h4>
+<pre>docker exec phalanx_app_1 bundle update newrelic_rpm</pre>
 
 <h3>* Other suport documents: </h3>
 <pre>
@@ -186,12 +177,12 @@ docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --r
 
 <h3>*Git Config </h3>
  
- <pre>
-  * Add git config fot a terminal
+ <h4>* Add git config fot a terminal</h4>
+
+<pre>
 git config --global user.name "Your Name"
 git config --global user.email "youremail@domain.com"
 
-  * Add ssh key to git 
-"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"
-
 </pre>
+<h4>* Add ssh key to git</h4>
+<pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
