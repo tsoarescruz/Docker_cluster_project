@@ -1,0 +1,853 @@
+3.2-alpine: Pulling from library/redis
+Digest: sha256:6b364fbaf6401dea92c1569fd4b5a06da100c1c239152225cd6c4fde18101b70
+Status: Downloaded newer image for redis:3.2-alpine
+5.7: Pulling from library/mysql
+Digest: sha256:bfb22e93ee87c6aab6c1c9a4e7cdc68e9cb9b64920f28fa289f9ffae9fe8e173
+Status: Downloaded newer image for mysql:5.7
+Step 1/22 : FROM ledermann/base
+latest: Pulling from ledermann/base
+Digest: sha256:32295e8f679455f682181df8e22d4f6bc7f184cfe8569b29942503c462eb7566
+Status: Downloaded newer image for ledermann/base:latest
+ ---> c96b29ff3989
+Step 2/22 : FROM ubuntu:12.04
+ ---> 5b117edd0b76
+Step 3/22 : FROM ruby:2.3.3
+ ---> 0e1db669d557
+Step 4/22 : MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
+ ---> Running in 8b6205a08c27
+ ---> 67a4bcfa96d6
+Removing intermediate container 8b6205a08c27
+Step 5/22 : RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client libssl-dev apt-utils
+ ---> Running in 4d0c9e5996fc
+Reading package lists...
+Building dependency tree...
+Reading state information...
+libssl-dev is already the newest version.
+The following extra packages will be installed:
+  dpkg-dev fakeroot libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libapt-inst1.5 libc-ares2 libdbd-mysql-perl
+  libdbi-perl libdpkg-perl libfakeroot libfile-fcntllock-perl libpq5
+  libterm-readkey-perl libtimedate-perl libv8-3.14.5 mysql-client-5.5
+  mysql-common nodejs
+Suggested packages:
+  debian-keyring libclone-perl libmldbm-perl libnet-daemon-perl
+  libsql-statement-perl postgresql-doc-9.4
+The following NEW packages will be installed:
+  apt-utils build-essential dpkg-dev fakeroot libalgorithm-diff-perl
+  libalgorithm-diff-xs-perl libalgorithm-merge-perl libapt-inst1.5 libc-ares2
+  libdbd-mysql-perl libdbi-perl libdpkg-perl libfakeroot
+  libfile-fcntllock-perl libterm-readkey-perl libtimedate-perl libv8-3.14.5
+  mysql-client mysql-client-5.5 nodejs nodejs-legacy
+The following packages will be upgraded:
+  libpq-dev libpq5 mysql-common
+3 upgraded, 21 newly installed, 0 to remove and 81 not upgraded.
+Need to get 8611 kB of archives.
+After this operation, 53.8 MB of additional disk space will be used.
+Get:1 http://security.debian.org/ jessie/updates/main libpq-dev amd64 9.4.13-0+deb8u1 [165 kB]
+Get:2 http://security.debian.org/ jessie/updates/main libpq5 amd64 9.4.13-0+deb8u1 [126 kB]
+Get:3 http://security.debian.org/ jessie/updates/main mysql-common all 5.5.57-0+deb8u1 [84.2 kB]
+Get:4 http://security.debian.org/ jessie/updates/main mysql-client-5.5 amd64 5.5.57-0+deb8u1 [1666 kB]
+Get:5 http://deb.debian.org/debian/ jessie/main libapt-inst1.5 amd64 1.0.9.8.4 [169 kB]
+Get:6 http://deb.debian.org/debian/ jessie/main libc-ares2 amd64 1.10.0-2+deb8u2 [72.5 kB]
+Get:7 http://deb.debian.org/debian/ jessie/main apt-utils amd64 1.0.9.8.4 [368 kB]
+Get:8 http://deb.debian.org/debian/ jessie/main libtimedate-perl all 2.3000-2 [42.2 kB]
+Get:9 http://deb.debian.org/debian/ jessie/main libdpkg-perl all 1.17.27 [1075 kB]
+Get:10 http://deb.debian.org/debian/ jessie/main dpkg-dev all 1.17.27 [1548 kB]
+Get:11 http://security.debian.org/ jessie/updates/main mysql-client all 5.5.57-0+deb8u1 [82.3 kB]
+Get:12 http://deb.debian.org/debian/ jessie/main build-essential amd64 11.7 [7114 B]
+Get:13 http://deb.debian.org/debian/ jessie/main libfakeroot amd64 1.20.2-1 [44.7 kB]
+Get:14 http://deb.debian.org/debian/ jessie/main fakeroot amd64 1.20.2-1 [84.7 kB]
+Get:15 http://deb.debian.org/debian/ jessie/main libalgorithm-diff-perl all 1.19.02-3 [51.7 kB]
+Get:16 http://deb.debian.org/debian/ jessie/main libalgorithm-diff-xs-perl amd64 0.04-3+b1 [12.2 kB]
+Get:17 http://deb.debian.org/debian/ jessie/main libalgorithm-merge-perl all 0.08-2 [13.5 kB]
+Get:18 http://deb.debian.org/debian/ jessie/main libdbi-perl amd64 1.631-3+b1 [816 kB]
+Get:19 http://deb.debian.org/debian/ jessie/main libdbd-mysql-perl amd64 4.028-2+deb8u2 [119 kB]
+Get:20 http://deb.debian.org/debian/ jessie/main libfile-fcntllock-perl amd64 0.22-1+b1 [36.4 kB]
+Get:21 http://deb.debian.org/debian/ jessie/main libterm-readkey-perl amd64 2.32-1+b1 [28.0 kB]
+Get:22 http://deb.debian.org/debian/ jessie/main libv8-3.14.5 amd64 3.14.5.8-8.1 [1269 kB]
+Get:23 http://deb.debian.org/debian/ jessie/main nodejs amd64 0.10.29~dfsg-2 [648 kB]
+Get:24 http://deb.debian.org/debian/ jessie/main nodejs-legacy all 0.10.29~dfsg-2 [80.4 kB]
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mFetched 8611 kB in 7s (1117 kB/s)
+Selecting previously unselected package libapt-inst1.5:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 21168 files and directories currently installed.)
+Preparing to unpack .../libapt-inst1.5_1.0.9.8.4_amd64.deb ...
+Unpacking libapt-inst1.5:amd64 (1.0.9.8.4) ...
+Preparing to unpack .../libpq-dev_9.4.13-0+deb8u1_amd64.deb ...
+Unpacking libpq-dev (9.4.13-0+deb8u1) over (9.4.10-0+deb8u1) ...
+Preparing to unpack .../libpq5_9.4.13-0+deb8u1_amd64.deb ...
+Unpacking libpq5:amd64 (9.4.13-0+deb8u1) over (9.4.10-0+deb8u1) ...
+Selecting previously unselected package libc-ares2:amd64.
+Preparing to unpack .../libc-ares2_1.10.0-2+deb8u2_amd64.deb ...
+Unpacking libc-ares2:amd64 (1.10.0-2+deb8u2) ...
+Selecting previously unselected package apt-utils.
+Preparing to unpack .../apt-utils_1.0.9.8.4_amd64.deb ...
+Unpacking apt-utils (1.0.9.8.4) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../libtimedate-perl_2.3000-2_all.deb ...
+Unpacking libtimedate-perl (2.3000-2) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../libdpkg-perl_1.17.27_all.deb ...
+Unpacking libdpkg-perl (1.17.27) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../dpkg-dev_1.17.27_all.deb ...
+Unpacking dpkg-dev (1.17.27) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../build-essential_11.7_amd64.deb ...
+Unpacking build-essential (11.7) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../libfakeroot_1.20.2-1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.20.2-1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../fakeroot_1.20.2-1_amd64.deb ...
+Unpacking fakeroot (1.20.2-1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../libalgorithm-diff-perl_1.19.02-3_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.02-3) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../libalgorithm-diff-xs-perl_0.04-3+b1_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-3+b1) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../libalgorithm-merge-perl_0.08-2_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-2) ...
+Selecting previously unselected package libdbi-perl.
+Preparing to unpack .../libdbi-perl_1.631-3+b1_amd64.deb ...
+Unpacking libdbi-perl (1.631-3+b1) ...
+Selecting previously unselected package libdbd-mysql-perl.
+Preparing to unpack .../libdbd-mysql-perl_4.028-2+deb8u2_amd64.deb ...
+Unpacking libdbd-mysql-perl (4.028-2+deb8u2) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../libfile-fcntllock-perl_0.22-1+b1_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-1+b1) ...
+Selecting previously unselected package libterm-readkey-perl.
+Preparing to unpack .../libterm-readkey-perl_2.32-1+b1_amd64.deb ...
+Unpacking libterm-readkey-perl (2.32-1+b1) ...
+Selecting previously unselected package libv8-3.14.5.
+Preparing to unpack .../libv8-3.14.5_3.14.5.8-8.1_amd64.deb ...
+Unpacking libv8-3.14.5 (3.14.5.8-8.1) ...
+Preparing to unpack .../mysql-common_5.5.57-0+deb8u1_all.deb ...
+Unpacking mysql-common (5.5.57-0+deb8u1) over (5.5.54-0+deb8u1) ...
+Selecting previously unselected package mysql-client-5.5.
+Preparing to unpack .../mysql-client-5.5_5.5.57-0+deb8u1_amd64.deb ...
+Unpacking mysql-client-5.5 (5.5.57-0+deb8u1) ...
+Selecting previously unselected package mysql-client.
+Preparing to unpack .../mysql-client_5.5.57-0+deb8u1_all.deb ...
+Unpacking mysql-client (5.5.57-0+deb8u1) ...
+Selecting previously unselected package nodejs.
+Preparing to unpack .../nodejs_0.10.29~dfsg-2_amd64.deb ...
+Unpacking nodejs (0.10.29~dfsg-2) ...
+Selecting previously unselected package nodejs-legacy.
+Preparing to unpack .../nodejs-legacy_0.10.29~dfsg-2_all.deb ...
+Unpacking nodejs-legacy (0.10.29~dfsg-2) ...
+Setting up libapt-inst1.5:amd64 (1.0.9.8.4) ...
+Setting up libpq5:amd64 (9.4.13-0+deb8u1) ...
+Setting up libpq-dev (9.4.13-0+deb8u1) ...
+Setting up libc-ares2:amd64 (1.10.0-2+deb8u2) ...
+Setting up apt-utils (1.0.9.8.4) ...
+Setting up libtimedate-perl (2.3000-2) ...
+Setting up libdpkg-perl (1.17.27) ...
+Setting up dpkg-dev (1.17.27) ...
+Setting up build-essential (11.7) ...
+Setting up libfakeroot:amd64 (1.20.2-1) ...
+Setting up fakeroot (1.20.2-1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libalgorithm-diff-perl (1.19.02-3) ...
+Setting up libalgorithm-diff-xs-perl (0.04-3+b1) ...
+Setting up libalgorithm-merge-perl (0.08-2) ...
+Setting up libdbi-perl (1.631-3+b1) ...
+Setting up libdbd-mysql-perl (4.028-2+deb8u2) ...
+Setting up libfile-fcntllock-perl (0.22-1+b1) ...
+Setting up libterm-readkey-perl (2.32-1+b1) ...
+Setting up libv8-3.14.5 (3.14.5.8-8.1) ...
+Setting up mysql-common (5.5.57-0+deb8u1) ...
+Setting up mysql-client-5.5 (5.5.57-0+deb8u1) ...
+Setting up mysql-client (5.5.57-0+deb8u1) ...
+Setting up nodejs (0.10.29~dfsg-2) ...
+update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+Setting up nodejs-legacy (0.10.29~dfsg-2) ...
+Processing triggers for libc-bin (2.19-18+deb8u7) ...
+ ---> d579650a0f87
+Removing intermediate container 4d0c9e5996fc
+Step 6/22 : RUN apt-get update &&       apt-get -y install sudo
+ ---> Running in 8e2b9f263c4a
+Hit http://security.debian.org jessie/updates InRelease
+Get:1 http://security.debian.org jessie/updates/main amd64 Packages [547 kB]
+Ign http://deb.debian.org jessie InRelease
+Hit http://deb.debian.org jessie-updates InRelease
+Hit http://deb.debian.org jessie Release.gpg
+Hit http://deb.debian.org jessie Release
+Get:2 http://deb.debian.org jessie-updates/main amd64 Packages [23.1 kB]
+Get:3 http://deb.debian.org jessie/main amd64 Packages [9063 kB]
+Fetched 9633 kB in 10s (907 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  sudo
+0 upgraded, 1 newly installed, 0 to remove and 81 not upgraded.
+Need to get 854 kB of archives.
+After this operation, 2391 kB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian/ jessie/main sudo amd64 1.8.10p3-1+deb8u4 [854 kB]
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m[91mdpkg-preconfigure: unable to re-open stdin: 
+[0mFetched 854 kB in 1s (531 kB/s)
+Selecting previously unselected package sudo.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22203 files and directories currently installed.)
+Preparing to unpack .../sudo_1.8.10p3-1+deb8u4_amd64.deb ...
+Unpacking sudo (1.8.10p3-1+deb8u4) ...
+Processing triggers for systemd (215-17+deb8u6) ...
+Setting up sudo (1.8.10p3-1+deb8u4) ...
+Processing triggers for systemd (215-17+deb8u6) ...
+ ---> 92ca796ae49a
+Removing intermediate container 8e2b9f263c4a
+Step 7/22 : RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+ ---> Running in 6297bf84fbe0
+Adding user `docker' to group `sudo' ...
+Adding user docker to group sudo
+Done.
+ ---> 89752516570a
+Removing intermediate container 6297bf84fbe0
+Step 8/22 : RUN sudo apt-get install -y mysql-client &&     sudo apt-get autoremove -y &&     sudo rm -rf /var/lib/apt/lists/*
+ ---> Running in 5d095151591d
+Reading package lists...
+Building dependency tree...
+Reading state information...
+mysql-client is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 81 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 81 not upgraded.
+ ---> 72807c9e3645
+Removing intermediate container 5d095151591d
+Step 9/22 : ENV RAILS_LOG_TO_STDOUT true
+ ---> Running in fc8992c7927d
+ ---> fc4f8e7b552f
+Removing intermediate container fc8992c7927d
+Step 10/22 : RUN mkdir -p /home/app
+ ---> Running in 8e6227e1bf76
+ ---> 6ff241023376
+Removing intermediate container 8e6227e1bf76
+Step 11/22 : WORKDIR /home/app/
+ ---> 29f0702d92e8
+Removing intermediate container 2ddb41e40512
+Step 12/22 : ADD docker /home/app/
+ ---> 724cd762d9ea
+Step 13/22 : WORKDIR /home/app
+ ---> e32dbc5c30c3
+Removing intermediate container 54cc98d7c98c
+Step 14/22 : ADD Gemfile /home/app/Gemfile
+ ---> 456b8eb2dd32
+Step 15/22 : ADD Gemfile.lock /home/app/Gemfile.lock
+ ---> e01d4fb129f1
+Step 16/22 : ADD sidekiq.pid /home/app/tmp/pids/
+ ---> a2471de33f53
+Step 17/22 : RUN bundle install
+ ---> Running in 6270c061aeb0
+The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+Fetching gem metadata from https://rubygems.org/............
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies...
+Installing rake 12.0.0
+Installing concurrent-ruby 1.0.4
+Installing i18n 0.8.1
+Installing minitest 5.10.1
+Installing thread_safe 0.3.6
+Installing builder 3.2.3
+Installing erubis 2.7.0
+Installing mini_portile2 2.1.0
+Installing rack 2.0.1
+Installing nio4r 1.2.1 with native extensions
+Installing websocket-extensions 0.1.2
+Installing mime-types-data 3.2016.0521
+Installing arel 7.1.4
+Installing bcrypt 3.1.11 with native extensions
+Installing sass 3.4.23
+Installing method_source 0.8.2
+Installing thor 0.19.4
+Installing tilt 2.0.6
+Using bundler 1.14.6
+Installing byebug 9.0.6 with native extensions
+Installing coffee-script-source 1.12.2
+Installing execjs 2.7.0
+Installing connection_pool 2.2.1
+Installing debug_inspector 0.0.2 with native extensions
+Installing orm_adapter 0.5.0
+Installing unf_ext 0.0.7.2 with native extensions
+Installing ffi 1.9.17 with native extensions
+Installing multi_json 1.12.1
+Installing rb-fsevent 0.9.8
+Installing mysql2 0.4.5 with native extensions
+Installing nested_form 0.3.2
+Installing netrc 0.11.0
+Installing request_store 1.3.2
+Installing puma 3.7.1 with native extensions
+Installing remotipart 1.3.1
+Installing redis 3.3.3
+Installing turbolinks-source 5.0.0
+Installing tzinfo 1.2.2
+Installing nokogiri 1.7.0.1 with native extensions
+Installing rack-test 0.6.3
+Installing sprockets 3.7.1
+Installing warden 1.2.7
+Installing rack-protection 1.5.3
+Installing websocket-driver 0.6.5 with native extensions
+Installing mime-types 3.1
+Installing bootstrap-sass 3.1.0.2
+Installing haml 4.0.7
+Installing coffee-script 2.4.1
+Installing uglifier 3.1.12
+Installing unf 0.1.4
+Installing rb-inotify 0.9.8
+Installing turbolinks 5.0.1
+Installing activesupport 5.0.1
+Installing loofah 2.0.3
+Installing rack-pjax 1.0.0
+Installing sidekiq 4.2.9
+Installing mail 2.6.4
+Installing domain_name 0.5.20161021
+Installing listen 3.0.8
+Installing rails-dom-testing 2.0.2
+Installing globalid 0.3.7
+Installing activemodel 5.0.1
+Installing jbuilder 2.6.3
+Installing spring 2.0.1
+Installing rails-html-sanitizer 1.0.3
+Installing http-cookie 1.0.3
+Installing activejob 5.0.1
+Installing activerecord 5.0.1
+Installing spring-watcher-listen 2.0.1
+Installing actionview 5.0.1
+Installing rest-client 2.0.1
+Installing paper_trail 7.0.0
+Installing actionpack 5.0.1
+Installing actioncable 5.0.1
+Installing actionmailer 5.0.1
+Installing railties 5.0.1
+Installing sprockets-rails 3.2.0
+Installing kaminari 0.17.0
+Installing coffee-rails 4.2.1
+Installing responders 2.3.0
+Installing font-awesome-rails 4.7.0.1
+Installing jquery-rails 4.2.2
+Installing jquery-ui-rails 5.0.5
+Installing web-console 3.4.0
+Installing sass-rails 5.0.6
+Installing rails 5.0.1
+Installing devise 4.2.0
+Installing bootstrap-sass-rails 3.1.0.0
+Installing rails_admin 1.1.1
+Installing rails_admin_rollincode 1.2.1
+Bundle complete! 24 Gemfile dependencies, 90 gems now installed.
+Bundled gems are installed into /usr/local/bundle.
+Post-install message from bootstrap-sass-rails:
+# DEPRECATION NOTICE
+
+The bootstrap-sass-rails is deprecated starting with version 3.1.0.0.
+There is an official Sass port of Bootstrap now which can be found
+within the twbs organization on GitHub:
+
+https://github.com/twbs/bootstrap-sass
+
+You are recommended to upgrade your Gemfile to directly use bootstrap-sass
+from now on. Upgrading should be really simple, the differences between the
+gems are mostly in the namespacing.
+
+UPGRADING
+
+  Remove the twitter/ prefix from all your `@import` and `= require`
+  statements:
+
+  Before:
+    @import "twitter/bootstrap";
+    @import "twitter/bootstrap/modal";
+
+  After:
+    @import "bootstrap";
+    @import "bootstrap/modal";
+
+  Before:
+    //= require "twitter/bootstrap";
+    //= require "twitter/bootstrap/modal";
+
+  After:
+    //= require "bootstrap";
+    //= require "bootstrap/modal";
+
+  Thank you for using bootstrap-sass-rails!
+Post-install message from haml:
+
+HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+your application:
+
+* Support for Ruby 1.8.6 dropped
+* Support for Rails 2 dropped
+* Sass filter now always outputs <style> tags
+* Data attributes are now hyphenated, not underscored
+* html2haml utility moved to the html2haml gem
+* Textile and Maruku filters moved to the haml-contrib gem
+
+For more info see:
+
+http://rubydoc.info/github/haml/haml/file/CHANGELOG.md
+
+ ---> d27f817e3fd1
+Removing intermediate container 6270c061aeb0
+Step 18/22 : ADD . /home/app
+ ---> 719dd49084c4
+Step 19/22 : RUN groupadd --gid 9999 app &&     useradd --uid 9999 --gid app app &&     chown -R app:app /home/app
+ ---> Running in a39f19cb208b
+ ---> e093eb2ac76d
+Removing intermediate container a39f19cb208b
+Step 20/22 : EXPOSE 80 300 9000
+ ---> Running in 1fa3c24d8e82
+ ---> 82c222ddbaca
+Removing intermediate container 1fa3c24d8e82
+Step 21/22 : RUN date -u > BUILD_TIME
+ ---> Running in ef96cb4b35a7
+ ---> d1c7cc71e674
+Removing intermediate container ef96cb4b35a7
+Step 22/22 : ADD /docker/host /etc/hosts
+ ---> 0de5f5699621
+Successfully built 0de5f5699621
+Successfully tagged phalanx_app:latest
+
+Running via Spring preloader in process 27
+[1m[37m      invoke[0m  active_record
+[1m[32m      create[0m    db/migrate/20171011145521_create_notes.rb
+[1m[32m      create[0m    app/models/note.rb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/models/note_test.rb
+[1m[32m      create[0m      test/fixtures/notes.yml
+[1m[37m      invoke[0m  resource_route
+[1m[32m       route[0m    resources :notes
+[1m[37m      invoke[0m  scaffold_controller
+[1m[32m      create[0m    app/controllers/notes_controller.rb
+[1m[37m      invoke[0m    erb
+[1m[32m      create[0m      app/views/notes
+[1m[32m      create[0m      app/views/notes/index.html.erb
+[1m[32m      create[0m      app/views/notes/edit.html.erb
+[1m[32m      create[0m      app/views/notes/show.html.erb
+[1m[32m      create[0m      app/views/notes/new.html.erb
+[1m[32m      create[0m      app/views/notes/_form.html.erb
+[1m[37m      invoke[0m    test_unit
+[1m[32m      create[0m      test/controllers/notes_controller_test.rb
+[1m[37m      invoke[0m    helper
+[1m[32m      create[0m      app/helpers/notes_helper.rb
+[1m[37m      invoke[0m      test_unit
+[1m[37m      invoke[0m    jbuilder
+[1m[32m      create[0m      app/views/notes/index.json.jbuilder
+[1m[32m      create[0m      app/views/notes/show.json.jbuilder
+[1m[32m      create[0m      app/views/notes/_note.json.jbuilder
+[1m[37m      invoke[0m  assets
+[1m[37m      invoke[0m    coffee
+[1m[32m      create[0m      app/assets/javascripts/notes.coffee
+[1m[37m      invoke[0m    scss
+[1m[32m      create[0m      app/assets/stylesheets/notes.scss
+[1m[37m      invoke[0m  scss
+[1m[32m      create[0m    app/assets/stylesheets/scaffolds.scss
+Dropped database 'phalanx-development'
+Dropped database 'phalanx-test'
+Created database 'phalanx-development'
+Created database 'phalanx-test'
+-- create_table("admin_users", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.4573s
+-- create_table("products", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3119s
+-- create_table("products_tags", {:id=>false, :force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3333s
+-- create_table("search_results", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3352s
+-- create_table("tags", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3454s
+-- create_table("users", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.4368s
+-- create_table("version_associations", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3680s
+-- create_table("versions", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"})
+   -> 0.4461s
+-- create_table("white_lists", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3339s
+-- initialize_schema_migrations_table()
+   -> 0.3674s
+-- create_table("admin_users", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.4233s
+-- create_table("products", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.4477s
+-- create_table("products_tags", {:id=>false, :force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.2674s
+-- create_table("search_results", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.2679s
+-- create_table("tags", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3454s
+-- create_table("users", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3901s
+-- create_table("version_associations", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.4123s
+-- create_table("versions", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8mb4"})
+   -> 0.4684s
+-- create_table("white_lists", {:force=>:cascade, :options=>"ENGINE=InnoDB DEFAULT CHARSET=utf8"})
+   -> 0.3118s
+-- initialize_schema_migrations_table()
+   -> 0.2787s
+Done!
+latest: Pulling from portainer/portainer
+Digest: sha256:3ba9597e6aa013a6545abfd281da0eb8de3791ae142e226cc3547e26afd2ac3a
+Status: Downloaded newer image for portainer/portainer:latest
+Step 1/22 : FROM ledermann/base
+ ---> c96b29ff3989
+Step 2/22 : FROM ubuntu:12.04
+ ---> 5b117edd0b76
+Step 3/22 : FROM ruby:2.3.3
+ ---> 0e1db669d557
+Step 4/22 : MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
+ ---> Using cache
+ ---> 67a4bcfa96d6
+Step 5/22 : RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client libssl-dev apt-utils
+ ---> Using cache
+ ---> d579650a0f87
+Step 6/22 : RUN apt-get update &&       apt-get -y install sudo
+ ---> Using cache
+ ---> 92ca796ae49a
+Step 7/22 : RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+ ---> Using cache
+ ---> 89752516570a
+Step 8/22 : RUN sudo apt-get install -y mysql-client &&     sudo apt-get autoremove -y &&     sudo rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> 72807c9e3645
+Step 9/22 : ENV RAILS_LOG_TO_STDOUT true
+ ---> Using cache
+ ---> fc4f8e7b552f
+Step 10/22 : RUN mkdir -p /home/app
+ ---> Using cache
+ ---> 6ff241023376
+Step 11/22 : WORKDIR /home/app/
+ ---> Using cache
+ ---> 29f0702d92e8
+Step 12/22 : ADD docker /home/app/
+ ---> 20e5e053b88f
+Step 13/22 : WORKDIR /home/app
+ ---> 025d908a7c26
+Removing intermediate container 32f992e56f73
+Step 14/22 : ADD Gemfile /home/app/Gemfile
+ ---> 7b26f8a1fc2f
+Step 15/22 : ADD Gemfile.lock /home/app/Gemfile.lock
+ ---> feb8aab42c1e
+Step 16/22 : ADD sidekiq.pid /home/app/tmp/pids/
+ ---> b14b4396598d
+Step 17/22 : RUN bundle install
+ ---> Running in cd7c0be3cd80
+The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+Fetching gem metadata from https://rubygems.org/............
+Fetching version metadata from https://rubygems.org/...
+Fetching dependency metadata from https://rubygems.org/..
+Resolving dependencies...
+Installing rake 12.0.0
+Installing concurrent-ruby 1.0.4
+Installing i18n 0.8.1
+Installing minitest 5.10.1
+Installing thread_safe 0.3.6
+Installing builder 3.2.3
+Installing erubis 2.7.0
+Installing mini_portile2 2.1.0
+Installing rack 2.0.1
+Installing nio4r 1.2.1 with native extensions
+Installing websocket-extensions 0.1.2
+Installing mime-types-data 3.2016.0521
+Installing arel 7.1.4
+Installing bcrypt 3.1.11 with native extensions
+Installing sass 3.4.23
+Installing method_source 0.8.2
+Installing thor 0.19.4
+Installing tilt 2.0.6
+Using bundler 1.14.6
+Installing byebug 9.0.6 with native extensions
+Installing coffee-script-source 1.12.2
+Installing execjs 2.7.0
+Installing connection_pool 2.2.1
+Installing debug_inspector 0.0.2 with native extensions
+Installing orm_adapter 0.5.0
+Installing unf_ext 0.0.7.2 with native extensions
+Installing ffi 1.9.17 with native extensions
+Installing multi_json 1.12.1
+Installing rb-fsevent 0.9.8
+Installing mysql2 0.4.5 with native extensions
+Installing nested_form 0.3.2
+Installing netrc 0.11.0
+Installing request_store 1.3.2
+Installing puma 3.7.1 with native extensions
+Installing remotipart 1.3.1
+Installing redis 3.3.3
+Installing turbolinks-source 5.0.0
+Installing tzinfo 1.2.2
+Installing nokogiri 1.7.0.1 with native extensions
+Installing rack-test 0.6.3
+Installing sprockets 3.7.1
+Installing warden 1.2.7
+Installing rack-protection 1.5.3
+Installing websocket-driver 0.6.5 with native extensions
+Installing mime-types 3.1
+Installing bootstrap-sass 3.1.0.2
+Installing haml 4.0.7
+Installing coffee-script 2.4.1
+Installing uglifier 3.1.12
+Installing unf 0.1.4
+Installing rb-inotify 0.9.8
+Installing turbolinks 5.0.1
+Installing activesupport 5.0.1
+Installing loofah 2.0.3
+Installing rack-pjax 1.0.0
+Installing sidekiq 4.2.9
+Installing mail 2.6.4
+Installing domain_name 0.5.20161021
+Installing listen 3.0.8
+Installing rails-dom-testing 2.0.2
+Installing globalid 0.3.7
+Installing activemodel 5.0.1
+Installing jbuilder 2.6.3
+Installing spring 2.0.1
+Installing rails-html-sanitizer 1.0.3
+Installing http-cookie 1.0.3
+Installing activejob 5.0.1
+Installing activerecord 5.0.1
+Installing spring-watcher-listen 2.0.1
+Installing actionview 5.0.1
+Installing rest-client 2.0.1
+Installing paper_trail 7.0.0
+Installing actionpack 5.0.1
+Installing actioncable 5.0.1
+Installing actionmailer 5.0.1
+Installing railties 5.0.1
+Installing sprockets-rails 3.2.0
+Installing kaminari 0.17.0
+Installing coffee-rails 4.2.1
+Installing responders 2.3.0
+Installing font-awesome-rails 4.7.0.1
+Installing jquery-rails 4.2.2
+Installing jquery-ui-rails 5.0.5
+Installing web-console 3.4.0
+Installing sass-rails 5.0.6
+Installing rails 5.0.1
+Installing devise 4.2.0
+Installing bootstrap-sass-rails 3.1.0.0
+Installing rails_admin 1.1.1
+Installing rails_admin_rollincode 1.2.1
+Bundle complete! 24 Gemfile dependencies, 90 gems now installed.
+Bundled gems are installed into /usr/local/bundle.
+Post-install message from bootstrap-sass-rails:
+# DEPRECATION NOTICE
+
+The bootstrap-sass-rails is deprecated starting with version 3.1.0.0.
+There is an official Sass port of Bootstrap now which can be found
+within the twbs organization on GitHub:
+
+https://github.com/twbs/bootstrap-sass
+
+You are recommended to upgrade your Gemfile to directly use bootstrap-sass
+from now on. Upgrading should be really simple, the differences between the
+gems are mostly in the namespacing.
+
+UPGRADING
+
+  Remove the twitter/ prefix from all your `@import` and `= require`
+  statements:
+
+  Before:
+    @import "twitter/bootstrap";
+    @import "twitter/bootstrap/modal";
+
+  After:
+    @import "bootstrap";
+    @import "bootstrap/modal";
+
+  Before:
+    //= require "twitter/bootstrap";
+    //= require "twitter/bootstrap/modal";
+
+  After:
+    //= require "bootstrap";
+    //= require "bootstrap/modal";
+
+  Thank you for using bootstrap-sass-rails!
+Post-install message from haml:
+
+HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+your application:
+
+* Support for Ruby 1.8.6 dropped
+* Support for Rails 2 dropped
+* Sass filter now always outputs <style> tags
+* Data attributes are now hyphenated, not underscored
+* html2haml utility moved to the html2haml gem
+* Textile and Maruku filters moved to the haml-contrib gem
+
+For more info see:
+
+http://rubydoc.info/github/haml/haml/file/CHANGELOG.md
+
+ ---> 0afd02ae26a1
+Removing intermediate container cd7c0be3cd80
+Step 18/22 : ADD . /home/app
+ ---> 4d56d2720e60
+Step 19/22 : RUN groupadd --gid 9999 app &&     useradd --uid 9999 --gid app app &&     chown -R app:app /home/app
+ ---> Running in ee81108cbd21
+ ---> 7e258068d10a
+Removing intermediate container ee81108cbd21
+Step 20/22 : EXPOSE 80 300 9000
+ ---> Running in f5f1d45771e4
+ ---> fc33c3428421
+Removing intermediate container f5f1d45771e4
+Step 21/22 : RUN date -u > BUILD_TIME
+ ---> Running in 9523a27b6435
+ ---> f4d013f33c35
+Removing intermediate container 9523a27b6435
+Step 22/22 : ADD /docker/host /etc/hosts
+ ---> 05338fd98ef8
+Successfully built 05338fd98ef8
+Successfully tagged phalanx_worker:latest
+Attaching to phalanx_db_1, phalanx_redis_1, phalanx_ui_1, phalanx_app_1, phalanx_worker_1
+[32mui_1      |[0m 2017/10/11 15:01:40 Starting Portainer 1.14.3 on :9000
+[33mredis_1   |[0m 1:C 11 Oct 14:44:25.381 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[33mredis_1   |[0m                 _._                                                  
+[33mredis_1   |[0m            _.-``__ ''-._                                             
+[33mredis_1   |[0m       _.-``    `.  `_.  ''-._           Redis 3.2.11 (00000000/0) 64 bit
+[33mredis_1   |[0m   .-`` .-```.  ```\/    _.,_ ''-._                                   
+[33mredis_1   |[0m  (    '      ,       .-`  | `,    )     Running in standalone mode
+[33mredis_1   |[0m  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+[33mredis_1   |[0m  |    `-._   `._    /     _.-'    |     PID: 1
+[33mredis_1   |[0m   `-._    `-._  `-./  _.-'    _.-'                                   
+[33mredis_1   |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[33mredis_1   |[0m  |    `-._`-._        _.-'_.-'    |           http://redis.io        
+[33mredis_1   |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[33mredis_1   |[0m  |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+[33mredis_1   |[0m  |    `-._`-._        _.-'_.-'    |                                  
+[33mredis_1   |[0m   `-._    `-._`-.__.-'_.-'    _.-'                                   
+[33mredis_1   |[0m       `-._    `-.__.-'    _.-'                                       
+[33mredis_1   |[0m           `-._        _.-'                                           
+[33mredis_1   |[0m               `-.__.-'                                               
+[33mredis_1   |[0m 
+[33mredis_1   |[0m 1:M 11 Oct 14:44:25.382 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+[33mredis_1   |[0m 1:M 11 Oct 14:44:25.382 # Server started, Redis version 3.2.11
+[33mredis_1   |[0m 1:M 11 Oct 14:44:25.382 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[33mredis_1   |[0m 1:M 11 Oct 14:44:25.382 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+[33mredis_1   |[0m 1:M 11 Oct 14:44:25.382 * The server is now ready to accept connections on port 6379
+[36mdb_1      |[0m 2017-10-11T14:44:25.938790Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+[36mdb_1      |[0m 2017-10-11T14:44:25.939757Z 0 [Note] mysqld (mysqld 5.7.19) starting as process 1 ...
+[36mdb_1      |[0m 2017-10-11T14:44:25.943262Z 0 [Note] InnoDB: PUNCH HOLE support available
+[36mdb_1      |[0m 2017-10-11T14:44:25.943290Z 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+[36mdb_1      |[0m 2017-10-11T14:44:25.943296Z 0 [Note] InnoDB: Uses event mutexes
+[36mdb_1      |[0m 2017-10-11T14:44:25.943301Z 0 [Note] InnoDB: GCC builtin __atomic_thread_fence() is used for memory barrier
+[36mdb_1      |[0m 2017-10-11T14:44:25.943306Z 0 [Note] InnoDB: Compressed tables use zlib 1.2.3
+[36mdb_1      |[0m 2017-10-11T14:44:25.943328Z 0 [Note] InnoDB: Using Linux native AIO
+[36mdb_1      |[0m 2017-10-11T14:44:25.943698Z 0 [Note] InnoDB: Number of pools: 1
+[36mdb_1      |[0m 2017-10-11T14:44:25.943790Z 0 [Note] InnoDB: Using CPU crc32 instructions
+[36mdb_1      |[0m 2017-10-11T14:44:25.945048Z 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
+[36mdb_1      |[0m 2017-10-11T14:44:25.951521Z 0 [Note] InnoDB: Completed initialization of buffer pool
+[36mdb_1      |[0m 2017-10-11T14:44:25.952811Z 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+[36mdb_1      |[0m 2017-10-11T14:44:26.226596Z 0 [Note] InnoDB: Highest supported file format is Barracuda.
+[36mdb_1      |[0m 2017-10-11T14:44:26.242913Z 0 [Note] InnoDB: Log scan progressed past the checkpoint lsn 14337594
+[36mdb_1      |[0m 2017-10-11T14:44:26.242935Z 0 [Note] InnoDB: Doing recovery: scanned up to log sequence number 14337603
+[36mdb_1      |[0m 2017-10-11T14:44:26.242941Z 0 [Note] InnoDB: Database was not shutdown normally!
+[36mdb_1      |[0m 2017-10-11T14:44:26.242957Z 0 [Note] InnoDB: Starting crash recovery.
+[36mdb_1      |[0m 2017-10-11T14:44:28.541532Z 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+[36mdb_1      |[0m 2017-10-11T14:44:28.541605Z 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+[36mdb_1      |[0m 2017-10-11T14:44:28.541761Z 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+[36mdb_1      |[0m 2017-10-11T14:44:28.816308Z 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+[36mdb_1      |[0m 2017-10-11T14:44:28.816994Z 0 [Note] InnoDB: 96 redo rollback segment(s) found. 96 redo rollback segment(s) are active.
+[36mdb_1      |[0m 2017-10-11T14:44:28.817005Z 0 [Note] InnoDB: 32 non-redo rollback segment(s) are active.
+[36mdb_1      |[0m 2017-10-11T14:44:28.817383Z 0 [Note] InnoDB: 5.7.19 started; log sequence number 14337603
+[36mdb_1      |[0m 2017-10-11T14:44:28.818054Z 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+[36mdb_1      |[0m 2017-10-11T14:44:28.818338Z 0 [Note] Plugin 'FEDERATED' is disabled.
+[36mdb_1      |[0m 2017-10-11T14:44:28.973223Z 0 [Note] InnoDB: Buffer pool(s) load completed at 171011 14:44:28
+[36mdb_1      |[0m 2017-10-11T14:44:29.116381Z 0 [Note] Found ca.pem, server-cert.pem and server-key.pem in data directory. Trying to enable SSL support using them.
+[36mdb_1      |[0m 2017-10-11T14:44:29.315114Z 0 [Warning] CA certificate ca.pem is self signed.
+[36mdb_1      |[0m 2017-10-11T14:44:29.316668Z 0 [Note] Server hostname (bind-address): '*'; port: 3306
+[36mdb_1      |[0m 2017-10-11T14:44:29.316696Z 0 [Note] IPv6 is available.
+[36mdb_1      |[0m 2017-10-11T14:44:29.316707Z 0 [Note]   - '::' resolves to '::';
+[36mdb_1      |[0m 2017-10-11T14:44:29.316730Z 0 [Note] Server socket created on IP: '::'.
+[36mdb_1      |[0m 2017-10-11T14:44:29.623572Z 0 [Warning] 'user' entry 'root@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.623676Z 0 [Warning] 'user' entry 'mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.635148Z 0 [Warning] 'db' entry 'performance_schema mysql.session@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.635202Z 0 [Warning] 'db' entry 'sys mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.635549Z 0 [Warning] 'proxies_priv' entry '@ root@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.946111Z 0 [Warning] 'tables_priv' entry 'user mysql.session@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:29.946143Z 0 [Warning] 'tables_priv' entry 'sys_config mysql.sys@localhost' ignored in --skip-name-resolve mode.
+[36mdb_1      |[0m 2017-10-11T14:44:30.438983Z 0 [Note] Event Scheduler: Loaded 0 events
+[36mdb_1      |[0m 2017-10-11T14:44:30.439182Z 0 [Note] mysqld: ready for connections.
+[36mdb_1      |[0m Version: '5.7.19'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+[36mdb_1      |[0m 2017-10-11T14:44:30.439193Z 0 [Note] Executing 'SELECT * FROM INFORMATION_SCHEMA.TABLES;' to get a list of tables using the deprecated partition engine. You may use the startup option '--disable-partition-engine-check' to skip this check. 
+[36mdb_1      |[0m 2017-10-11T14:44:30.439197Z 0 [Note] Beginning of list of non-natively partitioned tables
+[36mdb_1      |[0m 2017-10-11T14:44:31.815457Z 0 [Note] End of list of non-natively partitioned tables
+[31mworker_1  |[0m 2017-10-11T15:02:03.572Z 1 TID-b9ij8 INFO: Booting Sidekiq 4.2.9 with redis options {:url=>"redis://redis:6379/0", :size=>40}
+[31mworker_1  |[0m 2017-10-11T15:02:06.967Z 1 TID-b9ij8 INFO: Running in ruby 2.3.3p222 (2016-11-21 revision 56859) [x86_64-linux]
+[31mworker_1  |[0m 2017-10-11T15:02:06.967Z 1 TID-b9ij8 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+[31mworker_1  |[0m 2017-10-11T15:02:06.968Z 1 TID-b9ij8 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+[31mworker_1  |[0m 2017-10-11T15:02:07.171Z 1 TID-b9ij8 INFO: Starting processing, hit Ctrl-C to stop
+[35mapp_1     |[0m => Booting Puma
+[35mapp_1     |[0m => Rails 5.0.1 application starting in development on http://0.0.0.0:3000
+[35mapp_1     |[0m => Run `rails server -h` for more startup options
+[35mapp_1     |[0m Puma starting in single mode...
+[35mapp_1     |[0m * Version 3.7.1 (ruby 2.3.3-p222), codename: Snowy Sagebrush
+[35mapp_1     |[0m * Min threads: 5, max threads: 5
+[35mapp_1     |[0m * Environment: development
+[35mapp_1     |[0m * Listening on tcp://0.0.0.0:3000
+[35mapp_1     |[0m Use Ctrl-C to stop
+[33mredis_1   |[0m 1:M 11 Oct 15:03:07.270 * 100 changes in 300 seconds. Saving...
+[33mredis_1   |[0m 1:M 11 Oct 15:03:07.300 * Background saving started by pid 11
+[33mredis_1   |[0m 11:C 11 Oct 15:03:07.403 * DB saved on disk
+[33mredis_1   |[0m 11:C 11 Oct 15:03:07.404 * RDB: 2 MB of memory used by copy-on-write
+[33mredis_1   |[0m 1:M 11 Oct 15:03:07.500 * Background saving terminated with success
+[33mredis_1   |[0m 1:M 11 Oct 15:08:08.080 * 100 changes in 300 seconds. Saving...
+[33mredis_1   |[0m 1:M 11 Oct 15:08:08.080 * Background saving started by pid 12
+[33mredis_1   |[0m 12:C 11 Oct 15:08:08.170 * DB saved on disk
+[33mredis_1   |[0m 12:C 11 Oct 15:08:08.170 * RDB: 2 MB of memory used by copy-on-write
+[33mredis_1   |[0m 1:M 11 Oct 15:08:08.180 * Background saving terminated with success
+[33mredis_1   |[0m 1:M 11 Oct 15:13:09.063 * 100 changes in 300 seconds. Saving...
+[33mredis_1   |[0m 1:M 11 Oct 15:13:09.064 * Background saving started by pid 13
+[33mredis_1   |[0m 13:C 11 Oct 15:13:09.113 * DB saved on disk
+[33mredis_1   |[0m 13:C 11 Oct 15:13:09.113 * RDB: 2 MB of memory used by copy-on-write
+[33mredis_1   |[0m 1:M 11 Oct 15:13:09.164 * Background saving terminated with success
+[33mredis_1   |[0m 1:M 11 Oct 15:18:10.052 * 100 changes in 300 seconds. Saving...
+[33mredis_1   |[0m 1:M 11 Oct 15:18:10.052 * Background saving started by pid 14
+[33mredis_1   |[0m 14:C 11 Oct 15:18:10.108 * DB saved on disk
+[33mredis_1   |[0m 14:C 11 Oct 15:18:10.108 * RDB: 0 MB of memory used by copy-on-write
+[33mredis_1   |[0m 1:M 11 Oct 15:18:10.153 * Background saving terminated with success
+[32mui_1      |[0m 2017/10/11 15:22:41 http error: User not found (code=404)
+[32mui_1      |[0m 2017/10/11 15:22:54 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:22:54 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:22:54 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:22:54 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:22:54 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:22:58 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:00 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:00 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:00 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:00 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:00 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:10 http error: An administrator user already exists (code=409)
+[33mredis_1   |[0m 1:M 11 Oct 15:23:11.043 * 100 changes in 300 seconds. Saving...
+[33mredis_1   |[0m 1:M 11 Oct 15:23:11.043 * Background saving started by pid 15
+[33mredis_1   |[0m 15:C 11 Oct 15:23:11.094 * DB saved on disk
+[33mredis_1   |[0m 15:C 11 Oct 15:23:11.095 * RDB: 0 MB of memory used by copy-on-write
+[33mredis_1   |[0m 1:M 11 Oct 15:23:11.145 * Background saving terminated with success
+[32mui_1      |[0m 2017/10/11 15:23:16 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:16 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:16 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:16 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:16 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:26 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:26 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:26 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:27 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:27 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:27 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:27 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:27 http error: Endpoint not found (code=500)
+[32mui_1      |[0m 2017/10/11 15:23:28 http error: Endpoint not found (code=500)
