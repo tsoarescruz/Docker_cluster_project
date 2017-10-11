@@ -23,6 +23,8 @@ https://github.com/ManoMarks/docker-swarm-visualizer
 * Configuration
 
   * Network configuration
+--> /etc/network/
+
 HypriotOS/armv7: root@black-pearl in /etc/network
 
 allow-hotplug wlan0
@@ -37,6 +39,34 @@ iface wlan0 inet static
    * Command to restart network
 
 /etc/init.d/networking restart
+
+   * Network configuration to rc.local level to wlan0 up when reboot Raspberrypi
+--> /etc/rc.local
+
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+iface wlan0 up
+
+exit 0
+
+   * Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi
+--> /etc/network/interfaces.d/eth0
+
+allow-hotplug eth0
+iface eth0 inet dhcp
+allow-hotplug wlan0
+iface wlan0 inet dhcp
 
 </pre>
 
