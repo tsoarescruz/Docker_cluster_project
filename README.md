@@ -1,15 +1,15 @@
 # README
 
-
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 * Ruby version
 
-<pre>
-* System dependencies
 
- For this project was necessary this software do manangement docker containers:
+<h3>* System dependencies</h3>
+<pre>
+
+For this project was necessary this software do manangement docker containers:
 
  * Portainer
 https://portainer.readthedocs.io/en/latest/deployment.html
@@ -19,9 +19,9 @@ https://github.com/ManoMarks/docker-swarm-visualizer
 
 </pre>
 
-<pre>
-* Configuration
 
+<h3>* Configuration</h3>
+<pre>
   * Network configuration
 --> /etc/network/
 
@@ -40,6 +40,9 @@ iface wlan0 inet static
 
 /etc/init.d/networking restart
 
+</pre>
+
+<pre>
    * Network configuration to rc.local level to wlan0 up when reboot Raspberrypi
 --> /etc/rc.local
 
@@ -59,7 +62,8 @@ iface wlan0 inet static
 iface wlan0 up
 
 exit 0
-
+</pre>
+<pre>
    * Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi
 --> /etc/network/interfaces.d/eth0
 
@@ -70,11 +74,14 @@ iface wlan0 inet dhcp
 
 </pre>
 
-* Database creation
+<h3>* Database creation</h3>
 
- * Comando with read database config inside the project:
+<pre>
+ * Command with read database config inside the project:
+ 
 bundle exec rails db:reset -> drop + create + migrate + seed
 
+</pre>
 
 * Database initialization
 
@@ -85,10 +92,11 @@ bundle exec rails db:reset -> drop + create + migrate + seed
 
 * Configuration
 
-<pre>
-* Main Docker commands
 
- * Exec command inside container directly
+<h3>* Main Docker commands </h3>
+<pre>
+
+* Exec command inside container directly
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 
  * Clean Volume
@@ -106,11 +114,14 @@ docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --r
  * Docker stack deploy
  docker stack deploy --compose-file=docker-compose.yml Hydra
 
+  * Docker exec command inside container
+ docker exec phalanx_app_1 bundle update newrelic_rpm
+
 </pre>
 
+<h3>* Other suport documents: </h3>
 <pre>
-* Other suport documents:
-   
+
    * Docker Swarm V3
    https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
    
@@ -170,12 +181,12 @@ docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --r
   * Blogs
   http://blog.terranillius.com/post/composev3_swarm/
   https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
+
 </pre>
 
-<pre>
-
-*Git Config
-   
+<h3>*Git Config </h3>
+ 
+ <pre>
   * Add git config fot a terminal
 git config --global user.name "Your Name"
 git config --global user.email "youremail@domain.com"
