@@ -1,4 +1,549 @@
+<h3>* Keep Notes </h3>
+<pre>
+https://codefresh.io/?utm_medium=FBAd&utm_campaign=FacebookRetargetingCI&utm_source=facebook-ads
 
+https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+https://coreos.com/flannel/docs/latest/building.html
+https://github.com/luxas/kubernetes-on-arm
+https://github.com/kubernetes/dashboard#kubernetes-dashboard
+https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/
+https://hub.docker.com/_/swarm/
+https://kubernetes.io/
+https://docs.docker.com/engine/swarm/
+https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-intro/
+https://www.heroku.com/
+https://www.youtube.com/watch?time_continue=111&v=of45hYbkIZs
+https://www.youtube.com/watch?v=M8uthk7k_2U&t=485s
+https://www.youtube.com/watch?v=nK3fK-raLuw&t=178s
+https://github.com/ManoMarks/docker-swarm-visualizer
+https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/
+https://twitter.com/stefscherer?lang=en
+https://docs.docker.com/engine/reference/builder/#healthcheck
+https://github.com/docker/swarm
+https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
+https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/
+https://www.mundodocker.com.br/docker-swarm-pratica/
+http://blog.terranillius.com/post/composev3_swarm/
+https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
+https://portainer.readthedocs.io/en/latest/deployment.html
+
+https://github.com/hypriot/flash
+https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+
+### End
+
+* Traefic
+https://github.com/hypriot/rpi-alpine-scratch
+https://hub.docker.com/r/hypriot/rpi-traefik/
+https://github.com/containous/traefik
+
+### End
+
+https://packages.debian.org/stretch/ruby2.3
+https://www.google.com.br/search?q=debian%2F8%2Farmhf%2Fruby-2.3.3.&oq=debian+r&gs_l=psy-ab.3.0.35i39k1j0i67k1l2j0i20k1.3083.3494.0.6321.7.4.0.0.0.0.260.509.2-2.2.0....0...1.1.64.psy-ab..5.2.508...0.b1DcyFJBsBs
+
+IPC - How to Build, Test & Deploy Docker Images when 
+Running Microservices in Production
+
+https://resources.codeship.com/webinars/build-test-deploy-docker-images-microservices-in-production
+
+
+Criando app rails
+https://www.youtube.com/watch?v=a-jcTib9ZPA&t=517s
+
+
+- Blog Gomex
+http://techfree.com.br/2016/03/porque-usar-docker/
+
+https://github.com/gomex/docker-para-desenvolvedores/blob/master/manuscript/porque.md
+
+https://github.com/gomex/docker-para-desenvolvedores/blob/master/manuscript/oquee.md
+
+- docker-cheat-sheet
+https://github.com/wsargent/docker-cheat-sheet
+
+- what-is-docker
+http://getawesomeness.herokuapp.com/get/docker#what-is-docker
+https://www.docker.com/what-docker
+
+- Faas
+https://blog.alexellis.io/your-serverless-raspberry-pi-cluster/
+https://github.com/alexellis/faas
+
+
+- docker-engine
+https://docs.docker.com/engine/docker-overview/#docker-engine
+
+- use-cases
+- https://www.docker.com/use-cases
+###
+
+http://blog.mikaellundin.name/2015/12/11/deploying-legacy-rails-application-on-raspberry-pi-2-with-docker.html
+
+https://www.google.com.br/search?q=arm+docker+rails&oq=arm+docker+rails&gs_l=psy-ab.3...95676.98404.0.98574.15.9.0.0.0.0.711.1201.2-2j6-1.3.0....0...1.1.64.psy-ab..13.2.942...0j0i22i30k1j35i39k1j0i20k1.4YwSMzUiQIo
+
+https://hub.docker.com/_/ruby/
+https://askubuntu.com/questions/868848/how-to-install-redis-on-ubuntu-16-04/868862
+https://www.vagrantup.com/intro/index.html
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-convenience-script
+http://techfree.com.br/2016/03/porque-usar-docker/
+https://codeship.com/features/pro?utm_source=codeship&utm_medium=navbar&utm_campaign=docker-addon
+https://askubuntu.com/questions/691134/install-ruby-2-2-3-via-apt
+https://blog.tocconsulting.fr/installing-ruby-2-3-on-debian-8-jessie/
+https://www.raspberrypi.org/forums/viewtopic.php?f=34&t=106955
+
+### End
+
+https://churrops.io/2017/04/24/docker-p03-manutencao-no-docker-host-limpando-removendo-e-destruindo-com-prune-e-rm/
+
+https://www.udemy.com/curso-docker/
+
+https://imasters.com.br/noticia/red-hat-e-microsoft-simplificam-containers-para-acelerar-mudanca-para-cloud-hibrida/
+
+https://medium.com/@cindysridharan/what-is-devops-5b0181fdb953
+
+https://stackoverflow.com/questions/43612927/how-to-correctly-install-rvm-in-docker
+
+###End
+
+Links monografia - Juntando o keep
+
+
+#################################################################
+
+** Comandos 
+
+* Adicionando o commit para o container e a para as imgs
+
+docker commit 3542b2ce5459 tsoarescruz/phalanx:phalanx_db
+docker push --disable-content-trust tsoarescruz/phalanx:phalanx_db
+
+
+** Comandos do RancherOS
+
+docker-machine create -d virtualbox --virtualbox-boot2docker-url /Users/tcruz/Developer/Docker_Project/Imagens_plataformas/rancheros.iso rancheros
+
+docker-machine env rancheros
+eval $(docker-machine env rancheros)
+docker-machine ssh rancheros
+
+
+** Limpar Volume
+docker volume rm $(docker volume ls -qf dangling=true)
+
+* Rodar um container diretamente
+docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
+
+
+** Comandos do inspect do container
+
+ docker inspect phalanx_db_1
+
+** Deploy no swarm
+
+docker stack deploy --compose-file=docker-compose.yml Hydra
+
+
+** visualizer - servico
+
+docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm
+
+#################################################################
+
+
+##Arquitetura MicroServicos
+https://www.facebook.com/RivendelTec/videos/974554415988480/
+
+#Create rpi-docker-swarm
+https://blog.hypriot.com/post/how-to-setup-rpi-docker-swarm/
+
+
+## Mesosphere
+https://mesosphere.com/
+
+## Mesos on arm
+https://github.com/lyda/mesos-on-arm
+
+## Mesosphere 101 steps
+https://dcos.io/docs/1.8/usage/tutorials/dcos-101/app1/
+
+https://www.voxxed.com/blog/2016/05/docker-container-using-apache-mesos-and-marathon/
+
+
+## Comparação entre as plataformas
+http://rancher.com/rancheros-0-2-introduces-support-for-upgrades/
+http://cdn2.hubspot.net/hubfs/468859/Comparing%20Rancher%20Orchestration%20Engine%20Options.pdf?t=1493831697566
+
+
+## Docker
+http://www.mundodocker.com.br/
+https://training.docker.com/self-paced-training
+https://www.docker.com/products/docker-toolbox
+https://blog.docker.com/2016/07/swarm-mode-on-a-raspberry-pi-cluster/
+http://imasters.com.br/desenvolvimento/devops/troubleshooting-e-dicas-de-docker/
+http://imasters.com.br/desenvolvimento/devops-aproveitando-o-melhor-dele/?trace=1519021197&source
+http://imasters.com.br/infra/aprendendo-mais-sobre-docker-e-flannel/?trace=1519021197&source=main-menu
+http://www.mundodocker.com.br/page/7/
+http://www.mundodocker.com.br/docker-e-flannel/
+http://www.mundodocker.com.br/o-que-e-container/
+http://www.mundodocker.com.br/o-que-e-docker/
+http://www.docker.com/products/docker#/azure
+https://docs.docker.com/engine/installation/linux/ubuntulinux/
+https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/
+https://docs.docker.com/engine/userguide/
+https://medium.com/@bossjones/how-i-setup-a-raspberry-pi-3-cluster-using-the-new-docker-swarm-mode-in-29-minutes-aa0e4f3b1768#.w5mrgtrmg
+https://www.ctl.io/developers/blog/post/what-does-docker-1-0-mean-for-the-community/
+
+
+https://github.com/docker/docker - Github cheio de informações sobre o Docker - URGENTE olhar.
+
+
+##micro-service
+https://vimeo.com/94950270
+https://vimeo.com/85490944
+
+
+##facebook da empresa Rivendel Tecnologia.
+
+
+##Raspberry Pi
+
+http://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/
+
+
++ Download - Feitos
+
+  https://www.youtube.com/watch?v=i_r3z1jYHAc
+  https://www.youtube.com/watch?v=RohDs_tfWN0
+  https://www.youtube.com/watch?v=vflPGqcXJkY
+  https://www.youtube.com/watch?v=gldcPo0mgj0
+  https://www.youtube.com/watch?v=bBpKq3Y-E2g&t=20s
+
++ Prezi 
+
+  https://www.youtube.com/watch?v=zxQJyAt6ma4
+  https://www.youtube.com/watch?v=IaKRqBRq6CE
+  https://www.youtube.com/watch?v=i_r3z1jYHAc&t=13s
+  https://www.youtube.com/watch?v=W76o_iG7Y7g&t=281s
+  https://www.youtube.com/watch?v=RohDs_tfWN0&t=27s
+  https://www.youtube.com/watch?v=j_1JFnwOFwI
+
+
+##Referências
+
+https://www.docker.com/company
+https://www.ctl.io/developers/blog/post/what-does-docker-1-0-mean-for-the-community/
+
+https://hub.docker.com/explore/?page=2
+
+https://www.digitalocean.com/community/tutorials/the-docker-ecosystem-an-introduction-to-common-components
+
+http://www4.serpro.gov.br/wcge2010/artigos/Artigo-Fundamentos%20de%20Computacao%20Nuvem%20para%20Governos.pdf
+
+http://ppgi.ci.ufpb.br/wp-content/uploads/palestra-cloud-computing.pdf
+
+http://www.ppgccs.net/verdi/csbc_wcge10.pdf
+
+
+http://www.ppgia.pucpr.br/~jamhour/RSS/TCCRSS09A/Carlos%20Matheus%20Galvao%20-%20RSS09A.pdf
+
+
+http://www.cio.com/article/2431187/cloud-computing/the-case-against-cloud-computing--part-one.html
+
+http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf
+
+http://ftp.unipar.br/~seinpar/2013/artigos/Rogerio%20Schueroff%20Vandresen.pdf
+
+http://pt.slideshare.net/eduardomonteclaro/introduo-e-histria-da-computao-em-nuvem
+
+http://exame.abril.com.br/tecnologia/conheca-alguns-fatos-marcantes-da-historia-da-computacao-em-nuvem/
+
+
+https://www.google.com.br/search?sourceid=chrome-psyapi2&ion=1&ie=UTF-8&q=o%20que%20%C3%A9%20cloud%20computing%20pdf&oq=o%20que%20%C3%A9%20clound%20compu&aqs=chrome.5.69i57j0l5.6283j0j7&rct=j#q=hist%C3%B3ria+computacao+em+nuvem
+
+https://docs.google.com/presentation/d/1MboNp3nhs2IqwatojYPm1oXuftLn2igD5SFtaFKydzc/edit#slide=id.p
+
+http://www.cloudpeople.com.au/cloud-computing/
+
+http://www.forbes.com/sites/janakirammsv/2016/12/18/10-things-to-know-about-android-things-googles-latest-iot-device-os/#d2ba7923b5d1
+
+http://imasters.com.br/desenvolvimento/hello-world-com-raspberry-pi-3-usando-android-things/?trace=1519021197&source=search
+
+https://medium.com/@andyccs/webpack-and-docker-for-development-and-deployment-ae0e73243db4#.95bxxt7y0
+
+https://jhipster.github.io/setting-up-ci-jenkins2/
+
+
+## Casa do codigo
+https://alexandreesl.com/
+https://www.casadocodigo.com.br/products/livro-ferramentas-devops
+
+
+## Kubernets - Links para monografia
+https://imasters.com.br/desenvolvimento/devops/um-ambiente-simples-usando-kubernetes-e-openshift-next-gen-parte-01/
+
+ - Kubernets auto-scaling
+ - 
+https://www.linkedin.com/groups/2825397/2825397-6268703412028866563?midToken=AQEdt9q6y3UXsQ&trk=eml-b2_anet_digest_of_digests-group_discussions-24-discussion~subject&trkEmail=eml-b2_anet_digest_of_digests-group_discussions-24-discussion~subject-null-2e1yiz~j2orz6sc~5a-null-communities~group~discussion&lipi=urn%3Ali%3Apage%3Aemail_b2_anet_digest_of_digests%3BiSQXQazZSUGDNNEYsZ9Y4Q%3D%3D
+
+
+# Cluster
+https://ro14nd.de/kubernetes-on-raspberry-pi3
+
+
+## Netsil
+https://netsil.com/?utm_campaign=Single-Container%20Images&utm_source=hs_email&utm_medium=email&utm_content=50702905&_hsenc=p2ANqtz-_qGTdvtSWD708Abl56mshVNv9E9OXofCa_oLSHRZy06zmsDUEcPH0k6_0xN4Z6VdT7k6h2AqUmgXWE-xqnasRDxQvh9396lei8sXQ1ERUch_RqNXo&_hsmi=50702905
+
+
+##Ler 
+
+http://3way.com.br/saiba-como-a-virtualizacao-por-container-mudou-a-infraestrutura-de-ti/
+http://3way.com.br/saiba-como-a-virtualizacao-por-container-mudou-a-infraestrutura-de-ti/
+https://imasters.com.br/infra/seguranca/como-trabalhar-com-secrets-no-docker-1-13-x/
+https://imasters.com.br/noticia/docker-lanca-pacote-corporativo-docker-enterprise-edition/
+https://imasters.com.br/desenvolvimento/devops/processando-um-e-mail-sender-em-um-docker-na-aws/
+https://imasters.com.br/noticia/google-leva-seu-framework-grpc-para-cloud-native-computing-foundation/
+
+
+## Rafael Gomes, Docker
+
+https://medium.com/@gomex/
+https://github.com/gomex/docker-para-desenvolvedores
+https://soundcloud.com/instructbr/lightning-talk-4-desafios-do-docker-em-producao
+
+
+## Orquestrador
+# Rancher
+http://rancher.com/rancher-os/
+
+# Kubernets
+https://kubernetes.io/
+
+### Deploy com aplicação npm, mais é para observar as informações de configuração do jenkins
+https://codeforgeek.com/2016/04/continuous-integration-deployment-jenkins-node-js/
+
+http://yeghishe.github.io/2015/08/14/continuous-integration-for-node-projects.html
+
+https://medium.com/@andyccs/webpack-and-docker-for-development-and-deployment-ae0e73243db4#.95bxxt7y0
+
+https://github.com/Kozea/wdb
+
+
+## Gerenciador de container para Mac
+https://getcaptain.co/
+
+## olhar as configurações do projeto - 
+https://github.com/HorizonteNovasMidias/devops-configs
+tem várias configurações do Docker pra cada projeto e ver os containers criados pelo Gustavo.
+
+## Docker com Rails
+https://blog.codeship.com/running-rails-development-environment-docker/
+
+## Ferramenta de monitoramento do MySQL
+https://www.webyog.com/product/monyog
+
+
+###
+
+*** Páginas Importantes para monografia - 
+
+http://getawesomeness.herokuapp.com/get/docker#what-is-docker
+https://docs.docker.com/engine/docker-overview/
+https://github.com/wsargent/docker-cheat-sheet
+
+https://gist.github.com/blacktm/8302741
+
+###
+
+“Um canivete suiço chamado Docker” @gmandrade21 
+
+https://medium.com/gandrade21/um-canivete-sui%C3%A7o-chamado-docker-5cff084bb637
+
+
+“Como escalonar containers em um cluster?” @gmandrade21 
+
+https://medium.com/gandrade21/como-escalonar-containers-em-um-cluster-da125da56351
+
+###
+
+PaaS olhar
+
+** Olhar esta monografia com as informações do Tsuru
+
+http://www.pel.uerj.br/bancodissertacoes/Dissertacao_Leopoldo_Mauricio.pdf
+
+###
+
+*** Modelo de Documento SW - implementar
+
+https://www.icloud.com/pages/0tUNLiir3wWSPQLaOOKZE3Udw#ReqDoc
+
+###
+
+Livro Dev Ops
+
+https://www.upguard.com/ebooks/devops-pushes-agile-to-it-limits?utm_campaign=2017-Q2-D&utm_source=linkedin&utm_medium=social&utm_content=JavaDeveloperNetwork&utm_week=19
+
+###
+
+*** Monografia Cluster hypriot
+
+https://blog.hypriot.com/post/high-availability-with-docker/
+https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+https://blog.hypriot.com/post/how-to-get-docker-working-on-your-favourite-arm-board-with-hypriotos/
+https://blog.hypriot.com/post/getting-docker-running-on-a-highend-arm-gaming-console-for-fun-and-profit/
+
+https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/
+
+https://blog.hypriot.com/getting-started-with-docker-and-mac-on-the-raspberry-pi/
+
+https://blog.hypriot.com/getting-started-with-docker-on-your-arm-device/
+
+###
+
+*** Cluster com o Docker
+
+http://eueung.github.io/docker-stuff/cluster/#6
+https://www.slideshare.net/e2m/raspberry-pi-swarm-cluster
+https://medium.com/google-cloud/everything-you-need-to-know-about-the-kubernetes-raspberry-pi-cluster-2a2413bfa0fa
+http://blog.kubernetes.io/2015/11/creating-a-Raspberry-Pi-cluster-running-Kubernetes-the-shopping-list-Part-1.html
+
+###
+
+https://www.one-tab.com/page/0OOOxJYFSJa0aRneLN-fAQ
+https://www.digitalocean.com/community/tutorials/o-ecossistema-do-docker-uma-visao-geral-da-conteinerizacao-pt
+
+http://blog.alexellis.io/5-things-docker-rpi/
+https://blog.alexellis.io/live-deep-dive-pi-swarm/
+
+https://www.one-tab.com/page/lZIdXftpRS6k6N6BwjXywg
+
+https://www.one-tab.com/page/D2ztRCrgRWyF-TZDcWVMCw
+
+https://www.one-tab.com/page/90ix_zBKTUqItUZBTPjvSQ
+
+https://www.one-tab.com/page/vmLQPe8CQR2uGomtrix3Zg
+
+https://www.one-tab.com/page/kDRmG6opQvSSLlsjkarRMg
+
+https://www.one-tab.com/page/eIyLj64XQDq3GhZdexGJLQ
+
+https://www.one-tab.com/page/yZG_uyTHRCScGndinYZk0w
+
+https://www.one-tab.com/page/UiXMWZ37RKmVbWva0WuDOg
+
+https://www.one-tab.com/page/2bknAi5uSoeyXZ8hBp41SA
+
+http://imasters.com.br/desenvolvimento/hello-world-com-raspberry-pi-3-usando-android-things/?trace=1519021197&source=search
+
+https://www.one-tab.com/page/hqTrZpOZRKuMTTP32N0XhQ
+
+###
+
+
+*** Rasperypi
+
+https://www.youtube.com/watch?v=ZYPATphfGY4
+
+###
+
+*** 12 fatores
+
+http://12factor.net/pt_br
+
+###
+
+Pesquisar monografia
+
+Flyn
+Vagran
+Tsuru
+Heroku
+
+### End
+
+** Comandos do RancherOS
+
+docker-machine create -d virtualbox --virtualbox-boot2docker-url /Users/tcruz/Developer/Docker_Project/Imagens_plataformas/rancheros.iso rancheros
+
+docker-machine env rancheros
+eval $(docker-machine env rancheros)
+docker-machine ssh rancheros
+
+### End
+
+https://www.google.com.br/search?q=ruby-rvm+arm+docker&oq=ruby-rvm+arm+docker&gs_l=psy-ab.3...2514.3486.0.3621.7.7.0.0.0.0.103.664.4j3.7.0....0...1.1.64.psy-ab..0.5.484...33i160k1j33i21k1.XBc7_olrrzI
+
+https://gist.github.com/konklone/6662393
+
+https://medium.com/@giovannicapuano/docker-debian-rvm-sinatra-845174bb2761
+
+
+https://github.com/rvm/rvm/issues/3581
+https://github.com/rvm/rvm/issues/3145
+https://github.com/rvm/rvm/issues?page=2&q=is%3Aissue+is%3Aopen
+
+### End
+
+Emulador do Rapbian - 
+https://www.pcsteps.com/1199-raspberry-pi-emulation-for-windows-qemu/
+https://www.qemu.org/download/
+
+### End
+
+* AWS Estudo - Container
+
+https://aws.amazon.com/pt/documentation/
+https://aws.amazon.com/pt/getting-started/tutorials/
+https://ca-central-1.console.aws.amazon.com/ecs/home?region=ca-central-1#/getStarted
+
+http://docs.aws.amazon.com/pt_br/AmazonECS/latest/developerguide/Welcome.html
+
+https://www.youtube.com/watch?v=zBqjh61QcB4
+
+### End
+
+* Livro Dev Ops
+https://www.upguard.com/ebooks/devops-pushes-agile-to-it-limits?utm_campaign=2017-Q2-D&utm_source=linkedin&utm_medium=social&utm_content=JavaDeveloperNetwork&utm_week=19
+
+</pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################################################################################################################################################################
 ## Configuracoes de Rede
 
 db:
