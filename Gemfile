@@ -64,6 +64,9 @@ gem 'rest-client'
 # https://github.com/mperham/sidekiq
 gem 'sidekiq'
 
+# Newrelic
+gem 'newrelic_rpm'
+
 # Admin interface Gem
 gem 'remotipart', '~> 1.2'
 gem 'rails_admin', '~> 1.1.1'
