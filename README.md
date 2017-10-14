@@ -125,10 +125,7 @@ iface wlan0 inet dhcp
 
 
 
-
-
-
-	## Other oficiais documentations
+## Other oficiais documentations
        * Docker Swarm V3
        https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
 
