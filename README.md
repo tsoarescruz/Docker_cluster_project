@@ -121,62 +121,70 @@ iface wlan0 inet dhcp
     http://getawesomeness.herokuapp.com/get/docker#what-is-docker
     https://www.docker.com/what-docker
 
-   * Docker Swarm V3
-   https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
-
-   * Heroku Pipeline
-   https://www.heroku.com/
-
-   * Clond Computing
-   http://cloudcomputing.sys-con.com/node/4121976
-
-   * Hypriot
-   https://twitter.com/stefscherer?lang=en
-   https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/
-   https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/
-   https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
-   https://blog.hypriot.com/downloads/
-   https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
-   https://github.com/hypriot/flash
-
-   * Docker Docs
-   https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/
-   https://docs.docker.com/engine/swarm/
-   https://docs.docker.com/engine/reference/builder/#healthcheck
-
-     * Youtube
-     DEEC
-     https://www.youtube.com/watch?v=M8uthk7k_2U&t=485s
-
-     Visualizer
-     https://www.youtube.com/watch?v=nK3fK-raLuw&t=178s
-
-   * Docker Hub
-     * Swarm
-     https://hub.docker.com/_/swarm/
-
-   * Github
-     * Swarm
-     https://github.com/docker/swarm
-
-     * Kubernets
-     https://github.com/luxas/kubernetes-on-arm
-     https://github.com/kubernetes/dashboard#kubernetes-dashboard
 
 
-   * Kubernets
-   https://kubernetes.io/
-   https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-intro/
-   https://github.com/kubernetes/dashboard#kubernetes-dashboard
-      * Youtube
-      https://www.youtube.com/watch?time_continue=111&v=of45hYbkIZs
 
-  * Mundo Docker
-   https://www.mundodocker.com.br/docker-swarm-pratica/
 
-  * Blogs
-  http://blog.terranillius.com/post/composev3_swarm/
-  https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
+
+
+
+	## Other oficiais documentations
+       * Docker Swarm V3
+       https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
+
+       * Heroku Pipeline
+       https://www.heroku.com/
+
+       * Clond Computing
+       http://cloudcomputing.sys-con.com/node/4121976
+
+       * Hypriot
+       https://twitter.com/stefscherer?lang=en
+       https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/
+       https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/
+       https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+       https://blog.hypriot.com/downloads/
+       https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+       https://github.com/hypriot/flash
+
+       * Docker Docs
+       https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/
+       https://docs.docker.com/engine/swarm/
+       https://docs.docker.com/engine/reference/builder/#healthcheck
+
+         * Youtube
+         DEEC
+         https://www.youtube.com/watch?v=M8uthk7k_2U&t=485s
+
+         Visualizer
+         https://www.youtube.com/watch?v=nK3fK-raLuw&t=178s
+
+       * Docker Hub
+         * Swarm
+         https://hub.docker.com/_/swarm/
+
+       * Github
+         * Swarm
+         https://github.com/docker/swarm
+
+         * Kubernets
+         https://github.com/luxas/kubernetes-on-arm
+         https://github.com/kubernetes/dashboard#kubernetes-dashboard
+
+
+       * Kubernets
+       https://kubernetes.io/
+       https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-intro/
+       https://github.com/kubernetes/dashboard#kubernetes-dashboard
+          * Youtube
+          https://www.youtube.com/watch?time_continue=111&v=of45hYbkIZs
+
+      * Mundo Docker
+       https://www.mundodocker.com.br/docker-swarm-pratica/
+
+      * Blogs
+      http://blog.terranillius.com/post/composev3_swarm/
+      https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
 
 </pre>
 <h3>*Git Config </h3>
