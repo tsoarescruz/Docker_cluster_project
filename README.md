@@ -95,6 +95,32 @@ iface wlan0 inet dhcp
 <h3>* Other suport documents: </h3>
 <pre>
 
+   ## Docker
+    http://www.mundodocker.com.br/
+    https://training.docker.com/self-paced-training
+    https://www.docker.com/products/docker-toolbox
+    https://blog.docker.com/2016/07/swarm-mode-on-a-raspberry-pi-cluster/
+    http://imasters.com.br/desenvolvimento/devops/troubleshooting-e-dicas-de-docker/
+    http://imasters.com.br/desenvolvimento/devops-aproveitando-o-melhor-dele/?trace=1519021197&source
+    http://imasters.com.br/infra/aprendendo-mais-sobre-docker-e-flannel/?trace=1519021197&source=main-menu
+    http://www.mundodocker.com.br/page/7/
+    http://www.mundodocker.com.br/docker-e-flannel/
+    http://www.mundodocker.com.br/o-que-e-container/
+    http://www.mundodocker.com.br/o-que-e-docker/
+    http://www.docker.com/products/docker#/azure
+    https://docs.docker.com/engine/installation/linux/ubuntulinux/
+    https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/
+    https://docs.docker.com/engine/userguide/
+    https://medium.com/@bossjones/how-i-setup-a-raspberry-pi-3-cluster-using-the-new-docker-swarm-mode-in-29-minutes-aa0e4f3b1768#.w5mrgtrmg
+    https://www.ctl.io/developers/blog/post/what-does-docker-1-0-mean-for-the-community/
+
+    ## docker-cheat-sheet
+    https://github.com/wsargent/docker-cheat-sheet
+
+    ## what-is-docker
+    http://getawesomeness.herokuapp.com/get/docker#what-is-docker
+    https://www.docker.com/what-docker
+
    * Docker Swarm V3
    https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
 
