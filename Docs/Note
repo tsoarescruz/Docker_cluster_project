@@ -1,3 +1,7 @@
+Tab de Pesquisa
+
+https://www.one-tab.com/page/p45J2RsfTi6k9NXzsMPu2Q
+
 <h3>* Keep Notes </h3>
 <pre>
 https://codefresh.io/?utm_medium=FBAd&utm_campaign=FacebookRetargetingCI&utm_source=facebook-ads
@@ -127,9 +131,6 @@ docker-machine env rancheros
 eval $(docker-machine env rancheros)
 docker-machine ssh rancheros
 
-
-** Limpar Volume
-docker volume rm $(docker volume ls -qf dangling=true)
 
 * Rodar um container diretamente
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
