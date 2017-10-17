@@ -67,7 +67,7 @@ iface wlan0 inet dhcp
 </pre>
 
 <h2> Arm Raspberry Docker compose V2 </h2>
-##### [Acessando o changelog](../master/CHANGELOG.md)
+[Acessando o changelog](../master/CHANGELOG.md)
 
 <h2> Arm Raspberry Docker compose V3 </h2>
 [ARM V3](../master/arm_linux/docker-compose_3_version.yml)
