@@ -3,8 +3,7 @@
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
-* Ruby version
-
+ 
 <h2>* System dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
@@ -12,6 +11,11 @@ For this project was necessary this software do manangement docker containers:
 <pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
 <h4>Swarm Visualizer</h4>
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
+
+<h4>Ruby</h4>
+* Ruby version
+ - 2.33
+
 
 <h2>* ARM - Raspberrypi Configuration </h2>
 <h4>* Network configuration</h4>
