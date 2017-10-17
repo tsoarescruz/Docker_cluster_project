@@ -70,18 +70,17 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 </pre>
 
-<h2> ARM Raspberry Docker compose V2 </h2>[ARM Docker Compose V2](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/docker-compose.yml)
+<h2> ARM Raspberry Docker compose V2 </h2>[ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)
 
-<h2> ARM Raspberry Docker compose V3 </h2>[ARM Docker Compose V3](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/docker-compose_3_version.yml)
+<h2> ARM Raspberry Docker compose V3 </h2>[ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)
 
-<h2> ARM Raspberry Docker File</h2>[Docker File](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/Dockerfile)
-
-
+<h2> ARM Raspberry Docker File</h2>[Docker File](../blob/master/arm_linux/Dockerfile)
 
 <h2> Software Configuration</h2>
 <h3>* Database creation</h3>
 <h4>* Command with read database config inside the project:</h4>
-<pre>bundle exec rails db:reset -> drop + create + migrate + seed</pre>
+<pre>bundle exec rails db:reset
+Description: drop + create + migrate + seed </pre>
 
 * Database initialization
 * Services (job queues, cache servers, search engines, etc.)
