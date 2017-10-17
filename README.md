@@ -96,6 +96,16 @@ iface wlan0 inet dhcp
 <h4>* Commit docker images for DockerHub</h4>
 <pre>docker push --disable-content-trust tsoarescruz/phalanx:phalanx_db</pre>
 
+<h2>*Git Repository Config </h2>
+<h4>* Add git config fot a terminal</h4>
+<pre>
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
+</pre>
+<h4>* Add ssh key to git</h4>
+<pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
+
+
 <h2>* Other suport documents: </h2>
 <pre>
 
@@ -188,15 +198,6 @@ iface wlan0 inet dhcp
       https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
 
 </pre>
-<h2>*Git Repository Config </h2>
- <h4>* Add git config fot a terminal</h4>
-<pre>
-git config --global user.name "Your Name"
-git config --global user.email "youremail@domain.com"
-
-</pre>
-<h4>* Add ssh key to git</h4>
-<pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
 
 
 Last update:
