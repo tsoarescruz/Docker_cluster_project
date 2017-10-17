@@ -69,7 +69,7 @@ iface wlan0 inet dhcp
 <h2> Arm Raspberry Docker compose V2 </h2>
 [ARM V2](../blob/master/arm_linux/docker-compose.yml)
 
-##### [Acessando o changelog](../blob/master/arm_linux/docker-compose.yml)
+##### [Acessando o docker-compose V2](../master/arm_linux/docker-compose.yml)
 
 <h2> Arm Raspberry Docker compose V3 </h2>
 [ARM V3](../master/arm_linux/docker-compose_3_version.yml)
@@ -87,9 +87,9 @@ iface wlan0 inet dhcp
 
 <h3>* Main Docker commands </h3>
 <h4>* Exec command inside container directly</h4>
-```bash
+<pre>
 docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
-```
+</pre>
 <h4>* Clean Volume</h4>
 <pre>docker volume rm $(docker volume ls -qf dangling=true)</pre>
 <h4>* Inspect Container</h4>
