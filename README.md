@@ -66,12 +66,12 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 </pre>
 
-<h2> Arm Raspberry Docker compose V2 </h2>
-[Acessando o changelog](../blob/master/CHANGELOG.md)
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
+<h2> ARM Raspberry Docker compose V2 </h2>[ARM Docker Compose V2](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/docker-compose.yml)
 
-<h2> Arm Raspberry Docker compose V3 </h2>
-[ARM V3](../blob/master/arm_linux/docker-compose_3_version.yml)
+<h2> ARM Raspberry Docker compose V3 </h2>[ARM Docker Compose V3](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/docker-compose_3_version.yml)
+
+<h2> ARM Raspberry Docker File</h2>[Docker File](https://github.com/tsoarescruz/phalanx/blob/master/arm_linux/Dockerfile)
+
 
 
 <h2> Software Configuration</h2>
@@ -114,6 +114,12 @@ git config --global user.email "youremail@domain.com"
 </pre>
 <h4>* Add ssh key to git</h4>
 <pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
+
+
+<h2>Docker Compose V2</h2>[Docker Compose V2](../master/docker-compose.yml)
+
+<h2>Docker File</h2>[Docker File](https://github.com/tsoarescruz/phalanx/blob/master/Dockerfile)
+
 
 
 <h2>* Other suport documents: </h2>
