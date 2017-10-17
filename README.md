@@ -5,7 +5,7 @@ This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 * Ruby version
 
-<h3>* System dependencies</h3>
+<h2>* System dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
 <h4>Portainer</h4>
@@ -13,7 +13,6 @@ For this project was necessary this software do manangement docker containers:
 <h4>Swarm Visualizer</h4>
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
 
-<h3>* Configuration</h3>
 <h2>* ARM - Raspberrypi Configuration </h2>
 <h4>* Network configuration</h4>
 <pre>
@@ -35,7 +34,7 @@ iface wlan0 inet static
 <pre>/etc/init.d/networking restart</pre>
 
 <h3>* Network configuration when reboot Raspberrypi </h3>
-<h4>Network configuration to rc.local level to wlan0 up when reboot Raspberrypi</h4>
+<h4>* Network configuration to rc.local level to wlan0 up when reboot Raspberrypi</h4>
 Dir: /etc/rc.local
 
 <pre>
@@ -97,7 +96,7 @@ iface wlan0 inet dhcp
 <h4>* Commit docker images for DockerHub</h4>
 <pre>docker push --disable-content-trust tsoarescruz/phalanx:phalanx_db</pre>
 
-<h3>* Other suport documents: </h3>
+<h2>* Other suport documents: </h2>
 <pre>
 
    ## Docker
@@ -189,7 +188,7 @@ iface wlan0 inet dhcp
       https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
 
 </pre>
-<h3>*Git Repository Config </h3>
+<h2>*Git Repository Config </h2>
  <h4>* Add git config fot a terminal</h4>
 <pre>
 git config --global user.name "Your Name"
@@ -198,3 +197,7 @@ git config --global user.email "youremail@domain.com"
 </pre>
 <h4>* Add ssh key to git</h4>
 <pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
+
+
+Last update:
+created by: Thiago Soares
