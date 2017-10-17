@@ -85,7 +85,7 @@ iface wlan0 inet dhcp
 <h3>* Main Docker commands </h3>
 <h4>* Exec command inside container directly</h4>
 ```bash
-docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
+	docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 ```
 <h4>* Clean Volume</h4>
 <pre>docker volume rm $(docker volume ls -qf dangling=true)</pre>
