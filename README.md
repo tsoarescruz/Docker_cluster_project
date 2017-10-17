@@ -14,7 +14,7 @@ For this project was necessary this software do manangement docker containers:
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
 
 <h3>* Configuration</h3>
-<h3>* ARM - Raspberrypi Configuration </h3>
+<h2>* ARM - Raspberrypi Configuration </h2>
 <h4>* Network configuration</h4>
 <pre>
 Dir: /etc/network/
@@ -67,6 +67,7 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 </pre>
 
+<h2> Software Configuration</h2>
 <h3>* Database creation</h3>
 <h4>* Command with read database config inside the project:</h4>
 <pre>bundle exec rails db:reset -> drop + create + migrate + seed</pre>
@@ -188,7 +189,7 @@ iface wlan0 inet dhcp
       https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
 
 </pre>
-<h3>*Git Config </h3>
+<h3>*Git Repository Config </h3>
  <h4>* Add git config fot a terminal</h4>
 <pre>
 git config --global user.name "Your Name"
