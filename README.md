@@ -119,10 +119,9 @@ git config --global user.email "youremail@domain.com"
 <pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
 
 
-<h2>Docker Compose V2</h2>[Docker Compose V2](../master/docker-compose.yml)
+<h2>Docker Compose V2</h2>[Docker Compose V2](../blob/master/docker-compose.yml)
 
-<h2>Docker File</h2>[Docker File](https://github.com/tsoarescruz/phalanx/blob/master/Dockerfile)
-
+<h2>Docker File</h2>[Docker File](../blob/master/Dockerfile)
 
 
 <h2>* Other suport documents: </h2>
