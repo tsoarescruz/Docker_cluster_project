@@ -12,7 +12,9 @@ For this project was necessary this software do manangement docker containers:
 <pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
 <h4>Swarm Visualizer</h4>
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
+
 <h3>* Configuration</h3>
+<h3>* ARM - Raspberrypi Configuration </h3>
 <h4>* Network configuration</h4>
 <pre>
 Dir: /etc/network/
@@ -32,7 +34,8 @@ iface wlan0 inet static
 <h4>* Command to restart network</h4>
 <pre>/etc/init.d/networking restart</pre>
 
-<h4>* Network configuration to rc.local level to wlan0 up when reboot Raspberrypi </h4>
+<h3>* Network configuration when reboot Raspberrypi </h3>
+<h4>Network configuration to rc.local level to wlan0 up when reboot Raspberrypi</h4>
 Dir: /etc/rc.local
 
 <pre>
@@ -54,6 +57,7 @@ iface wlan0 up
 exit 0
 </pre>
 
+<h3>* Network configuration to able dhcp when reboot Raspberrypi</h3>
 <h4>* Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi</h4>
 Dir: /etc/network/interfaces.d/eth0
 <pre>
