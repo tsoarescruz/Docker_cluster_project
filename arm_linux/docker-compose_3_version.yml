@@ -20,6 +20,10 @@ services:
 
   redis:
     image: hypriot/rpi-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - "/home/docker/data:/data"
     networks:
       - phalanx_app
     deploy:
@@ -47,10 +51,6 @@ services:
     depends_on:
           - db
           - redis
-
-
-
-
     networks:
       - phalanx_app
 
@@ -104,7 +104,7 @@ services:
     image: phalanx_worker
     command: bash -lc 'bundler exec sidekiq'
     ports:
-       - 3003  
+       - 3003:3003  
     networks:
       phalanx_app:
         aliases:
@@ -118,7 +118,7 @@ services:
   viz:
      image: alexellis2/visualizer-arm
      ports: 
-       - 8081
+       - 8081:8081
      deploy:
        placement:
          constraints: [node.role == worker]
