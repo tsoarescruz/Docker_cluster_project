@@ -61,7 +61,7 @@ EXPOSE 80 300 9000
 # Save timestamp of image building
 RUN date -u > BUILD_TIME
 
-ADD /docker/host /etc/hosts
+#ADD /docker/host /etc/hosts
 
 # Start up
 #CMD "docker/startup.sh"
