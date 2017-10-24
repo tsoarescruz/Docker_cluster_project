@@ -70,9 +70,11 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 </pre>
 
-<h2> ARM Raspberry Docker compose V2 </h2>[ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)
+<h2> ARM Raspberry Docker compose V2 </h2>
+<bash>[ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)</bash>
 
-<h2> ARM Raspberry Docker compose V3 </h2>[ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)
+<h2> ARM Raspberry Docker compose V3 </h2>
+<bash>[ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)</bash>
 
 <h2> ARM Raspberry Docker File</h2>[Docker File](../blob/master/arm_linux/Dockerfile)
 
@@ -116,7 +118,7 @@ git config --global user.name "Your Name"
 git config --global user.email "youremail@domain.com"
 </pre>
 <h4>* Add ssh key to git</h4>
-<pre>"https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/"</pre>
+<bash>https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</bash>
 
 
 <h2>Docker Compose V2</h2>[Docker Compose V2](../blob/master/docker-compose.yml)
