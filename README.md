@@ -73,7 +73,7 @@ iface wlan0 inet dhcp
 <h2>ARM Raspberry Docker compose V2</h2>
 [ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)
 
-<h2> ARM Raspberry Docker compose V3</h2>
+<h2>ARM Raspberry Docker compose V3</h2>
 [ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)
 
 <h2>ARM Raspberry Docker File</h2>
@@ -81,14 +81,15 @@ iface wlan0 inet dhcp
 
 <h2>Necessary Configuration</h2>
 In Dir: 
-phalanx/arm_linux
-Execute:
+<pre>~/Docker_project/phalanx/arm_linux</pre>
+
+<h4>Execute:</h4>
+
+<h4>Copy the ARM Dockerfile to project home</h4>
 <pre>cp Dockerfile ~/Docker_project/phalanx</pre>
-
-And
-
+<h4>And</h4>
+<h4>Copy the ARM Docker-compose to project home</h4>
 <pre>cp docker-compose.yml ~/Docker_project/phalanx/</pre>
-
 
 <h2> Software Configuration</h2>
 <h3>* Database creation</h3>
