@@ -17,7 +17,7 @@ For this project was necessary this software do manangement docker containers:
  - 2.33
 
 
-<h2>* ARM - Raspberrypi Configuration </h2>
+<h2>* ARM - Raspberrypi Configuration</h2>
 <h4>* Network configuration</h4>
 <pre>
 Dir: /etc/network/
@@ -70,13 +70,25 @@ allow-hotplug wlan0
 iface wlan0 inet dhcp
 </pre>
 
-<h2> ARM Raspberry Docker compose V2 </h2>
-<bash>[ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)</bash>
+<h2>ARM Raspberry Docker compose V2</h2>
+[ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)
 
-<h2> ARM Raspberry Docker compose V3 </h2>
-<bash>[ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)</bash>
+<h2> ARM Raspberry Docker compose V3</h2>
+[ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)
 
-<h2> ARM Raspberry Docker File</h2>[Docker File](../blob/master/arm_linux/Dockerfile)
+<h2>ARM Raspberry Docker File</h2>
+[Docker File](../blob/master/arm_linux/Dockerfile)
+
+<h2>Necessary Configuration</h2>
+In Dir: 
+phalanx/arm_linux
+Execute:
+<pre>cp Dockerfile ~/Docker_project/phalanx</pre>
+
+And
+
+<pre>cp docker-compose.yml ~/Docker_project/phalanx/</pre>
+
 
 <h2> Software Configuration</h2>
 <h3>* Database creation</h3>
