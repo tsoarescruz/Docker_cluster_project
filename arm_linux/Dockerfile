@@ -1,6 +1,5 @@
-#FROM hypriot/rpi-ruby:latest
 FROM resin/rpi-raspbian:jessie
-#FROM armhf/ubuntu
+
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install MySQL client
@@ -30,9 +29,7 @@ ADD sidekiq.pid /home/app/tmp/pids/
 ADD Gemfile /home/app/Gemfile
 ADD Gemfile.lock /home/app/Gemfile.lock
 
-###### Testes do RVM
-
-# install RVM, Ruby, and Bundler
+# Install RVM, Ruby, and Bundler
 RUN \curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN \curl -L http://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh"
@@ -60,4 +57,3 @@ RUN date -u > BUILD_TIME
 
 # Expose app port
 EXPOSE 80 3000
-
