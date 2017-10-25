@@ -1,3 +1,114 @@
+<h2>* Other suport documents: </h2>
+<pre>
+
+   ## Docker
+    http://www.mundodocker.com.br/
+    https://training.docker.com/self-paced-training
+    https://www.docker.com/products/docker-toolbox
+    https://blog.docker.com/2016/07/swarm-mode-on-a-raspberry-pi-cluster/
+    http://imasters.com.br/desenvolvimento/devops/troubleshooting-e-dicas-de-docker/
+    http://imasters.com.br/desenvolvimento/devops-aproveitando-o-melhor-dele/?trace=1519021197&source
+    http://imasters.com.br/infra/aprendendo-mais-sobre-docker-e-flannel/?trace=1519021197&source=main-menu
+    http://www.mundodocker.com.br/page/7/
+    http://www.mundodocker.com.br/docker-e-flannel/
+    http://www.mundodocker.com.br/o-que-e-container/
+    http://www.mundodocker.com.br/o-que-e-docker/
+    http://www.docker.com/products/docker#/azure
+    https://docs.docker.com/engine/installation/linux/ubuntulinux/
+    https://blog.docker.com/2016/06/docker-1-12-built-in-orchestration/
+    https://docs.docker.com/engine/userguide/
+    https://medium.com/@bossjones/how-i-setup-a-raspberry-pi-3-cluster-using-the-new-docker-swarm-mode-in-29-minutes-aa0e4f3b1768#.w5mrgtrmg
+    https://www.ctl.io/developers/blog/post/what-does-docker-1-0-mean-for-the-community/
+
+    ## docker-cheat-sheet
+    https://github.com/wsargent/docker-cheat-sheet
+
+    ## what-is-docker
+    http://getawesomeness.herokuapp.com/get/docker#what-is-docker
+    https://www.docker.com/what-docker
+
+
+
+
+
+## Other oficiais documentations
+       * Docker Swarm V3
+       https://codefresh.io/blog/deploy-docker-compose-v3-swarm-mode-cluster/
+
+       * Heroku Pipeline
+       https://www.heroku.com/
+
+       * Clond Computing
+       http://cloudcomputing.sys-con.com/node/4121976
+
+       * Hypriot
+       https://twitter.com/stefscherer?lang=en
+       https://blog.hypriot.com/post/swarm-machines-or-having-fun-with-docker-machine-and-the-new-docker-swarm-orchestration/
+       https://blog.hypriot.com/post/hypriotos-barbossa-for-raspberry-pi-3/
+       https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+       https://blog.hypriot.com/downloads/
+       https://blog.hypriot.com/post/setup-kubernetes-raspberry-pi-cluster/
+       https://github.com/hypriot/flash
+
+       * Docker Docs
+       https://blog.docker.com/2016/03/swarmweek-container-orchestration-docker-swarm/
+       https://docs.docker.com/engine/swarm/
+       https://docs.docker.com/engine/reference/builder/#healthcheck
+
+         * Youtube
+         DEEC
+         https://www.youtube.com/watch?v=M8uthk7k_2U&t=485s
+
+         Visualizer
+         https://www.youtube.com/watch?v=nK3fK-raLuw&t=178s
+
+       * Docker Hub
+         * Swarm
+         https://hub.docker.com/_/swarm/
+
+       * Github
+         * Swarm
+         https://github.com/docker/swarm
+
+         * Kubernets
+         https://github.com/luxas/kubernetes-on-arm
+         https://github.com/kubernetes/dashboard#kubernetes-dashboard
+
+
+       * Kubernets
+       https://kubernetes.io/
+       https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-intro/
+       https://github.com/kubernetes/dashboard#kubernetes-dashboard
+          * Youtube
+          https://www.youtube.com/watch?time_continue=111&v=of45hYbkIZs
+
+      * Mundo Docker
+       https://www.mundodocker.com.br/docker-swarm-pratica/
+
+      * Blogs
+      http://blog.terranillius.com/post/composev3_swarm/
+      https://github.com/mundodocker/exemplo-docker-compose/blob/master/docker-compose-v3.yml
+
+</pre>
+
+
+################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Tab de Pesquisa
 
 https://www.one-tab.com/page/p45J2RsfTi6k9NXzsMPu2Q
