@@ -139,5 +139,6 @@ git config --global user.email "youremail@domain.com"
 <h2>Docker File</h2>[Docker File](../blob/master/Dockerfile)
 
 
-Last update:
-created by: Thiago Soares
+
+<h2>Last update:</h2>
+<h2>Created by: Thiago Soares </h2>
