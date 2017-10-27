@@ -4,7 +4,6 @@ This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
  
-
 <h4>Ruby</h4>
 * Ruby version
  - 2.33
@@ -19,7 +18,7 @@ This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 <h3>* Database Configuration</h3>
 <h4>* Command create database, config inside the project:</h4>
-Dir: config > database.yml
+source-directory: config > database.yml
 
 <pre>
 default: &default
@@ -69,16 +68,18 @@ For this project was necessary this software do manangement docker containers:
 
 <h2>* ARM - Raspberrypi Configuration</h2>
 <h4>* Network configuration</h4>
-Dir: /etc/network/
-
+source-directory /etc/network/interfaces.d
 <pre>
+#auto wlan0
+
 allow-hotplug wlan0
-iface wlan0 inet static
-        address 192.168.1.20
-        netmask 255.255.255.0
-        network 192.168.0.0
-        gateway 192.168.0.1
-        wpa-ssid kaiphe
+iface wlan0 inet dhcp
+#static
+        #address 192.168.0.120
+        #netmask 255.255.255.0
+        #network 192.168.0.0
+        #gateway 192.168.0.1
+        wpa-ssid AndroidAP
         wpa-psk  ffffffffff
 </pre>
 
@@ -87,7 +88,7 @@ iface wlan0 inet static
 
 <h3>* Network configuration when reboot Raspberrypi </h3>
 <h4>* Network configuration to rc.local level to wlan0 up when reboot Raspberrypi</h4>
-Dir: /etc/rc.local
+source-directory: /etc/rc.local
 
 <pre>
 #!/bin/sh -e
@@ -110,7 +111,7 @@ exit 0
 
 <h3>* Network configuration to able dhcp when reboot Raspberrypi</h3>
 <h4>* Network configuration to able dhcp to eth0 and wlan0 up when reboot Raspberrypi</h4>
-Dir: /etc/network/interfaces.d/eth0
+source-directory: /etc/network/interfaces.d/eth0
 <pre>
 allow-hotplug eth0
 iface eth0 inet dhcp
@@ -128,7 +129,7 @@ iface wlan0 inet dhcp
 [Docker File](../blob/master/arm_linux/Dockerfile)
 
 <h2>Necessary Configuration</h2>
-In Dir: 
+In source-directory: 
 <pre>~/Docker_project/phalanx/arm_linux</pre>
 
 <h4>Execute:</h4>
@@ -174,7 +175,6 @@ git config --global user.email "youremail@domain.com"
 <h2>Docker Compose V2</h2>[Docker Compose V2](../blob/master/docker-compose.yml)
 
 <h2>Docker File</h2>[Docker File](../blob/master/Dockerfile)
-
 
 
 <h2>Last update:</h2>
