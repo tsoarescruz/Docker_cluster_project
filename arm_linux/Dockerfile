@@ -35,8 +35,6 @@ RUN \curl -L http://get.rvm.io | bash -s stable
 RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh"
 RUN /bin/bash -l -c "rvm install 2.3.3"
 RUN /bin/bash -l -c "gem install bundle --no-ri --no-rdoc"
-#RUN /bin/bash -l -c "apt-get install -y rubygems"
-#RUN /bin/bash -l -c "gem install rails"
 
 # Workdir
 #WORKDIR /home/app/
