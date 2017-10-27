@@ -19,17 +19,17 @@ This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
 <h3>* Database Configuration</h3>
 <h4>* Command create database, config inside the project:</h4>
+Dir: config > database.yml
+
 <pre>
 default: &default
   adapter: mysql2
   encoding: utf8
-  database: blog_development
   pool: 10
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-  db_name: phalanx-development
-
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 development:
   <<: *default
   database: phalanx-development
@@ -41,7 +41,6 @@ development:
 test:
   <<: *default
   database: phalanx-test
-
 
 production:
   <<: *default
@@ -70,11 +69,9 @@ For this project was necessary this software do manangement docker containers:
 
 <h2>* ARM - Raspberrypi Configuration</h2>
 <h4>* Network configuration</h4>
-<pre>
 Dir: /etc/network/
 
-HypriotOS/armv7: root@black-pearl in /etc/network
-
+<pre>
 allow-hotplug wlan0
 iface wlan0 inet static
         address 192.168.1.20
