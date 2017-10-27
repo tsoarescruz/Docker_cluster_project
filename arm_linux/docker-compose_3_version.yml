@@ -34,8 +34,6 @@ services:
   app: &app_base
 
     image: phalanx_app
-    #command: bash -lc 'rails g scaffold note title body:text'
-    #command: bash -lc 'rake db:reset' 
     command: bash -lc 'bundler exec rails s -b 0.0.0.0'
     volumes:
       - .:/www/phalanx/app
@@ -54,41 +52,40 @@ services:
     networks:
       - phalanx_app
 
-    # service deployment
+    #service deployment
     deploy:
       mode: replicated
       replicas: 1
       labels: [APP=PHALANX]
-      # service resource management
+      #service resource management
       resources:
-        # Hard limit - Docker does not allow to allocate more
+        #Hard limit - Docker does not allow to allocate more
         limits:
-          cpus: '0.25'
+          cpus: '2.25'
           memory: 512M
-        # Soft limit - Docker makes best effort to return to it
+        #Soft limit - Docker makes best effort to return to it
         reservations:
-          cpus: '0.25'
+          cpus: '1.25'
           memory: 256M
-      # service restart policy
+      #service restart policy
       restart_policy:
         condition: on-failure
-        delay: 5s
+        #delay: 5s
         max_attempts: 10
         window: 120s
-      # service update configuration
+      #service update configuration
       update_config:
         parallelism: 1
-        delay: 10s
+        delay: 5s
         failure_action: continue
-        monitor: 60s
+        monitor: 10s
         max_failure_ratio: 0.3
-      # placement constraint - in this case on 'worker' nodes only
+      #placement constraint - in this case on 'worker' nodes only
       placement:
         constraints: [node.role == manager]
     
   dockerui:
     image: portainer/portainer
-    #restart: always
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
     ports:
@@ -104,7 +101,7 @@ services:
     image: phalanx_worker
     command: bash -lc 'bundler exec sidekiq'
     ports:
-       - 3003:3003  
+       - 3003:3003
     networks:
       phalanx_app:
         aliases:
