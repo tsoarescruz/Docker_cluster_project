@@ -4,6 +4,61 @@ This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
  
+
+<h4>Ruby</h4>
+* Ruby version
+ - 2.33
+
+<h2> Software Configuration</h2>
+<h3>* Create Application</h3>
+<pre>rails new Phalanx</pre>
+
+<h3>* Database create</h3>
+<h4>* Command create database, config inside the project:</h4>
+<pre>rails db:create</pre>
+
+<h3>* Database Configuration</h3>
+<h4>* Command create database, config inside the project:</h4>
+<pre>
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  database: blog_development
+  pool: 10
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+  db_name: phalanx-development
+
+development:
+  <<: *default
+  database: phalanx-development
+
+#### Warning: The database defined as "test" will be erased and
+#### re-generated from your development database when you run "rake".
+#### Do not set this db to the same as development or production.
+
+test:
+  <<: *default
+  database: phalanx-test
+
+
+production:
+  <<: *default
+  database: phalanx-production
+
+</pre>
+
+<h3>* Database Seed configuration</h3>
+<h4>* Command with read database config inside the project:</h4>
+<pre>bundle exec rails db:reset
+Description: drop + create + migrate + seed </pre>
+
+
+* Services (job queues, cache servers, search engines, etc.)
+* Deployment instructions
+
+
 <h2>* System dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
@@ -11,10 +66,6 @@ For this project was necessary this software do manangement docker containers:
 <pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
 <h4>Swarm Visualizer</h4>
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
-
-<h4>Ruby</h4>
-* Ruby version
- - 2.33
 
 
 <h2>* ARM - Raspberrypi Configuration</h2>
@@ -90,17 +141,6 @@ In Dir:
 <h4>And</h4>
 <h4>Copy the ARM Docker-compose to project home</h4>
 <pre>cp docker-compose.yml ~/Docker_project/phalanx/</pre>
-
-<h2> Software Configuration</h2>
-<h3>* Database creation</h3>
-<h4>* Command with read database config inside the project:</h4>
-<pre>bundle exec rails db:reset
-Description: drop + create + migrate + seed </pre>
-
-* Database initialization
-* Services (job queues, cache servers, search engines, etc.)
-* Deployment instructions
-* Configuration
 
 <h3>* Main Docker commands </h3>
 <h4>* Exec command inside container directly</h4>
