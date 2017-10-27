@@ -176,6 +176,20 @@ git config --global user.email "youremail@domain.com"
 <bash>https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</bash>
 
 
+<h2>Docker Swarm</h2>
+<pre>
+docker swarm init
+Swarm initialized: current node (pl413mbkxs2erzys9jt1rqxrs) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join \
+    --token SWMTKN-1-6cle1zh7cbp90dvxjvf4kmxd359ovijaqglpxyt6ahfbf09fc9-3we1dfjb3ilmk8qu2gfi3tvay \
+    192.168.1.5:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+</pre>
+
 <h2>Docker Compose V2</h2>[Docker Compose V2](../blob/master/docker-compose.yml)
 
 <h2>Docker File</h2>[Docker File](../blob/master/Dockerfile)
