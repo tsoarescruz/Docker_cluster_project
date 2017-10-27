@@ -34,16 +34,19 @@ development:
   <<: *default
   database: phalanx-development
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+#### Warning: The database defined as "test" will be erased and
+#### re-generated from your development database when you run "rake".
+#### Do not set this db to the same as development or production.
+
 test:
   <<: *default
   database: phalanx-test
 
+
 production:
   <<: *default
   database: phalanx-production
+
 </pre>
 
 <h3>* Database Seed configuration</h3>
