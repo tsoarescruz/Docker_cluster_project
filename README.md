@@ -68,8 +68,12 @@ For this project was necessary this software do manangement docker containers:
 
 <h2>* ARM - Raspberrypi Configuration</h2>
 <h4>* Network configuration</h4>
-source-directory /etc/network/interfaces.d
+source-directory /etc/network/interfaces
 <pre>
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
 #auto wlan0
 
 allow-hotplug wlan0
