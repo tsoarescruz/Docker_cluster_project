@@ -3,7 +3,32 @@
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
 
- 
+
+<h4>Instalando no GNU/Linux</h4>
+
+A instalação do Docker é bem simples e de uma forma bem genérica, segue os comandos usados GNU/Linux
+
+<h3>Docker engine no GNU/Linux</h3>
+
+Para instalar o Docker engine é simples. No terminal do GNU/Linux é necessário se tornar usuário root:
+
+<pre>sudo su - root</pre>
+
+Execute o comando abaixo:
+
+<pre>wget -qO- https://get.docker.com/ | sh </pre>
+
+<h3>Instalando no MacOS</h3>
+
+A instalação do Docker no MacOS pode ser realizada através do brew*.
+
+Você pode instalar via brew cask com o comando abaixo:
+
+<pre>brew cask install docker</pre>
+
+ou é possível instalar o cliente pelo próprio site do Docker
+
+
 <h4>Ruby</h4>
 * Ruby version
  - 2.33
