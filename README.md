@@ -29,9 +29,13 @@ Você pode instalar via brew cask com o comando abaixo:
 ou é possível instalar o cliente pelo próprio site do Docker
 
 
-<h4>Ruby</h4>
+<h2>* System dependencies</h2>
+
 * Ruby version
  - 2.33
+
+* Sidekiq
+<pre>https://github.com/mperham/sidekiq</pre>
 
 <h2> Software Configuration</h2>
 <h3>* Create Application</h3>
@@ -82,13 +86,15 @@ Description: drop + create + migrate + seed </pre>
 * Deployment instructions
 
 
-<h2>* System dependencies</h2>
+<h2>* Docker dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
 <h4>Portainer</h4>
 <pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
 <h4>Swarm Visualizer</h4>
 <pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
+<h4>Redis</h4>
+<pre>https://hub.docker.com/_/redis/</pre>
 
 
 <h2>* ARM - Raspberrypi Configuration</h2>
