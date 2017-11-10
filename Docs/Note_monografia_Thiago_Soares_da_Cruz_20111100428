@@ -1,0 +1,125 @@
+1.	Precondições
+
+Como precondição é necessário que o usuário tenha efetuado o loggin no ao sistema, não há separação de perfil ou permissões no sistema para poder fazer ações de busca, cadastro, exportação ou inserções.
+Dados de Tag e Produtos, precisão estar cadastradas no sistema.
+
+
+2.	Fluxo Principal
+
+P1. Sistema solicita login
+P2. Ator informa login
+P3. Ator realiza a busca port tags
+P4. Ator informa o cadastro tag (A1)
+P5. Ator informa o produto associado a tag (A2)
+P6. Ator busca o produto (A3)
+P7. Ator informa a tag associada ao produto (A4)
+P8. Ator informa o grau de dificuldade
+P9. Sistema solicita da onde foi retirada a questão
+P10. Ator informa a origem da questão
+P11. Sistema solicita o loggin do usuário responsável pela questão
+P12. Ator informa o loggin do responsável
+P13. Sistema valida loggin do responsável (A1)
+P14. Sistema solicita a data de inserção da questão
+P15. Ator informa a data 
+P16. Sistema valida a data (A2)
+P17. Sistema solicita o tipo de questão
+P18. Ator informa o tipo de questão
+P19. Sistema solicita a questão
+P20. Ator informa a questão
+P21. Sistema solicita comentário
+P22. Ator informa comentário
+P23. Ator clica no botão salvar
+P24. Sistema valida todos os dados (A3)
+P25. Sistema cadastra a questão no banco de dados (E1)
+P26. Sistema exibe mensagem “Questão cadastrada com sucesso”
+
+
+
+
+3.	Fluxos Alternativos
+
+Esse fluxo alternativo ao passo 13 (P13).
+
+(A1) Loggin incorreto
+	A1.1 Sistema informa que loggin não existe;
+	A1.2 Volta para o passo 12.
+
+Esse fluxo alternativo ao passo 16 (P16).
+
+(A2) Data incorreta
+	A2.1 Sistema informa que a data está incorreta;
+	A2.2 Voltar ao passo 15 (P15).
+
+Esse fluxo alternativo ao passo 24 (P24).
+
+(A3) Dados Incorretos
+	A3.1 Sistema informa que possuí dados incorretos;
+	A3.2 Sistema realça os campos inválidos;
+A3.3 Voltar ao passo com erro.
+
+4.	Fluxos de Exceção
+
+Esse fluxo de exceção ao passo 25 (P25).
+
+(E1) Erro no cadastro da questão
+	E1.1 Sistema informa que não foi possível cadastrar questão no banco de dados
+	E1.2 Caso de uso encerrado
+
+5.	Pós-condições
+
+Nenhuma pós-condição identificada
+
+6.	Requisitos Não Funcionais
+
+Nenhum requisito não funcional identificado
+
+7.	Ponto de Extensão
+
+Nenhum ponto de extensão identificado
+
+8.	Frequência de Utilização
+
+Frequência Alta.
+Pois o caso de uso é a principal forma de inserção de dados na aplicação. Sendo bastante utilizado pelos perfis Professor e Coordenador.
+
+8.1. 	Componentes Utilizados 
+
+Utilizado a tecnologia Bootstrap para o front-end. Componentes utilizados: 
+
+1.	Bootstrap Label (class="label label-default")
+2.	Bootstrap Nav-bar fFxed to bottom (class="navbar navbar-default navbar-fixed-bottom")  
+3.	Bootstrap Input-Group (class="input-group-addon")
+4.	Bootstrap Nav-bar Button (class="btn btn-default navbar-btn")
+
+
+9.	Observações
+
+Nenhuma observação identificada
+
+10.	Referências
+
+Nenhuma observação identificada
+
+11.	Histórias do Usuário
+
+Como Professor/orientador,
+Quero cadastrar questões
+Para gerar uma prova.
+
+Cenário 1
+Dado que meu perfil permita cadastrar uma questão
+Quando eu entro no sistema
+E acesso a opção de cadastrar uma questão
+Então abre o formulário
+
+Cenário 2
+Dado que eu acesso o formulário de cadastrar questão
+Quando eu preencho todas as informações solicitadas pelo formulário 
+E eu clico no botão de salvar
+Então o sistema de devolver um pop-up informando que “a questão foi salva com sucesso”.
+
+Cenário 3
+Dado que eu acesso o formulário de cadastrar questão
+Quando eu preencho com as informações, mais deixo informações necessárias em branco
+E eu clico no botão de salvar
+Então o sistema de devolver um pop-up informando que “Favor preencher os campos requeridos”.
