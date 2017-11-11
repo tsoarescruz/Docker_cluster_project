@@ -184,6 +184,8 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 <pre>docker volume rm $(docker volume ls -qf dangling=true)</pre>
 <h4>* Inspect Container</h4>
 <pre>docker inspect phalanx_db_1</pre>
+<h4>* Docker remove stoped container</h4>
+<pre> docker container prune </pre>
 <h4>* Service visualizer bound host network with container network</h4>
 <pre>docker run -it -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock alexellis2/visualizer-arm</pre>
 <h4>* Create a docker swarm service</h4>
