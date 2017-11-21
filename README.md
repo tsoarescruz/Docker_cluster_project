@@ -101,9 +101,10 @@ For this project was necessary this software do manangement docker containers:
 [Redis Docker Hub](https://hub.docker.com/_/redis/)
 
 
-<h2>* ARM - Raspberrypi Configuration</h2>
+<h2>ARM - Raspberrypi Configuration</h2>
 <h4>* S.O Configuration</h4>
-For this project, the S.O used was obteined in:
+For this project, was used the S.O:
+
 [ARM Hypriot S.O](https://blog.hypriot.com/downloads/)
 
 <h4>* Network configuration</h4>
