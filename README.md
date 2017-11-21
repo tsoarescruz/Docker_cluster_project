@@ -1,14 +1,14 @@
 # README
 
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
-This documment references main steps to Docker - Swiss Army in  Rasperry Pi:
+This documment references main steps to Docker - Swiss Army in Rasperry Pi:
 
 
 <h4>Instalando no GNU/Linux</h4>
 
 A instalação do Docker é bem simples e de uma forma bem genérica, segue os comandos usados GNU/Linux
 
-<h3>Docker engine no GNU/Linux</h3>
+<h3>Docker Engine no GNU/Linux</h3>
 
 Para instalar o Docker engine é simples. No terminal do GNU/Linux é necessário se tornar usuário root:
 
@@ -26,16 +26,16 @@ Você pode instalar via brew cask com o comando abaixo:
 
 <pre>brew cask install docker</pre>
 
-ou é possível instalar o cliente pelo próprio site do Docker
+ou é possível instalar o cliente pelo próprio site do Docker, fazendo o download diretamente.
 
 
-<h2>* System dependencies</h2>
+<h2>System dependencies</h2>
 
 * Ruby version
  - 2.33
 
 * Sidekiq
-<pre>https://github.com/mperham/sidekiq</pre>
+[Sidekiq Github](https://github.com/mperham/sidekiq)
 
 <h2> Software Configuration</h2>
 <h3>* Create Application</h3>
@@ -77,27 +77,36 @@ production:
 </pre>
 
 <h3>* Database Seed configuration</h3>
+<h4>* Command with set database environmento to Rails Env project:</h4>
+<pre>bin/rails db:environment:set RAILS_ENV=development</pre>
+
 <h4>* Command with read database config inside the project:</h4>
 <pre>bundle exec rails db:reset
 Description: drop + create + migrate + seed </pre>
+
 
 
 * Services (job queues, cache servers, search engines, etc.)
 * Deployment instructions
 
 
-<h2>* Docker dependencies</h2>
+<h2>Docker dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
 <h4>Portainer</h4>
-<pre>https://portainer.readthedocs.io/en/latest/deployment.html</pre>
+[Portainer](https://portainer.readthedocs.io/en/latest/deployment.html)
 <h4>Swarm Visualizer</h4>
-<pre>https://github.com/ManoMarks/docker-swarm-visualizer</pre>
+[Swarm Visualizer](https://github.com/ManoMarks/docker-swarm-visualizer)
 <h4>Redis</h4>
-<pre>https://hub.docker.com/_/redis/</pre>
+[Redis Docker Hub](https://hub.docker.com/_/redis/)
 
 
 <h2>* ARM - Raspberrypi Configuration</h2>
+<h4>* S.O Configuration</h4>
+For this project, the S.O used was obteined in:
+[ARM Hypriot S.O](https://blog.hypriot.com/downloads/)
+</pre>
+
 <h4>* Network configuration</h4>
 source-directory /etc/network/interfaces
 <pre>
