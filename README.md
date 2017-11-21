@@ -105,7 +105,6 @@ For this project was necessary this software do manangement docker containers:
 <h4>* S.O Configuration</h4>
 For this project, the S.O used was obteined in:
 [ARM Hypriot S.O](https://blog.hypriot.com/downloads/)
-</pre>
 
 <h4>* Network configuration</h4>
 source-directory /etc/network/interfaces
