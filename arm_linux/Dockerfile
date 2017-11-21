@@ -2,28 +2,15 @@ FROM resin/rpi-raspbian:jessie
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
-# Install MySQL client
-RUN apt-get update -qq
-
-# Install Build essentials
-RUN apt-get update -yq 
-
-RUN apt-get install -y mysql-client build-essential ca-certificates curl build-essential \
+# Install Build essentials and MySQL client
+RUN apt-get update -qq && apt-get install -y mysql-client build-essential ca-certificates curl build-essential \
     libpq-dev nodejs nodejs-legacy mysql-server libmysqlclient-dev && \
     sudo apt-get autoremove -y && \
     sudo rm -rf /var/lib/apt/lists/*
 
-# Mkdir
-RUN mkdir -p /home/app
-
-# Workdir
-WORKDIR /home/app/
-
-#Add Docker path
-ADD docker /home/app/
-
-#Add sidekiq pid
-ADD sidekiq.pid /home/app/tmp/pids/
+# Set some config
+ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_ENV=development
 
 # ADD gems
 ADD Gemfile /home/app/Gemfile
@@ -36,8 +23,17 @@ RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh"
 RUN /bin/bash -l -c "rvm install 2.3.3"
 RUN /bin/bash -l -c "gem install bundle --no-ri --no-rdoc"
 
+# Mkdir
+RUN mkdir -p /home/app
+
 # Workdir
-#WORKDIR /home/app/
+WORKDIR /home/app/
+
+#Add Docker path
+ADD docker /home/app/
+
+#Add sidekiq pid
+ADD sidekiq.pid /home/app/tmp/pids/
 
 #Run bundle
 RUN /bin/bash -l -c "bundle install"
