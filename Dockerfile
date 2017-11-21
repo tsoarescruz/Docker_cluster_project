@@ -1,30 +1,18 @@
-FROM ledermann/base
 FROM ubuntu:12.04
 FROM ruby:2.3.3
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
-## Install Build essentials
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs-legacy mysql-client \
-libssl-dev apt-utils nodejs
-
-# Install MySQL client
-RUN apt-get update && \
-      apt-get -y install sudo
-
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
-
-#USER docker
-#RUN docker ALL = NOPASSWD: /sbin/poweroff, /sbin/start, /sbin/stop
-
-# Install MySQL client
-RUN sudo apt-get install -y mysql-client && \
+# Install Build essentials and MySQL client
+RUN apt-get update -qq && apt-get install -y sudo build-essential \
+    libpq-dev nodejs-legacy mysql-client \
+    libssl-dev apt-utils nodejs mysql-client && \
     sudo apt-get autoremove -y && \
     sudo rm -rf /var/lib/apt/lists/*
 
-
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_ENV=development
 
 # Mkdir
 RUN mkdir -p /home/app
