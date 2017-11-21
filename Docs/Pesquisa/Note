@@ -733,6 +733,9 @@ db:
 #bundle exec rails db:reset -> drop + create + migrate + seed
 #* db:rollback
 
+#Setar a variavel de ambiente para desenvolvimento
+bin/rails db:environment:set RAILS_ENV=development
+
 
 #networks:
 #  test:
