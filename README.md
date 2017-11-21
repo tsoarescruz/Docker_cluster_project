@@ -168,16 +168,18 @@ iface wlan0 inet dhcp
 </pre>
 
 <h2>ARM Raspberry Docker compose V2</h2>
+
 [ARM Docker Compose V2](../blob/master/arm_linux/docker-compose.yml)
 
 <h2>ARM Raspberry Docker compose V3</h2>
+
 [ARM Docker Compose V3](../blob/master/arm_linux/docker-compose_3_version.yml)
 
 <h2>ARM Raspberry Docker File</h2>
 [Docker File](../blob/master/arm_linux/Dockerfile)
 
 <h2>Necessary Configuration</h2>
-In source-directory: 
+In source-directory:
 <pre>~/Docker_project/phalanx/arm_linux</pre>
 
 <h4>Execute:</h4>
@@ -237,9 +239,13 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 <h4>* Docker stack deploy</h4>
 <pre>docker stack deploy --compose-file=docker-compose.yml Hydra</pre>
 
-<h2>Docker Compose V2</h2>[Docker Compose V2](../blob/master/docker-compose.yml)
+<h2>Docker Compose V2</h2>
 
-<h2>Docker File</h2>[Docker File](../blob/master/Dockerfile)
+[Docker Compose V2](../blob/master/docker-compose.yml)
+
+<h2>Docker File</h2>
+
+[Docker File](../blob/master/Dockerfile)
 
 
 <h2>Last update:</h2>
