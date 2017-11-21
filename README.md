@@ -35,6 +35,7 @@ ou é possível instalar o cliente pelo próprio site do Docker, fazendo o downl
  - 2.33
 
 * Sidekiq
+
 [Sidekiq Github](https://github.com/mperham/sidekiq)
 
 <h2> Software Configuration</h2>
@@ -94,10 +95,13 @@ Description: drop + create + migrate + seed </pre>
 
 For this project was necessary this software do manangement docker containers:
 <h4>Portainer</h4>
+
 [Portainer](https://portainer.readthedocs.io/en/latest/deployment.html)
 <h4>Swarm Visualizer</h4>
+
 [Swarm Visualizer](https://github.com/ManoMarks/docker-swarm-visualizer)
 <h4>Redis</h4>
+
 [Redis Docker Hub](https://hub.docker.com/_/redis/)
 
 
