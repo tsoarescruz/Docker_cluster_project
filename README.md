@@ -111,6 +111,12 @@ For this project, was used the S.O:
 
 [ARM Hypriot S.O](https://blog.hypriot.com/downloads/)
 
+
+And build the SD image with:
+
+
+[Etcher](https://etcher.io/)
+
 <h4>* Network configuration</h4>
 source-directory /etc/network/interfaces
 <pre>
@@ -242,7 +248,7 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 <h2>Docker Compose V2</h2>
 
-[Docker Compose V2](../master/docker-compose.yml)
+[Docker Compose V2](../blob/master/docker-compose.yml)
 
 <h2>Docker File</h2>
 
