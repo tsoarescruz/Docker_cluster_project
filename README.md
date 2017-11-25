@@ -213,7 +213,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 <h4>* Create a docker swarm service</h4>
 <pre>docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --rollback-delay 3s --workdir /myapp/ -p 8080:80 nginx:alpine</pre>
 <h4>* Docker exec command inside container</h4>
-<pre>docker exec phalanx_app_1 bundle update newrelic_rpm</pre>
+<pre>docker exec phalanx_app_1 bundle update sidekiq</pre>
 <h4>* Commit docker container for DockerHub</h4>
 <pre>docker commit 3542b2ce5459 tsoarescruz/phalanx:phalanx_db</pre>
 <h4>* Commit docker images for DockerHub</h4>
