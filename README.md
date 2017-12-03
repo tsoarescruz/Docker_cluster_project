@@ -301,7 +301,12 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 <h4>* Docker stack deploy</h4>
 
-<pre>docker stack deploy --compose-file=docker-compose.yml Hydra</pre>
+<pre>docker stack deploy --compose-file=docker-compose_3_version.yml Phalanx</pre>
+
+<h4>* Docker swarm service</h4>
+
+<pre>docker service ls</pre>
+
 
 <h2>Docker Compose V2</h2>
 
