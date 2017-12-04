@@ -256,7 +256,7 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 
 <h4>* Create a docker swarm service</h4>
 
-<pre>docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --rollback-delay 3s --workdir /myapp/ -p 8080:80 nginx:alpine</pre>
+<pre>docker service create --name web-nginx --replicas 4 --restart-max-attempts 3 --restart-window 5s --workdir /myapp/ -p 8081:80 nginx:alpine</pre>
 
 <h4>* Docker exec command inside container</h4>
 
