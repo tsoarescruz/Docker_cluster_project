@@ -307,6 +307,16 @@ To add a manager to this swarm, run 'docker swarm join-token manager' and follow
 
 <pre>docker service ls</pre>
 
+<h4>* Docker Viz stack deploy</h4>
+
+<pre>
+docker service create \
+  --name=viz \
+  --publish=8080:8080/tcp \
+  --constraint=node.role==manager \
+  --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+  alexellis2/visualizer-arm
+</pre>
 
 <h2>Docker Compose V2</h2>
 
