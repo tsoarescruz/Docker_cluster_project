@@ -41,7 +41,7 @@ services:
 
   worker:
     <<: *app_base
-    command: bundle exec sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
     ports: []
     restart: always
     depends_on:
