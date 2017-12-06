@@ -620,6 +620,105 @@ https://www.upguard.com/ebooks/devops-pushes-agile-to-it-limits?utm_campaign=201
 
 </pre>
 
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+[1] “The NIST Definition of Cloud Computing”. Disponível em <http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-145.pdf >. Acessado em 24/11/2016
+
+[2] História da computação em nuvens. Disponível em <http://www.dsc.ufcg.edu.br/~pet/jornal/agosto2012/materias/historia_da_computacao.html>. Acessado em 18/11/2016 
+
+[3] NOGUEIRA, MATHEUS CADORI1; PEZZI, DANIEL DA CUNHA (2010) “A Computação Agora é nas Nuvens” Universidade de Cruz Alta (UNICRUZ) – Cruz Alta, RS – Brasil.
+
+[4] AULBACH, STEFAN; JACOBS, DEAN; KEMPER, ALFONS; et al. (2009) “A Comparison of Flexible Schemas for Software as a Service.” 35th SIGMOD - International
+Conference on Management of Data, 2009.
+
+[5] TAURION, C. (2009) “Cloud Computing: computação em nuvem: transformando o mundo
+da tecnologia da informação”, Editora Brasport: Rio de Janeiro, Brasil.
+
+[6] VERAS, MANOEL.(2012) “Cloud Computing: Nova Arquitetura da TI”. Editora Brasport:
+Rio de Janeiro, Brasil.
+
+[7] INTEL (2010) “Cloud Computing”, http://www.nextgenerationcenter.com/detallecurso/Cloud_Computing.aspx?PageID=1,
+Acesso em: 04/08/2013.
+
+[8] SOUZA, FLÁVIO R. C.; MOREIRA, LEONARDO O.; MACHADO, JAVAM C. Computação em
+Nuvem: Conceitos, Tecnologias, Aplicações e Desafios. ERCEMAPI 2009.
+
+[9] “Saiba como a virtualização por container revolucionou a infraestrutura de TI. Parte 2”. Disponível em <https://www.3way.com.br/saiba-como-a-virtualizacao-por-container-revolucionou-a-infraestrutura-de-ti-part2/>. Acessado em 03/05/2017
+
+[10] “Saiba como a virtualização por container revolucionou a infraestrutura de TI. Parte 1”. Disponível em <https://www.3way.com.br/saiba-como-a-virtualizacao-por-container-mudou-a-infraestrutura-de-ti/>. Acessado em 03/05/2017
+
+[11] “Saiba como a virtualização por container revolucionou a infraestrutura de ti! Parte 3”. Disponível em <https://www.3way.com.br/gerenciando-containers-usando-kubernetes/>. Acessado em 03/05/2017
+
+[12] “O que é Container?”. Disponível em <http://www.mundodocker.com.br/o-que-e-container/>. Acessado em 04/05/2017
+
+[13] Disponível em <https://developers.redhat.com/blog/2016/02/24/10-things-to-avoid-in-docker-containers/> Acessado em
+
+[14] Disponível em <https://docs.docker.com/engine/docker-overview/#docker-engine> Acessado em
+
+[15] Disponível em <https://github.com/gomex/docker-para-desenvolvedores/blob/master/manuscript/porque.md> Acessado em
+
+[16] Disponível em <https://www.docker.com/docker-mac> Acessado em
+
+[17] Disponível em <https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/> Acessado em
+
+[18] Disponível em <https://docs.docker.com/glossary/?term=Compose> Acessado em
+
+[19] Disponível em <https://docs.docker.com/glossary/?term=Dockerfile> Acessado em
+
+[20] Disponível em <https://developers.redhat.com/blog/2016/02/24/10-things-to-avoid-in-docker-containers> Acessado em
+
+[21] Disponível em <https://github.com/gomex/docker-para-desenvolvedores/blob/master/manuscript/porque.md - Dúvidas> Acessado em
+
+[22] Disponível em <https://en.wikipedia.org/wiki/Software_versioning> Acessado em
+
+[23] Disponível em <https://docs.docker.com/search/?q=container> Acessado em
+
+[24] Disponível em <https://docs.docker.com/engine/reference/commandline/docker/> Acessado em
+
+[25] Disponível em <https://hub.docker.com/r/portainer/portainer/ e https://github.com/portainer/portainer> Acessado em
+
+[26] Disponível em <https://docs.docker.com/glossary/?term=Docker%20Swarm> Acessado em
+
+[27] Disponível em <https://github.com/dockersamples/docker-swarm-visualizer> Acessado em 
+
+[28] Disponível em <http://training.play-with-docker.com/about/> Acessado em 
+
+[29] Disponível em <https://github.com/docker/labs> Acessado em
+
+[30] Disponível em <http://training.play-with-docker.com/> Acessado em
+
+[31] Disponível em <https://training.docker.com/> Acessado em 
+
+[32] Disponível em <https://2017.dockercon.com/> Acessado em
+
+[33] Disponível em <https://store.docker.com/> Acessado em
+
+[34] Disponível em <https://store.docker.com/editions/enterprise/docker-ee-aws> Acessado em
+
+[35] Disponível em <https://www.docker.com/ibm> Acessado em
+
+[36] Disponível em <https://www.ibm.com/blogs/bluemix/2017/02/deploy-scalable-docker-application/> Acessado em
+
+[37] Disponível em <https://github.com/gomex/docker-para-desenvolvedores/blob/master/manuscript/organizacao.md> Acessado em
+
+[38] Disponível em <https://12factor.net/pt_br/> Acessado em
+
+[39] Disponível em <https://blog.hypriot.com/downloads/> Acessado em
+
+[40] Disponível em <https://etcher.io/> Acessado em 
+ 
+Cloud Computing. Disponível em <https://en.wikipedia.org/wiki/Cloud_computing>. Acessado em 20/11/2016.
+
+O que é cloud computing. Disponível em <http://www.infowester.com/cloudcomputing.php>.  Acessado em 20/11/2016.
+
+Fundamentos de Computação Nuvem para Governos. Disponível em <http://www4.serpro.gov.br/wcge2010/artigos/Artigo-Fundamentos%20de%20Computacao%20Nuvem%20para%20Governos.pdf>. Acessado em 21/11/2016.
+
+Cloud computing estamos nas nuvens voando. Disponível em <http://ppgi.ci.ufpb.br/wp-content/uploads/palestra-cloud-computing.pdf>. Acessado em 21/11/2016
+
+Conceitos de computação em nuvem. Disponível em <http://ftp.unipar.br/~seinpar/2013/artigos/Rogerio%20Schueroff%20Vandresen.pdf>. Acessado em 24/11/2016
+
+
+“10 things to avoid in docker containers”. Disponível em: <https://developers.redhat.com/blog/2016/02/24/10-things-to-avoid-in-docker-containers/>. Acessado em 25/10/2017
 
 
 
