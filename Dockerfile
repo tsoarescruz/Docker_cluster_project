@@ -4,8 +4,8 @@ FROM ruby:2.3.3
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
 # Install Build essentials and MySQL client
-RUN apt-get update -qq && apt-get install -y sudo build-essential \
-    libpq-dev nodejs-legacy mysql-client \
+RUN apt-get update -qq && apt-get install -y build-essential \
+    libpq-dev nodejs-legacy mysql-client ca-certificates curl\
     libssl-dev apt-utils nodejs mysql-client && \
     sudo apt-get autoremove -y && \
     sudo rm -rf /var/lib/apt/lists/*
@@ -48,8 +48,6 @@ EXPOSE 80 300 9000
 
 # Save timestamp of image building
 RUN date -u > BUILD_TIME
-
-#ADD /docker/host /etc/hosts
 
 # Start up
 #CMD "docker/startup.sh"
