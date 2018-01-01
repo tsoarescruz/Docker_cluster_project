@@ -101,16 +101,12 @@ Description: drop + create + migrate + seed </pre>
 <h2>Docker dependencies</h2>
 
 For this project was necessary this software do manangement docker containers:
-<h4>Portainer</h4>
 
 [Portainer](https://portainer.readthedocs.io/en/latest/deployment.html)
-<h4>Swarm Visualizer</h4>
 
 [Swarm Visualizer](https://github.com/ManoMarks/docker-swarm-visualizer)
-<h4>Redis</h4>
 
 [Redis Docker Hub](https://hub.docker.com/_/redis/)
-
 
 <h2>ARM - Raspberrypi Configuration</h2>
 
