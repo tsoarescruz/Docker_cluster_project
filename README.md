@@ -254,20 +254,6 @@ docker run --name=test-mysql --env="MYSQL_ROOT_PASSWORD=password" mysql
 
 <pre>docker push --disable-content-trust tsoarescruz/phalanx:phalanx_db</pre>
 
-<h2>*Git Repository Config </h2>
-
-<h4>* Add git config fot a terminal</h4>
-
-<pre>
-git config --global user.name "Your Name"
-git config --global user.email "youremail@domain.com"
-</pre>
-
-<h4>* Add ssh key to git</h4>
-
-<bash>https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</bash>
-
-
 <h2>Docker Swarm</h2>
 
 <pre>
@@ -310,6 +296,18 @@ docker service create \
 
 [Docker File](../master/Dockerfile)
 
+<h2>*Git Repository Config </h2>
 
-<h2>Last update: 15/12/2017 </h2>
+<h4>* Add git config fot a terminal</h4>
+
+<pre>
+git config --global user.name "Your Name"
+git config --global user.email "youremail@domain.com"
+</pre>
+
+<h4>* Add ssh key to git</h4>
+
+<bash>https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</bash>
+
+<h2>Last update: 01/01/2018 </h2>
 <h2>Created by: Thiago Soares </h2>
