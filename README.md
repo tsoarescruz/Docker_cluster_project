@@ -1,4 +1,4 @@
-# README
+﻿# README
 
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
 This documment references main steps to Docker - Swiss Army in Rasperry Pi:
@@ -44,21 +44,9 @@ Execute this comand:
 * Ruby version
  - 2.33
 
-* Sidekiq
-
-[Sidekiq Github](https://github.com/mperham/sidekiq)
+* Sidekiq - [Sidekiq Github](https://github.com/mperham/sidekiq)
 
 <h2> Software Configuration</h2>
-
-<h3>* Create Application</h3>
-
-<pre>rails new Phalanx</pre>
-
-<h3>* Database create</h3>
-
-<h4>* Command create database, config inside the project:</h4>
-
-<pre>rails db:create</pre>
 
 <h3>* Database Configuration</h3>
 
