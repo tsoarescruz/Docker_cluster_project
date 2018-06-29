@@ -7,8 +7,8 @@ MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 RUN apt-get update -qq && apt-get install -y build-essential \
     libpq-dev nodejs-legacy mysql-client ca-certificates curl\
     libssl-dev apt-utils nodejs mysql-client && \
-    sudo apt-get autoremove -y && \
-    sudo rm -rf /var/lib/apt/lists/*
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
