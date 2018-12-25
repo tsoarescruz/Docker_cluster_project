@@ -54,7 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # HTML parser
 # http://www.nokogiri.org/
-gem 'nokogiri'
+gem 'nokogiri', '>=1.8.2'
 
 # External request client
 # https://github.com/rest-client/rest-client
@@ -69,10 +69,11 @@ gem 'sidekiq'
 
 # Admin interface Gem
 gem 'remotipart', '~> 1.2'
-gem 'rails_admin', '~> 1.1.1'
+gem 'rails_admin', '>= 1.3.0'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem 'devise'
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass', '>= 3.4.0'
+gem 'sassc-rails', '>= 2.0.0'
 
 # Gem to track history
 gem 'paper_trail'
