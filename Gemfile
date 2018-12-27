@@ -54,7 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # HTML parser
 # http://www.nokogiri.org/
-gem 'nokogiri', '>=1.8.2'
+gem 'nokogiri', '~> 1.9', '>= 1.9.1'
 
 # External request client
 # https://github.com/rest-client/rest-client
