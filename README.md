@@ -42,7 +42,7 @@ Execute this comand:
 <h2>System dependencies</h2>
 
 * Ruby version
- - 2.33
+ - 2.3.3
 
 * Sidekiq - [Sidekiq Github](https://github.com/mperham/sidekiq)
 
