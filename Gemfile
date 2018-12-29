@@ -73,7 +73,6 @@ gem 'rails_admin', '>= 1.3.0'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem 'devise'
 gem 'bootstrap-sass', '>= 3.4.0'
-gem 'sassc-rails', '>= 2.0.0'
 
 # Gem to track history
 gem 'paper_trail'
