@@ -1,4 +1,4 @@
-require './workers/google'
+require Rails.root.join('workers', 'google.rb')
 
 class GoogleSearcherJob < ApplicationJob
   queue_as :default
