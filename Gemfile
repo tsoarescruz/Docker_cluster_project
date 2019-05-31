@@ -73,8 +73,6 @@ gem 'rails_admin', '>= 1.3.0'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem "devise", ">= 4.6.0"
 gem "bootstrap-sass", ">= 3.4.1"
-gem "actionview", ">= 5.0.7.2"
-
 
 # Gem to track history
 gem 'paper_trail'
