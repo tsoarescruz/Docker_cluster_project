@@ -1,7 +1,7 @@
 ﻿# README
 
-This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida
-This documment references main steps to Docker - Swiss Army in Rasperry Pi:
+This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida.
+This document references main steps to Docker - Swiss Army in Raspberry Pi:
 
 
 <h4>Stalation in GNU/Linux</h4>
