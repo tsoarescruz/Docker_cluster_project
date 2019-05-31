@@ -1,12 +1,19 @@
-FROM ubuntu:12.04
+FROM ubuntu:16.04
 FROM ruby:2.3.3
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
 
+
+RUN rm /etc/apt/sources.list
+RUN echo "deb http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list
+RUN echo "deb-src http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list
+RUN echo "Acquire::Check-Valid-Until false;" | tee -a /etc/apt/apt.conf.d/10-nocheckvalid
+RUN echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | tee -a /etc/apt/preferences.d/10-archive-pin
+
 # Install Build essentials and MySQL client
 RUN apt-get update -qq && apt-get install -y build-essential \
-    libpq-dev nodejs-legacy mysql-client ca-certificates curl\
-    libssl-dev apt-utils nodejs mysql-client && \
+    libpq-dev libmysqlclient-dev ca-certificates curl tzdata\
+    libssl-dev apt-utils nodejs openssh-server openssh-client git redis-server nginx && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
