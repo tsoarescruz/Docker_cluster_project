@@ -17,50 +17,29 @@ class GoogleWorker
 
   def self.request_search query
     final_query = "#{query} -site:#{GOOGLE_EXCLUDE_DOMAINS.join(' -site:')}"
-    params = {sclient: 'psy-ab',
-              safe: 'off',
-              num: SEARCH_SIZE,
-              hl: 'pt',
-              biw: '1080',
-              bih: '1920',
-              site: 'webhp',
-              q: final_query,
-              pbx: '1',
-              bav: 'on.2,or.r_cp.',
-              bvm: 'bv.147448319,d.Y2I',
-              fp: '5047cddfc513b732',
-              pf: 'p',
-              gs_rn: '64',
-              gs_ri: 'psy-ab',
-              tok: 'GwqlFYN3FRY7BvbTjY60SQ',
-              pq: final_query,
-              cp: '9',
-              gs_id: '2v',
-              xhr: 't',
-              tch: '1',
-              ech: '2',
-              psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'}
+    params = {
+          'authority': 'www.google.com.br', ':method': 'GET', 'upgrade-insecure-requests': 1, q: final_query,
+          sclient: 'psy-ab', safe: 'off', hl: 'pt', biw: '1080', bih: '1920', site: 'webhp', num: SEARCH_SIZE,
+          pq: final_query, cp: '9', gs_id: '2v', xhr: 't', tch: '1', ech: '2', psi: 'uOmmWNrAM4GWwATp1IWgBg.1487333817326.3'
+        }
 
     begin
       response = RestClient.get('https://www.google.com.br/search?', {params: params})
-    rescue Exception => e
+    rescue RestClient::ExceptionWithResponse => e
+      Rails.logger.error "GoogleWorker: Query #{query} - #{e}"
       response = nil
     end
-
-    return response
+    response
   end
 
-  def self.parse_response_to_json body
+  def parse_response_to_json(body)
     better_body = body.gsub('/*""*/', ',').gsub('\\\\', '')
     parsed_response = "[#{better_body}]".gsub(',]', ']')
 
-    json_data = JSON.parse(parsed_response.force_encoding("ISO-8859-1").encode("UTF-8"))
-
-    return json_data
+    JSON.parse(parsed_response.force_encoding('ISO-8859-1').encode('UTF-8'))
   end
 
-  def self.process_data json_data
-    white_list_domains = WhiteList.all.pluck(:domain)
+  def process_data(json_data)
     query_results = []
     # first item is more relavant
     relevance = 1
@@ -68,20 +47,37 @@ class GoogleWorker
     json_data.each do |data|
       # get each result link
       html_page = Nokogiri::HTML(data['d'])
-      results = html_page.css('.r')
+      results = html_page.css('.g')
 
       results.each do |result|
         # get the base URL link
-        url_link = URI.unescape(result.css('a').attr('href').value.gsub('/url?q=', ''))
+        links = result.css('a')
+        next if links.empty?
+        url_link = sanitize_link(links.attr('href').value)
         # filter invalid domains
-        unless invalid_domain = white_list_domains.map{|domain| url_link.include? domain}.any?
-          query_results << {title: result.css('a').text, link: url_link, status: nil, from: 'Google', relevance: relevance}
-          relevance += 1
-        end
+        # next if link_in_white_list?(url_link)
+        # next if link_from_another_platform?(url_link)
+        query_results << return_issue_data(result, relevance, url_link)
+        relevance += 1
       end
     end
 
-    return query_results
+    query_results
+  end
+
+  def sanitize_link(link)
+      link.gsub('/url?q=', '').gsub('/interstitial?url=', '').gsub(/&sa=.*/, '')
+  end
+
+  def return_issue_data(result, relevance, url_link)
+    description = result.css('.st').map(&:text).join(' - ')
+    {
+      title: result.css('a').text,
+      link: url_link,
+      platform: 'Google',
+      relevance: relevance,
+      complementary_data: { description: description }
+    }
   end
 
   def self.save_results query_results
