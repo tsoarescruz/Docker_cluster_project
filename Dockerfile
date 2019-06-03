@@ -1,8 +1,7 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 FROM ruby:2.3.3
 
 MAINTAINER Thiago Soares <thiagosoarescruz0@gmail.com>
-
 
 RUN rm /etc/apt/sources.list
 RUN echo "deb http://archive.debian.org/debian/ jessie main" | tee -a /etc/apt/sources.list
@@ -20,6 +19,13 @@ RUN apt-get update -qq && apt-get install -y build-essential \
 # Set some config
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_ENV=development
+
+
+# CP nginx
+COPY phalanx.nginx /config/nginx.conf
+
+# RM nginx
+RUN rm -f phalanx.nginx
 
 # Mkdir
 RUN mkdir -p /home/app
