@@ -22,7 +22,7 @@ ENV RAILS_ENV=development
 
 
 # CP nginx
-COPY phalanx.nginx /config/nginx.conf
+COPY phalanx.nginx /etc/ngnix/nginx.conf
 
 # RM nginx
 RUN rm -f phalanx.nginx
