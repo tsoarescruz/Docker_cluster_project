@@ -12,15 +12,19 @@ services:
       - "3307:3306"
     volumes:
       - "db-data:/var/lib/mysql"
+    networks:
+      service1_net:
+        ipv4_address: 172.22.0.101
 
   redis:
     image: redis:3.2-alpine
     restart: always
+    networks:
+      service1_net:
+        ipv4_address: 172.22.0.102
 
   web:
     image: nginx
-    # volumes:
-    #  - ./mysite.template:/etc/nginx/conf.d/mysite.template
     ports:
       - "80:80"
       - "443:443"
@@ -48,11 +52,16 @@ services:
     ports:
       - "3001:3000"
     depends_on:
-            - db
-            - redis
+      - db
+      - redis
     links:
-            - redis
-            - db
+      - redis
+      - db
+      - web
+
+    networks:
+      service1_net:
+        ipv4_address: 172.22.0.100
 
   worker:
     <<: *app_base
@@ -61,16 +70,22 @@ services:
     restart: always
     depends_on:
       - app
-
   ui:
-      image: portainer/portainer
-      restart: always
-      volumes:
-        - '/var/run/docker.sock:/var/run/docker.sock'
-      expose:
-        - 9000
-      ports:
-        - 3002:9000
+    image: portainer/portainer
+    restart: always
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    expose:
+      - 9000
+    ports:
+      - 3002:9000
 
 volumes:
   db-data:
+
+networks:
+  service1_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
