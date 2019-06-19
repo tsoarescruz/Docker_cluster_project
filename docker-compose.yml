@@ -12,16 +12,10 @@ services:
       - "3307:3306"
     volumes:
       - "db-data:/var/lib/mysql"
-    networks:
-      service1_net:
-        ipv4_address: 172.22.0.101
 
   redis:
     image: redis:3.2-alpine
     restart: always
-    networks:
-      service1_net:
-        ipv4_address: 172.22.0.102
 
   web:
     image: nginx
@@ -59,10 +53,6 @@ services:
       - db
       - web
 
-    networks:
-      service1_net:
-        ipv4_address: 172.22.0.100
-
   worker:
     <<: *app_base
     command: bundle exec sidekiq -C config/sidekiq.yml
@@ -82,10 +72,3 @@ services:
 
 volumes:
   db-data:
-
-networks:
-  service1_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.22.0.0/16
