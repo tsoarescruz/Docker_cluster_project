@@ -12,10 +12,6 @@ RUN apt-get update -qq && apt-get install -y mysql-client build-essential ca-cer
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_ENV=development
 
-# ADD gems
-ADD Gemfile /home/app/Gemfile
-ADD Gemfile.lock /home/app/Gemfile.lock
-
 # Install RVM, Ruby, and Bundler
 RUN \curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN \curl -L http://get.rvm.io | bash -s stable
@@ -31,6 +27,12 @@ WORKDIR /home/app/
 
 #Add Docker path
 ADD docker /home/app/
+
+
+# ADD gems
+ADD Gemfile /home/app/Gemfile
+ADD Gemfile.lock /home/app/Gemfile.lock
+
 
 #Add sidekiq pid
 ADD sidekiq.pid /home/app/tmp/pids/
