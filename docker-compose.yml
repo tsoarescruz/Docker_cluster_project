@@ -20,18 +20,16 @@ services:
   web:
     image: nginx
     build: ./nginx
+    restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./:/var/www/
       - ./nginx/conf.d/:/etc/nginx/conf.d/
-    environment:
-     - NGINX_HOST=http://phalanx.net.br/
-     - NGINX_PORT=80
     command: /bin/bash -c "exec nginx -g 'daemon off;'"
     links:
-      - app:app
+      - app
 
   app: &app_base
     build: .
@@ -75,9 +73,10 @@ services:
 volumes:
   db-data:
 
-networks:
-  service1_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.18.0.0/16
+
+# networks:
+#   service1_net:
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.18.0.0/16
