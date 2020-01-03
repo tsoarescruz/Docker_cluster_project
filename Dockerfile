@@ -46,7 +46,7 @@ ADD Gemfile.lock /home/app/Gemfile.lock
 ADD sidekiq.pid /home/app/tmp/pids/
 
 #Run bundle
-RUN bundle install
+RUN bundle install --no-rdoc --no-ri
 
 # Add the Rails app
 ADD . /home/app
