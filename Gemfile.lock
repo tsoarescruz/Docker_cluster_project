@@ -121,7 +121,7 @@ GEM
     nested_form (0.3.2)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.9.1)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     paper_trail (10.1.0)
@@ -256,7 +256,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mysql2 (>= 0.3.18, < 0.5)
-  nokogiri (~> 1.9, >= 1.9.1)
+  nokogiri (~> 1.10)
   paper_trail
   puma (~> 3.12)
   rails (~> 5.0.1)
