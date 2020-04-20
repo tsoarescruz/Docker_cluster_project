@@ -1,4 +1,4 @@
-﻿# README
+#README
 
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida.
 This document references main steps to Docker - Swiss Army in Raspberry Pi:
