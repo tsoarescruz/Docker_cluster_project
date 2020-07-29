@@ -1,7 +1,11 @@
 ### README
 
 This document`s a end of TCC graduation of UVA - Universidade Veiga de Almeida.
-This document references main steps to Docker - Swiss Army in Raspberry Pi:
+This document references main steps to Docker - penknife Swiss in Raspberry Pi:
+
+This presentation is:
+
+https://prezi.com/qzu5zijgtpc0/docker-um-canivete-suico-com-aplicacao-em-raspberry-pi/
 
 
 <h4>Stalation in GNU/Linux</h4>
