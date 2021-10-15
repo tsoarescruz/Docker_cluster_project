@@ -10,10 +10,10 @@ RUN echo "Acquire::Check-Valid-Until false;" | tee -a /etc/apt/apt.conf.d/10-noc
 RUN echo 'Package: *\nPin: origin "archive.debian.org"\nPin-Priority: 500' | tee -a /etc/apt/preferences.d/10-archive-pin
 
 # Install Build essentials and MySQL client
-RUN apt-get update -qq && apt-get install -y build-essential \
+RUN apt update -qq && apt install -qq --force-yes build-essential \
     libpq-dev libmysqlclient-dev ca-certificates curl tzdata\
-    libssl-dev apt-utils nodejs openssh-server openssh-client git redis-server nginx && \
-    apt-get autoremove -y && \
+    libssl-dev apt-utils nodejs openssh-server openssh-client git redis-server  && \
+    # apt autoremove -qq --force-yes && \
     rm -rf /var/lib/apt/lists/*
 
 # Set some config
